@@ -1,0 +1,19 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Topics</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<table>
+    <tr>
+        <th>#</th>
+        <th>Most frequent Words</th>
+    </tr>
+    <tr th:each="topic : ${topics}">
+        <td th:text="${topic.id}">0</td>
+        <td th:text="${topic.topWords}">banana kiwi apple orange fruit</td>
+    </tr>
+</table>
+</body>
+</html>
