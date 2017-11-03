@@ -5,11 +5,8 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
+<h2>Topics</h2>
 <table>
-    <tr>
-        <th>Topic ID</th>
-        <th>Most frequent Words</th>
-    </tr>
     <tr th:each="topic : ${topics}">
         <td th:text="${topic.id}">0</td>
         <td th:each="topWord : ${topic.topWords}">

@@ -14,7 +14,7 @@ public class LdaService {
         this.provider = provider;
     }
 
-    public Lda findById(String ldaId) {
-        return provider.getById(ldaId);
+    public Lda getByCorpusNameAndNumberOfTopics(String corpusName, int numberOfTopics) {
+        return provider.getByCorpusNameAndNumberOfTopics(corpusName, numberOfTopics);
     }
 }

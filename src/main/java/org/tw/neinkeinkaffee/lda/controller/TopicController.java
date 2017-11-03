@@ -5,8 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.tw.neinkeinkaffee.lda.model.Lda;
 import org.tw.neinkeinkaffee.lda.model.Topic;
 import org.tw.neinkeinkaffee.lda.service.LdaService;
 
@@ -22,12 +21,11 @@ public class TopicController {
     }
 
     @RequestMapping("/{corpus_id}/{number_of_topics}/topic")
-    String listTopics(final @PathVariable("corpus_id") String corpusId,
-            final @PathVariable("number_of_topics") String numberOfTopics, Model model) {
+    String listTopics(final @PathVariable("corpus_id") String corpusName,
+            final @PathVariable("number_of_topics") Integer numberOfTopics, Model model) {
         // TODO: Is there a better way to get from the combination of parameters of the model to an id?
-        String ldaId = corpusId + numberOfTopics;
-        List<Topic> topics = ldaService.findById(ldaId).getTopics();
-        model.addAttribute("topics", topics);
+        Lda lda = ldaService.getByCorpusNameAndNumberOfTopics(corpusName, numberOfTopics);
+        model.addAttribute("topics", lda.getTopics());
         return "topic";
     }
 }
