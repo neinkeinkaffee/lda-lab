@@ -20,7 +20,7 @@ public class TopicController {
         this.ldaService = ldaService;
     }
 
-    @RequestMapping("/topics")
+    @RequestMapping("/topic")
     String listTopics(final @RequestParam(value="corpus_id", required=false) String corpusId,
             final @RequestParam(value="number_of_topics", required=false) String numberOfTopics, Model model) {
         // TODO: Is there a better way to get from the combination of parameters of the model to an id?

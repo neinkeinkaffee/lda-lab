@@ -5,14 +5,13 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
+<h2>Topics</h2>
 <table>
-    <tr>
-        <th>#</th>
-        <th>Most frequent Words</th>
-    </tr>
     <tr th:each="topic : ${topics}">
         <td th:text="${topic.id}">0</td>
-        <td th:text="${topic.topWords}">banana kiwi apple orange fruit</td>
+        <td th:each="topWord : ${topic.topWords}">
+            <span th:text="${topWord}">banana</span>
+        </td>
     </tr>
 </table>
 </body>

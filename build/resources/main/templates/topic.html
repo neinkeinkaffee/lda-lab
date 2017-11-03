@@ -7,12 +7,14 @@
 <body>
 <table>
     <tr>
-        <th>#</th>
+        <th>Topic ID</th>
         <th>Most frequent Words</th>
     </tr>
     <tr th:each="topic : ${topics}">
         <td th:text="${topic.id}">0</td>
-        <td th:text="${topic.topWords}">banana kiwi apple orange fruit</td>
+        <td th:each="topWord : ${topic.topWords}">
+            <span th:text="${topWord}">banana</span>
+        </td>
     </tr>
 </table>
 </body>
