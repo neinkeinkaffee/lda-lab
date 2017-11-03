@@ -14,7 +14,7 @@ public class LdaService {
         this.provider = provider;
     }
 
-    public Lda getByCorpusNameAndNumberOfTopics(String corpusName, int numberOfTopics) {
-        return provider.getByCorpusNameAndNumberOfTopics(corpusName, numberOfTopics);
+    public Lda getByCorpusNameAndNumberOfTopics(int corpusId, int numberOfTopics) {
+        return provider.getByCorpusIdAndNumberOfTopics(corpusId, numberOfTopics);
     }
 }

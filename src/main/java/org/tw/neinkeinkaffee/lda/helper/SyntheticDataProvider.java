@@ -8,11 +8,11 @@ import java.util.Arrays;
 
 @Component
 public class SyntheticDataProvider {
-    public Lda getByCorpusNameAndNumberOfTopics(String corpusName, int numberOfTopics) {
+    public Lda getByCorpusIdAndNumberOfTopics(int corpusId, int numberOfTopics) {
         // Parameters get ignored by the SyntheticDataProvider.
-        // In the real application, the parameters will matter for retrieval from a proper repository
-        // See http://software-sympathy.blogspot.de/2017/01/spring-data-with-mongodb-and-composite.html
-        // As for the Topic data structure, in the real application, topWords should be inferred, not passed in when
+        // In the real application, the parameters will matter for retrieval from a proper repository with a composite
+        // key, as described here: http://software-sympathy.blogspot.de/2017/01/spring-data-with-mongodb-and-composite.html
+        // As for the Topic data structure, in the real application, the topWords should be inferred, not passed in when
         // building.
         Topic topic0 = Topic.builder()
             .id(0)
