@@ -14,7 +14,7 @@ public class SyntheticDataProvider {
         // TODO: CorpusID and numberOfTopics should be used to retrieve the lda model from a proper repository with a composite key, as described in http://software-sympathy.blogspot.de/2017/01/spring-data-with-mongodb-and-composite.html
         Topic topic0 = Topic.builder()
             .id(0)
-            .words(Arrays.asList(
+            .wordTopicProbabilities(Arrays.asList(
                 Word.builder()
                     .lemma("banana")
                     .probability(.35)
@@ -39,7 +39,7 @@ public class SyntheticDataProvider {
 
         Topic topic1 = Topic.builder()
             .id(1)
-            .words(Arrays.asList(
+            .wordTopicProbabilities(Arrays.asList(
                 Word.builder()
                     .lemma("mix")
                     .probability(.30)
@@ -64,7 +64,7 @@ public class SyntheticDataProvider {
 
         Topic topic2 = Topic.builder()
             .id(2)
-            .words(Arrays.asList(
+            .wordTopicProbabilities(Arrays.asList(
                 Word.builder()
                     .lemma("healthy")
                     .probability(.37)

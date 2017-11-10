@@ -2,8 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="478ce0f1-7474-4882-9a7f-0f389c6a5896" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.5-rc-2/fileContent/fileContent.lock" afterPath="$PROJECT_DIR$/.gradle/3.5-rc-2/fileContent/fileContent.lock" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.5-rc-2/taskHistory/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/3.5-rc-2/taskHistory/fileHashes.bin" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.5-rc-2/taskHistory/fileSnapshots.bin" afterPath="$PROJECT_DIR$/.gradle/3.5-rc-2/taskHistory/fileSnapshots.bin" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.5-rc-2/taskHistory/taskHistory.bin" afterPath="$PROJECT_DIR$/.gradle/3.5-rc-2/taskHistory/taskHistory.bin" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.5-rc-2/taskHistory/taskHistory.lock" afterPath="$PROJECT_DIR$/.gradle/3.5-rc-2/taskHistory/taskHistory.lock" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/main/org/tw/neinkeinkaffee/lda/helper/SyntheticDataProvider.class" afterPath="$PROJECT_DIR$/build/classes/main/org/tw/neinkeinkaffee/lda/helper/SyntheticDataProvider.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/main/org/tw/neinkeinkaffee/lda/model/Topic$TopicBuilder.class" afterPath="$PROJECT_DIR$/build/classes/main/org/tw/neinkeinkaffee/lda/model/Topic$TopicBuilder.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/main/org/tw/neinkeinkaffee/lda/model/Topic.class" afterPath="$PROJECT_DIR$/build/classes/main/org/tw/neinkeinkaffee/lda/model/Topic.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/tw/neinkeinkaffee/lda/controller/TopicController.java" afterPath="$PROJECT_DIR$/src/main/java/org/tw/neinkeinkaffee/lda/controller/TopicController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/resources/main/templates/topic.html" afterPath="$PROJECT_DIR$/build/resources/main/templates/topic.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/tw/neinkeinkaffee/lda/helper/SyntheticDataProvider.java" afterPath="$PROJECT_DIR$/src/main/java/org/tw/neinkeinkaffee/lda/helper/SyntheticDataProvider.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/tw/neinkeinkaffee/lda/model/Topic.java" afterPath="$PROJECT_DIR$/src/main/java/org/tw/neinkeinkaffee/lda/model/Topic.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/templates/topic.html" afterPath="$PROJECT_DIR$/src/main/resources/templates/topic.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/templates/topics.html" afterPath="$PROJECT_DIR$/src/main/resources/templates/topics.html" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -36,18 +47,18 @@
       <file leaf-file-name="topics.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/resources/templates/topics.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="11" column="108" lean-forward="false" selection-start-line="11" selection-start-column="108" selection-end-line="11" selection-end-column="108" />
+            <state relative-caret-position="195">
+              <caret line="13" column="67" lean-forward="false" selection-start-line="13" selection-start-column="67" selection-end-line="13" selection-end-column="67" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="topic.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="topic.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/resources/templates/topic.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="10" column="28" lean-forward="false" selection-start-line="10" selection-start-column="28" selection-end-line="10" selection-end-column="28" />
+            <state relative-caret-position="135">
+              <caret line="9" column="40" lean-forward="false" selection-start-line="9" selection-start-column="40" selection-end-line="9" selection-end-column="40" />
               <folding />
             </state>
           </provider>
@@ -56,12 +67,10 @@
       <file leaf-file-name="Topic.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/org/tw/neinkeinkaffee/lda/model/Topic.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="19" column="5" lean-forward="false" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
+            <state relative-caret-position="195">
+              <caret line="13" column="50" lean-forward="true" selection-start-line="13" selection-start-column="50" selection-end-line="13" selection-end-column="50" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#372#373#0" expanded="true" />
-                <element signature="e#435#436#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -79,7 +88,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TopicController.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="TopicController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/org/tw/neinkeinkaffee/lda/controller/TopicController.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="210">
@@ -106,8 +115,8 @@
       <file leaf-file-name="SyntheticDataProvider.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/org/tw/neinkeinkaffee/lda/helper/SyntheticDataProvider.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="617">
-              <caret line="60" column="35" lean-forward="false" selection-start-line="60" selection-start-column="35" selection-end-line="60" selection-end-column="35" />
+            <state relative-caret-position="217">
+              <caret line="66" column="35" lean-forward="false" selection-start-line="66" selection-start-column="35" selection-end-line="66" selection-end-column="35" />
               <folding />
             </state>
           </provider>
@@ -542,11 +551,12 @@
         <option value="$PROJECT_DIR$/src/main/java/org/tw/neinkeinkaffee/lda/service/LdaService.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/tw/neinkeinkaffee/lda/model/Word.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/tw/neinkeinkaffee/lda/model/SortedDistribution.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/tw/neinkeinkaffee/lda/controller/TopicController.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/word.html" />
         <option value="$PROJECT_DIR$/src/main/java/org/tw/neinkeinkaffee/lda/model/Topic.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/tw/neinkeinkaffee/lda/helper/SyntheticDataProvider.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/topic.html" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/topics.html" />
-        <option value="$PROJECT_DIR$/src/main/java/org/tw/neinkeinkaffee/lda/controller/TopicController.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/topic.html" />
       </list>
     </option>
   </component>
@@ -796,6 +806,9 @@
     <property name="SearchEverywhereHistoryKey" value="Double &#9;PSI&#9;JAVA://java.lang.Double" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources/templates" />
+    </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="org.tw.neinkeinkaffee.lda" />
     </key>
@@ -924,16 +937,15 @@
       <workItem from="1509609107391" duration="304000" />
       <workItem from="1509711496101" duration="11998000" />
       <workItem from="1509950032567" duration="313000" />
-      <workItem from="1510308354547" duration="7270000" />
+      <workItem from="1510308354547" duration="8184000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="36643000" />
+    <option name="totallyTimeSpent" value="37557000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="873" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -980,16 +992,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/tw/neinkeinkaffee/lda/controller/TopicController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="28" column="45" lean-forward="false" selection-start-line="28" selection-start-column="45" selection-end-line="28" selection-end-column="45" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/tw/neinkeinkaffee/lda/service/LdaService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
@@ -1061,8 +1063,6 @@
           <caret line="10" column="4" lean-forward="false" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="4" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#372#373#0" expanded="true" />
-            <element signature="e#435#436#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1122,8 +1122,6 @@
           <caret line="10" column="4" lean-forward="false" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="4" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#372#373#0" expanded="true" />
-            <element signature="e#435#436#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1223,8 +1221,6 @@
           <caret line="10" column="4" lean-forward="false" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="4" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#372#373#0" expanded="true" />
-            <element signature="e#435#436#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1345,14 +1341,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/tw/neinkeinkaffee/lda/helper/SyntheticDataProvider.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="617">
-          <caret line="60" column="35" lean-forward="false" selection-start-line="60" selection-start-column="35" selection-end-line="60" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/tw/neinkeinkaffee/lda/model/Lda.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
@@ -1369,34 +1357,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/tw/neinkeinkaffee/lda/model/Topic.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="19" column="5" lean-forward="false" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#372#373#0" expanded="true" />
-            <element signature="e#435#436#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/topic.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="28" lean-forward="false" selection-start-line="10" selection-start-column="28" selection-end-line="10" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/topics.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="108" lean-forward="false" selection-start-line="11" selection-start-column="108" selection-end-line="11" selection-end-column="108" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/tw/neinkeinkaffee/lda/controller/TopicController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
@@ -1404,6 +1364,48 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/word.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="16" lean-forward="true" selection-start-line="3" selection-start-column="16" selection-end-line="3" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/tw/neinkeinkaffee/lda/model/Topic.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="13" column="50" lean-forward="true" selection-start-line="13" selection-start-column="50" selection-end-line="13" selection-end-column="50" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/tw/neinkeinkaffee/lda/helper/SyntheticDataProvider.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="217">
+          <caret line="66" column="35" lean-forward="false" selection-start-line="66" selection-start-column="35" selection-end-line="66" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/topics.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="13" column="67" lean-forward="false" selection-start-line="13" selection-start-column="67" selection-end-line="13" selection-end-column="67" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/topic.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="40" lean-forward="false" selection-start-line="9" selection-start-column="40" selection-end-line="9" selection-end-column="40" />
+          <folding />
         </state>
       </provider>
     </entry>
