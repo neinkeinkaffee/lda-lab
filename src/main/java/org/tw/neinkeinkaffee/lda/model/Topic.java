@@ -11,11 +11,11 @@ public class Topic {
     @Getter
     private Integer id;
     @Getter
-    private final List<Word> wordTopicProbabilities;
+    private final List<WordProbability> wordProbabilities;
     @Getter(lazy=true)
-    private final List<Word> topWordTopicProbabilities = getTopNWordTopicProbabilities();
+    private final List<WordProbability> topWordProbabilities = getTopNWordProbabilities();
 
-    private List<Word> getTopNWordTopicProbabilities() {
-        return new ArrayList<Word>(wordTopicProbabilities.subList(0, 5));
+    private List<WordProbability> getTopNWordProbabilities() {
+        return new ArrayList<WordProbability>(wordProbabilities.subList(0, 5));
     }
 }

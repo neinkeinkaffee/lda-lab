@@ -3,7 +3,7 @@ package org.tw.neinkeinkaffee.lda.helper;
 import org.springframework.stereotype.Component;
 import org.tw.neinkeinkaffee.lda.model.Lda;
 import org.tw.neinkeinkaffee.lda.model.Topic;
-import org.tw.neinkeinkaffee.lda.model.Word;
+import org.tw.neinkeinkaffee.lda.model.WordProbability;
 
 import java.util.Arrays;
 
@@ -14,24 +14,24 @@ public class SyntheticDataProvider {
         // TODO: CorpusID and numberOfTopics should be used to retrieve the lda model from a proper repository with a composite key, as described in http://software-sympathy.blogspot.de/2017/01/spring-data-with-mongodb-and-composite.html
         Topic topic0 = Topic.builder()
             .id(0)
-            .wordTopicProbabilities(Arrays.asList(
-                Word.builder()
+            .wordProbabilities(Arrays.asList(
+                WordProbability.builder()
                     .lemma("banana")
                     .probability(.35)
                     .build(),
-                Word.builder()
+                WordProbability.builder()
                     .lemma("kiwi")
                     .probability(.30)
                     .build(),
-                Word.builder()
+                WordProbability.builder()
                     .lemma("plum")
                     .probability(.25)
                     .build(),
-                Word.builder()
+                WordProbability.builder()
                     .lemma("apple")
                     .probability(.20)
                     .build(),
-                Word.builder()
+                WordProbability.builder()
                     .lemma("fruit")
                     .probability(.15)
                     .build()))
@@ -39,24 +39,24 @@ public class SyntheticDataProvider {
 
         Topic topic1 = Topic.builder()
             .id(1)
-            .wordTopicProbabilities(Arrays.asList(
-                Word.builder()
+            .wordProbabilities(Arrays.asList(
+                WordProbability.builder()
                     .lemma("mix")
                     .probability(.30)
                     .build(),
-                Word.builder()
+                WordProbability.builder()
                     .lemma("mash")
                     .probability(.28)
                     .build(),
-                Word.builder()
+                WordProbability.builder()
                     .lemma("stash")
                     .probability(.25)
                     .build(),
-                Word.builder()
+                WordProbability.builder()
                     .lemma("boil")
                     .probability(.15)
                     .build(),
-                Word.builder()
+                WordProbability.builder()
                     .lemma("fry")
                     .probability(.2)
                     .build()))
@@ -64,24 +64,24 @@ public class SyntheticDataProvider {
 
         Topic topic2 = Topic.builder()
             .id(2)
-            .wordTopicProbabilities(Arrays.asList(
-                Word.builder()
+            .wordProbabilities(Arrays.asList(
+                WordProbability.builder()
                     .lemma("healthy")
                     .probability(.37)
                     .build(),
-                Word.builder()
+                WordProbability.builder()
                     .lemma("tasty")
                     .probability(.28)
                     .build(),
-                Word.builder()
+                WordProbability.builder()
                     .lemma("greasy")
                     .probability(.15)
                     .build(),
-                Word.builder()
+                WordProbability.builder()
                     .lemma("oily")
                     .probability(.14)
                     .build(),
-                Word.builder()
+                WordProbability.builder()
                     .lemma("spicy")
                     .probability(.6)
                     .build()))

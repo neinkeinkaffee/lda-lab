@@ -7,9 +7,9 @@
 <body>
 <h2>Topic <span th:text="${topic.id}">0</span></h2>
 <table>
-    <tr th:each="topWordTopicProbability : ${topic.topWordTopicProbabilities}">
-        <td th:text="${topWordTopicProbability.lemma}">banana</td>
-        <td th:text="${topWordTopicProbability.probability}">0.15</td>
+    <tr th:each="topicWordProbability : ${topic.topWordProbabilities}">
+        <td th:text="${topicWordProbability.lemma}">banana</td>
+        <td th:text="${topicWordProbability.probability}">0.15</td>
     </tr>
 </table>
 </body>

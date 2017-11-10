@@ -11,8 +11,8 @@
         <td>
             <a th:text="${topic.id}" th:href="@{|/corpus/${corpusId}/numberOfTopics/${numberOfTopics}/topic/${topic.id}|}">0</a>
         </td>
-        <td th:each="topWordTopicProbability : ${topic.topWordTopicProbabilities}">
-            <span th:text="${topWordTopicProbability.lemma}">banana</span>
+        <td th:each="topicWordProbability : ${topic.wordProbabilities}">
+            <span th:text="${topicWordProbability.lemma}">banana</span>
         </td>
     </tr>
 </table>
