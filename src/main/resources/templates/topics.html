@@ -8,7 +8,9 @@
 <h2>Topics</h2>
 <table>
     <tr th:each="topic : ${topics}">
-        <td th:text="${topic.id}">0</td>
+        <td>
+            <a th:text="${topic.id}" th:href="@{|/corpus/${corpusId}/numberOfTopics/${numberOfTopics}/topic/${topic.id}|}">0</a>
+        </td>
         <td th:each="topWord : ${topic.topWords}">
             <span th:text="${topWord.lemma}">banana</span>
         </td>
