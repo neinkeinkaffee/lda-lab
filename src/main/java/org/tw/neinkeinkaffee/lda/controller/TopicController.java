@@ -19,9 +19,20 @@ public class TopicController {
 
     @RequestMapping("/corpus/{corpus_id}/numberOfTopics/{number_of_topics}/topic")
     String listTopics(final @PathVariable("corpus_id") int corpusId,
-            final @PathVariable("number_of_topics") int numberOfTopics, Model model) {
+                      final @PathVariable("number_of_topics") int numberOfTopics,
+                      Model model) {
         Lda lda = ldaService.getByCorpusNameAndNumberOfTopics(corpusId, numberOfTopics);
         model.addAttribute("topics", lda.getTopics());
         return "topics";
+    }
+
+    @RequestMapping("/corpus/{corpus_id}/numberOfTopics/{number_of_topics}/topic/{topic_id}")
+    String listTopic(final @PathVariable("corpus_id") int corpusId,
+                     final @PathVariable("number_of_topics") int numberOfTopics,
+                     final @PathVariable("topic_id") int topicId,
+                     Model model) {
+        Lda lda = ldaService.getByCorpusNameAndNumberOfTopics(corpusId, numberOfTopics);
+        model.addAttribute("topic", lda.getTopics().get(topicId));
+        return "topic";
     }
 }

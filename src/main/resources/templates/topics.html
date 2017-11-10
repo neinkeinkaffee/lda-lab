@@ -10,7 +10,7 @@
     <tr th:each="topic : ${topics}">
         <td th:text="${topic.id}">0</td>
         <td th:each="topWord : ${topic.topWords}">
-            <span th:text="${topWord}">banana</span>
+            <span th:text="${topWord.lemma}">banana</span>
         </td>
     </tr>
 </table>
