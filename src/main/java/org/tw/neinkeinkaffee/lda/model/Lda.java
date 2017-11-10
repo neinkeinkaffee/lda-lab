@@ -10,4 +10,5 @@ public class Lda {
     private String id;
     @Getter
     private List<Topic> topics;
+    @Getter List<Word> words;
 }

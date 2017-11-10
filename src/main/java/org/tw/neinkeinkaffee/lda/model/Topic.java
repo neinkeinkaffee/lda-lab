@@ -2,6 +2,7 @@ package org.tw.neinkeinkaffee.lda.model;
 
 import lombok.Builder;
 import lombok.Getter;
+import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,8 +11,8 @@ import java.util.List;
 public class Topic {
     @Getter
     private Integer id;
-    @Getter
-    private final List<WordProbability> wordProbabilities;
+    @Getter @Setter
+    private List<WordProbability> wordProbabilities;
     @Getter(lazy=true)
     private final List<WordProbability> topWordProbabilities = getTopNWordProbabilities();
 

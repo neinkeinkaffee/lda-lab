@@ -1,14 +1,14 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Topic <span th:text="${topic.id}">0</span></title>
+    <title th:text="@{|Topic ${topic.id}|}">Topic 0</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
 <h2>Topic <span th:text="${topic.id}">0</span></h2>
 <table>
     <tr th:each="topicWordProbability : ${topic.topWordProbabilities}">
-        <td th:text="${topicWordProbability.lemma}">banana</td>
+        <td th:text="${topicWordProbability.word.lemma}">banana</td>
         <td th:text="${topicWordProbability.probability}">0.15</td>
     </tr>
 </table>
