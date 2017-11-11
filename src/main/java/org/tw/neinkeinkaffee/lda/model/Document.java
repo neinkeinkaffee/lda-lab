@@ -8,12 +8,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Builder
-public class Word {
+public class Document {
 	@Getter
-	private String lemma;
+	private String name;
+	@Getter
+	private List<Token> tokens;
 	@Getter @Setter
 	private List<TopicProbability> topicProbabilities;
-	@Getter(lazy=true)
+	@Getter(lazy = true)
 	private final List<TopicProbability> topTopicProbabilities = getTopNTopicProbabilities(5);
 
 	private List<TopicProbability> getTopNTopicProbabilities(int N) {

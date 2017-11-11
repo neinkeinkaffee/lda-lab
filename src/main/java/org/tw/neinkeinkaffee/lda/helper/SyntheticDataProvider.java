@@ -97,6 +97,7 @@ public class SyntheticDataProvider {
             words.put(word.getLemma(), word);
         }
 
+        // Topic-Word Probabilities
         List<WordProbability> wordProbabilities0 = Arrays.asList(
             WordProbability.builder()
                 .word(banana)
@@ -167,7 +168,87 @@ public class SyntheticDataProvider {
         topic1.setWordProbabilities(wordProbabilities1);
         topic2.setWordProbabilities(wordProbabilities2);
 
+        HashMap<String, Document> documents = new HashMap<>();
+        List<Document> documentList = Arrays.asList(
+            Document.builder()
+                .name("banana_cake")
+                .tokens(Arrays.asList(
+                    Token.builder()
+                        .word(banana)
+                        .topic(topic0)
+                        .build(),
+                    Token.builder()
+                        .word(banana)
+                        .topic(topic0)
+                        .build(),
+                    Token.builder()
+                        .word(fry)
+                        .topic(topic1)
+                        .build(),
+                    Token.builder()
+                        .word(oily)
+                        .topic(topic2)
+                        .build(),
+                    Token.builder()
+                        .word(tasty)
+                        .topic(topic2)
+                        .build()))
+                .build(),
+            Document.builder()
+                .name("church_song")
+                .tokens(Arrays.asList(
+                    Token.builder()
+                        .word(fruit)
+                        .topic(topic0)
+                        .build(),
+                    Token.builder()
+                        .word(fry)
+                        .topic(topic1)
+                        .build(),
+                    Token.builder()
+                        .word(stash)
+                        .topic(topic1)
+                        .build(),
+                    Token.builder()
+                        .word(boil)
+                        .topic(topic1)
+                        .build(),
+                    Token.builder()
+                        .word(oily)
+                        .topic(topic2)
+                        .build()))
+                .build(),
+            Document.builder()
+                .name("wok_manual")
+                .tokens(Arrays.asList(
+                    Token.builder()
+                        .word(plum)
+                        .topic(topic0)
+                        .build(),
+                    Token.builder()
+                        .word(fry)
+                        .topic(topic1)
+                        .build(),
+                    Token.builder()
+                        .word(boil)
+                        .topic(topic1)
+                        .build(),
+                    Token.builder()
+                        .word(greasy)
+                        .topic(topic2)
+                        .build(),
+                    Token.builder()
+                        .word(tasty)
+                        .topic(topic2)
+                        .build()))
+                .build());
+        for (Document document : documentList) {
+            document.setTopicProbabilities(dummyTopicProbabilities);
+            documents.put(document.getName(), document);
+        }
+
         Lda lda = Lda.builder()
+            .documents(documents)
             .topics(topics)
             .words(words)
             .build();

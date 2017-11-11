@@ -11,6 +11,8 @@ public class Lda {
     private String id;
     @Getter
     private List<Topic> topics;
-    @Getter
-    HashMap<String, Word> words;
+	@Getter
+	HashMap<String, Word> words;
+	@Getter
+	HashMap<String, Document> documents;
 }
