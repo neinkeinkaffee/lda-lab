@@ -23,6 +23,8 @@ public class DocumentController {
                      final @PathVariable("document_name") String documentName,
                      Model model) {
         Lda lda = ldaService.getByCorpusNameAndNumberOfTopics(corpusId, numberOfTopics);
+        model.addAttribute("corpusId", corpusId);
+        model.addAttribute("numberOfTopics", numberOfTopics);
         model.addAttribute("document", lda.getDocuments().get(documentName));
         return "document";
     }

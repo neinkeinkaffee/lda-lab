@@ -5,17 +5,34 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
+
 <h2>Topic <span th:text="${topic.id}">0</span></h2>
+
+<h3>Words</h3>
 <table>
-    <tr th:each="topicWordProbability : ${topic.topWordProbabilities}">
+    <tr th:each="wordProbability : ${topic.topWordProbabilities}">
         <td>
-            <a th:text="${topicWordProbability.word.lemma}"
-           th:href="@{|/corpus/${corpusId}/numberOfTopics/${numberOfTopics}/word/${topicWordProbability.word.lemma}|}">
+            <a th:text="${wordProbability.word.lemma}"
+           th:href="@{|/corpus/${corpusId}/numberOfTopics/${numberOfTopics}/word/${wordProbability.word.lemma}|}">
                 banana
             </a>
         </td>
-        <td th:text="${topicWordProbability.probability}">0.15</td>
+        <td th:text="${wordProbability.probability}">0.15</td>
     </tr>
 </table>
+
+<h3>Documents</h3>
+<table>
+    <tr th:each="documentProbability : ${topic.topDocumentProbabilities}">
+        <td>
+            <a th:text="${documentProbability.document.name}"
+               th:href="@{|/corpus/${corpusId}/numberOfTopics/${numberOfTopics}/document/${documentProbability.document.name}|}">
+                banana
+            </a>
+        </td>
+        <td th:text="${documentProbability.probability}">0.15</td>
+    </tr>
+</table>
+
 </body>
 </html>

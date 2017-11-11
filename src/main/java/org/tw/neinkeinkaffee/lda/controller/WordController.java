@@ -23,6 +23,8 @@ public class WordController {
                      final @PathVariable("word_lemma") String wordLemma,
                      Model model) {
         Lda lda = ldaService.getByCorpusNameAndNumberOfTopics(corpusId, numberOfTopics);
+        model.addAttribute("corpusId", corpusId);
+        model.addAttribute("numberOfTopics", numberOfTopics);
         model.addAttribute("word", lda.getWords().get(wordLemma));
         return "word";
     }

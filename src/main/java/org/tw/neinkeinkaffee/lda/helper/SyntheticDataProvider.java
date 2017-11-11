@@ -164,87 +164,110 @@ public class SyntheticDataProvider {
                 .probability(.6)
                 .build());
 
-        topic0.setWordProbabilities(wordProbabilities0);
-        topic1.setWordProbabilities(wordProbabilities1);
-        topic2.setWordProbabilities(wordProbabilities2);
-
         HashMap<String, Document> documents = new HashMap<>();
+        Document banana_cake = Document.builder()
+            .name("banana_cake")
+            .tokens(Arrays.asList(
+                Token.builder()
+                    .word(banana)
+                    .topic(topic0)
+                    .build(),
+                Token.builder()
+                    .word(banana)
+                    .topic(topic0)
+                    .build(),
+                Token.builder()
+                    .word(fry)
+                    .topic(topic1)
+                    .build(),
+                Token.builder()
+                    .word(oily)
+                    .topic(topic2)
+                    .build(),
+                Token.builder()
+                    .word(tasty)
+                    .topic(topic2)
+                    .build()))
+            .build();
+        Document church_song = Document.builder()
+            .name("church_song")
+            .tokens(Arrays.asList(
+                Token.builder()
+                    .word(fruit)
+                    .topic(topic0)
+                    .build(),
+                Token.builder()
+                    .word(fry)
+                    .topic(topic1)
+                    .build(),
+                Token.builder()
+                    .word(stash)
+                    .topic(topic1)
+                    .build(),
+                Token.builder()
+                    .word(boil)
+                    .topic(topic1)
+                    .build(),
+                Token.builder()
+                    .word(oily)
+                    .topic(topic2)
+                    .build()))
+            .build();
+        Document wok_manual = Document.builder()
+            .name("wok_manual")
+            .tokens(Arrays.asList(
+                Token.builder()
+                    .word(plum)
+                    .topic(topic0)
+                    .build(),
+                Token.builder()
+                    .word(fry)
+                    .topic(topic1)
+                    .build(),
+                Token.builder()
+                    .word(boil)
+                    .topic(topic1)
+                    .build(),
+                Token.builder()
+                    .word(greasy)
+                    .topic(topic2)
+                    .build(),
+                Token.builder()
+                    .word(tasty)
+                    .topic(topic2)
+                    .build()))
+            .build();
         List<Document> documentList = Arrays.asList(
-            Document.builder()
-                .name("banana_cake")
-                .tokens(Arrays.asList(
-                    Token.builder()
-                        .word(banana)
-                        .topic(topic0)
-                        .build(),
-                    Token.builder()
-                        .word(banana)
-                        .topic(topic0)
-                        .build(),
-                    Token.builder()
-                        .word(fry)
-                        .topic(topic1)
-                        .build(),
-                    Token.builder()
-                        .word(oily)
-                        .topic(topic2)
-                        .build(),
-                    Token.builder()
-                        .word(tasty)
-                        .topic(topic2)
-                        .build()))
-                .build(),
-            Document.builder()
-                .name("church_song")
-                .tokens(Arrays.asList(
-                    Token.builder()
-                        .word(fruit)
-                        .topic(topic0)
-                        .build(),
-                    Token.builder()
-                        .word(fry)
-                        .topic(topic1)
-                        .build(),
-                    Token.builder()
-                        .word(stash)
-                        .topic(topic1)
-                        .build(),
-                    Token.builder()
-                        .word(boil)
-                        .topic(topic1)
-                        .build(),
-                    Token.builder()
-                        .word(oily)
-                        .topic(topic2)
-                        .build()))
-                .build(),
-            Document.builder()
-                .name("wok_manual")
-                .tokens(Arrays.asList(
-                    Token.builder()
-                        .word(plum)
-                        .topic(topic0)
-                        .build(),
-                    Token.builder()
-                        .word(fry)
-                        .topic(topic1)
-                        .build(),
-                    Token.builder()
-                        .word(boil)
-                        .topic(topic1)
-                        .build(),
-                    Token.builder()
-                        .word(greasy)
-                        .topic(topic2)
-                        .build(),
-                    Token.builder()
-                        .word(tasty)
-                        .topic(topic2)
-                        .build()))
-                .build());
+            banana_cake,
+            church_song,
+            wok_manual);
+
         for (Document document : documentList) {
             document.setTopicProbabilities(dummyTopicProbabilities);
             documents.put(document.getName(), document);
+        }
+
+        // Topic-Document Probabilities
+        // NOTE: In real life, there would be on List of documentProbabilities for each Topic, but here we'll just assign the same dummy documentProbabilities to each word
+        List<DocumentProbability> dummyDocumentProbabilities = Arrays.asList(
+            DocumentProbability.builder()
+                .document(banana_cake)
+                .probability(.45)
+                .build(),
+            DocumentProbability.builder()
+                .document(church_song)
+                .probability(.30)
+                .build(),
+            DocumentProbability.builder()
+                .document(wok_manual)
+                .probability(.25)
+                .build());
+
+        topic0.setWordProbabilities(wordProbabilities0);
+        topic1.setWordProbabilities(wordProbabilities1);
+        topic2.setWordProbabilities(wordProbabilities2);
+        for (Topic topic : topics) {
+            topic.setDocumentProbabilities(dummyDocumentProbabilities);
         }
 
         Lda lda = Lda.builder()

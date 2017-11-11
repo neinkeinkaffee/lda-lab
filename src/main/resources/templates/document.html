@@ -6,10 +6,15 @@
 </head>
 <body>
 <h2>Document <span th:text="${document.name}">banana_cake.txt</span></h2>
+
+<h3>Topics</h3>
 <table>
     <tr th:each="topicProbability : ${document.topTopicProbabilities}">
         <td>
-            <span th:text="${topicProbability.topic.id}">0</span>
+            <a th:text="${topicProbability.topic.id}"
+               th:href="@{|/corpus/${corpusId}/numberOfTopics/${numberOfTopics}/topic/${topicProbability.topic.id}|}">
+                0
+            </a>
             <span th:text="${topicProbability.topic.topWordsSignature}">banana kiwi plum apple fruit</span>
         </td>
         <td th:text="${topicProbability.probability}">0.15</td>
