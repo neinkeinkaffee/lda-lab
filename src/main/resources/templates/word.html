@@ -10,7 +10,7 @@
     <tr th:each="topicProbability : ${word.topTopicProbabilities}">
         <td>
             <span th:text="${topicProbability.topic.id}">0</span>
-            <span th:text="${topicProbability.topic.topWords}">banana kiwi plum apple fruit</span>
+            <span th:text="${topicProbability.topic.topWordsSignature}">banana kiwi plum apple fruit</span>
         </td>
         <td th:text="${topicProbability.probability}">0.15</td>
     </tr>

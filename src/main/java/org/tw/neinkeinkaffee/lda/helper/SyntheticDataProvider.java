@@ -3,7 +3,9 @@ package org.tw.neinkeinkaffee.lda.helper;
 import org.springframework.stereotype.Component;
 import org.tw.neinkeinkaffee.lda.model.*;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 
 @Component
@@ -88,7 +90,12 @@ public class SyntheticDataProvider {
             .lemma("spicy")
             .build();
 
-        List<Word> words = Arrays.asList(banana, kiwi, plum, apple, fruit, mix, mash, stash, boil, fry, healthy, tasty, greasy, oily, spicy);
+        HashMap<String, Word> words = new HashMap<>();
+        List<Word> wordList = Arrays.asList(banana, kiwi, plum, apple, fruit, mix, mash, stash, boil, fry, healthy, tasty, greasy, oily, spicy);
+        for (Word word : wordList) {
+            word.setTopicProbabilities(dummyTopicProbabilities);
+            words.put(word.getLemma(), word);
+        }
 
         List<WordProbability> wordProbabilities0 = Arrays.asList(
             WordProbability.builder()
@@ -159,10 +166,6 @@ public class SyntheticDataProvider {
         topic0.setWordProbabilities(wordProbabilities0);
         topic1.setWordProbabilities(wordProbabilities1);
         topic2.setWordProbabilities(wordProbabilities2);
-
-        for (Word word : words) {
-            word.setTopicProbabilities(dummyTopicProbabilities);
-        }
 
         Lda lda = Lda.builder()
             .topics(topics)

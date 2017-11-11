@@ -17,6 +17,8 @@ public class Word {
 	private final List<TopicProbability> topTopicProbabilities = getTopNTopicProbabilities();
 
 	private List<TopicProbability> getTopNTopicProbabilities() {
-		return new ArrayList<TopicProbability>(topicProbabilities.subList(0, 5));
+		int N = 5;
+		int endIndex = (N > topicProbabilities.size()) ? topicProbabilities.size() : N;
+		return new ArrayList<TopicProbability>(topicProbabilities.subList(0, 3));
 	}
 }

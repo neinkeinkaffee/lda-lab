@@ -34,6 +34,8 @@ public class TopicController {
                      final @PathVariable("topic_id") int topicId,
                      Model model) {
         Lda lda = ldaService.getByCorpusNameAndNumberOfTopics(corpusId, numberOfTopics);
+        model.addAttribute("corpusId", corpusId);
+        model.addAttribute("numberOfTopics", numberOfTopics);
         model.addAttribute("topic", lda.getTopics().get(topicId));
         return "topic";
     }

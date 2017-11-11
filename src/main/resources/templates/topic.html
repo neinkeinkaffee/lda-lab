@@ -8,7 +8,12 @@
 <h2>Topic <span th:text="${topic.id}">0</span></h2>
 <table>
     <tr th:each="topicWordProbability : ${topic.topWordProbabilities}">
-        <td th:text="${topicWordProbability.word.lemma}">banana</td>
+        <td>
+            <a th:text="${topicWordProbability.word.lemma}"
+           th:href="@{|/corpus/${corpusId}/numberOfTopics/${numberOfTopics}/word/${topicWordProbability.word.lemma}|}">
+                banana
+            </a>
+        </td>
         <td th:text="${topicWordProbability.probability}">0.15</td>
     </tr>
 </table>

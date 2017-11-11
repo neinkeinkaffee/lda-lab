@@ -9,10 +9,15 @@
 <table>
     <tr th:each="topic : ${topics}">
         <td>
-            <a th:text="${topic.id}" th:href="@{|/corpus/${corpusId}/numberOfTopics/${numberOfTopics}/topic/${topic.id}|}">0</a>
+            <a th:text="${topic.id}"
+               th:href="@{|/corpus/${corpusId}/numberOfTopics/${numberOfTopics}/topic/${topic.id}|}">
+                0
+            </a>
         </td>
         <td th:each="topicWordProbability : ${topic.wordProbabilities}">
-            <span th:text="${topicWordProbability.word.lemma}">banana</span>
+            <span th:text="${topicWordProbability.word.lemma}">
+                banana
+            </span>
         </td>
     </tr>
 </table>
