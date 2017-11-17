@@ -1,14 +1,15 @@
-package org.tw.neinkeinkaffee.lda.model;
+package org.tw.neinkeinkaffee.lda.model.topic;
 
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
+import org.tw.neinkeinkaffee.lda.model.probability.DocumentProbability;
+import org.tw.neinkeinkaffee.lda.model.probability.WordProbability;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static java.util.stream.Collectors.joining;
-import static java.util.stream.Collectors.toList;
 
 @Builder
 public class Topic {

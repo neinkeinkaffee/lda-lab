@@ -1,7 +1,10 @@
-package org.tw.neinkeinkaffee.lda.model;
+package org.tw.neinkeinkaffee.lda.model.lda;
 
 import lombok.Builder;
 import lombok.Getter;
+import org.tw.neinkeinkaffee.lda.model.topic.Topic;
+import org.tw.neinkeinkaffee.lda.model.document.Document;
+import org.tw.neinkeinkaffee.lda.model.word.ContentWord;
 
 import java.util.HashMap;
 import java.util.List;

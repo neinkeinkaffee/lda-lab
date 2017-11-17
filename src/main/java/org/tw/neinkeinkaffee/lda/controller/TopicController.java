@@ -5,7 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.tw.neinkeinkaffee.lda.model.Lda;
+import org.tw.neinkeinkaffee.lda.model.lda.Lda;
 import org.tw.neinkeinkaffee.lda.service.LdaService;
 
 @Controller

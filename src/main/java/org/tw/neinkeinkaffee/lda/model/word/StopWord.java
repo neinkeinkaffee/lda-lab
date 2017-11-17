@@ -1,4 +1,4 @@
-package org.tw.neinkeinkaffee.lda.model;
+package org.tw.neinkeinkaffee.lda.model.word;
 
 import lombok.Builder;
 

@@ -1,7 +1,16 @@
 package org.tw.neinkeinkaffee.lda.helper;
 
 import org.springframework.stereotype.Component;
-import org.tw.neinkeinkaffee.lda.model.*;
+import org.tw.neinkeinkaffee.lda.model.document.Document;
+import org.tw.neinkeinkaffee.lda.model.lda.Lda;
+import org.tw.neinkeinkaffee.lda.model.probability.DocumentProbability;
+import org.tw.neinkeinkaffee.lda.model.probability.TopicProbability;
+import org.tw.neinkeinkaffee.lda.model.probability.WordProbability;
+import org.tw.neinkeinkaffee.lda.model.token.ContentToken;
+import org.tw.neinkeinkaffee.lda.model.token.StopToken;
+import org.tw.neinkeinkaffee.lda.model.topic.Topic;
+import org.tw.neinkeinkaffee.lda.model.word.ContentWord;
+import org.tw.neinkeinkaffee.lda.model.word.StopWord;
 
 import java.util.Arrays;
 import java.util.HashMap;

@@ -3,7 +3,7 @@ package org.tw.neinkeinkaffee.lda.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.tw.neinkeinkaffee.lda.helper.SyntheticDataProvider;
-import org.tw.neinkeinkaffee.lda.model.Lda;
+import org.tw.neinkeinkaffee.lda.model.lda.Lda;
 
 @Service
 public class LdaService {
