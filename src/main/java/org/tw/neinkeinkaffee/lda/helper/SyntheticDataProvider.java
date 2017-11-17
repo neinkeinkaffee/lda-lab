@@ -1,6 +1,5 @@
 package org.tw.neinkeinkaffee.lda.helper;
 
-import javafx.scene.paint.Stop;
 import org.springframework.stereotype.Component;
 import org.tw.neinkeinkaffee.lda.model.*;
 
