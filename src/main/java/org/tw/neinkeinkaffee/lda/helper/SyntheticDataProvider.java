@@ -111,6 +111,9 @@ public class SyntheticDataProvider {
         StopWord to = StopWord.builder()
             .lemma("to")
             .build();
+        StopWord oh = StopWord.builder()
+            .lemma("oh")
+            .build();
 
         HashMap<String, ContentWord> words = new HashMap<>();
         List<ContentWord> wordList = Arrays.asList(banana, kiwi, plum, apple, fruit, mix, mash, stash, boil, fry, healthy, tasty, greasy, oily, spicy);
@@ -222,6 +225,9 @@ public class SyntheticDataProvider {
         Document church_song = Document.builder()
             .name("church_song")
             .tokens(Arrays.asList(
+                StopToken.builder()
+                    .word(oh)
+                    .build(),
                 ContentToken.builder()
                     .word(fruit)
                     .topic(topic0)
@@ -234,9 +240,18 @@ public class SyntheticDataProvider {
                     .word(stash)
                     .topic(topic1)
                     .build(),
+                StopToken.builder()
+                    .word(and)
+                    .build(),
                 ContentToken.builder()
                     .word(boil)
                     .topic(topic1)
+                    .build(),
+                StopToken.builder()
+                    .word(it)
+                    .build(),
+                StopToken.builder()
+                    .word(is)
                     .build(),
                 ContentToken.builder()
                     .word(oily)
@@ -254,13 +269,31 @@ public class SyntheticDataProvider {
                     .word(fry)
                     .topic(topic1)
                     .build(),
+                StopToken.builder()
+                    .word(it)
+                    .build(),
                 ContentToken.builder()
                     .word(boil)
                     .topic(topic1)
                     .build(),
+                StopToken.builder()
+                    .word(it)
+                    .build(),
+                StopToken.builder()
+                    .word(and)
+                    .build(),
+                StopToken.builder()
+                    .word(it)
+                    .build(),
+                StopToken.builder()
+                    .word(is)
+                    .build(),
                 ContentToken.builder()
                     .word(greasy)
                     .topic(topic2)
+                    .build(),
+                StopToken.builder()
+                    .word(and)
                     .build(),
                 ContentToken.builder()
                     .word(tasty)
