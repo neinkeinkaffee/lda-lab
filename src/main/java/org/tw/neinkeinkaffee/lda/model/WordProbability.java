@@ -5,6 +5,6 @@ import lombok.Getter;
 
 @Builder
 public class WordProbability {
-    @Getter private Word word;
+    @Getter private ContentWord word;
     @Getter private Double probability;
 }

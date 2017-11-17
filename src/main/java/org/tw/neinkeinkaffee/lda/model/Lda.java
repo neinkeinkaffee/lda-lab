@@ -12,7 +12,7 @@ public class Lda {
     @Getter
     private List<Topic> topics;
 	@Getter
-	HashMap<String, Word> words;
+	HashMap<String, ContentWord> words;
 	@Getter
 	HashMap<String, Document> documents;
 }

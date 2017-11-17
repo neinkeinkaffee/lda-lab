@@ -23,7 +23,8 @@
 
 <h3>Content</h3>
 <div th:each="token : ${document.tokens}">
-    <span th:text="@{|${token.word.lemma} (${token.topic.id})|}">banana (0)</span>
+    <span th:text="@{|${token.word.lemma}|}">banana</span>
+    <span th:if="${!token.stopToken}" th:text="@{|(${token.topic.id})|}">(0)</span>
 </div>
 
 </body>

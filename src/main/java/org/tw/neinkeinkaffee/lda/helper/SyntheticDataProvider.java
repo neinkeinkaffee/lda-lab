@@ -1,9 +1,9 @@
 package org.tw.neinkeinkaffee.lda.helper;
 
+import javafx.scene.paint.Stop;
 import org.springframework.stereotype.Component;
 import org.tw.neinkeinkaffee.lda.model.*;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -26,8 +26,8 @@ public class SyntheticDataProvider {
 
         List<Topic> topics = Arrays.asList(topic0, topic1, topic2);
 
-        // Word-Topic Probabilities
-        // NOTE: In real life, there would be on List of topicProbabilities for each Word, but here we'll just assign the same dummy topicProbabilities to each word
+        // ContentWord-Topic Probabilities
+        // NOTE: In real life, there would be on List of topicProbabilities for each ContentWord, but here we'll just assign the same dummy topicProbabilities to each word
         List<TopicProbability> dummyTopicProbabilities = Arrays.asList(
             TopicProbability.builder()
                 .topic(topic0)
@@ -42,62 +42,84 @@ public class SyntheticDataProvider {
                 .probability(.25)
                 .build());
 
-        Word banana = Word.builder()
+        ContentWord banana = ContentWord.builder()
             .lemma("banana")
             .build();
-        Word kiwi = Word.builder()
+        ContentWord kiwi = ContentWord.builder()
             .lemma("kiwi")
             .build();
-        Word plum = Word.builder()
+        ContentWord plum = ContentWord.builder()
             .lemma("plum")
             .build();
-        Word apple = Word.builder()
+        ContentWord apple = ContentWord.builder()
             .lemma("apple")
             .build();
-        Word fruit = Word.builder()
+        ContentWord fruit = ContentWord.builder()
             .lemma("fruit")
             .build();
 
-        Word mix = Word.builder()
+        ContentWord mix = ContentWord.builder()
             .lemma("mix")
             .build();
-        Word mash = Word.builder()
+        ContentWord mash = ContentWord.builder()
             .lemma("mash")
             .build();
-        Word stash = Word.builder()
+        ContentWord stash = ContentWord.builder()
             .lemma("stash")
             .build();
-        Word boil = Word.builder()
+        ContentWord boil = ContentWord.builder()
             .lemma("boil")
             .build();
-        Word fry = Word.builder()
+        ContentWord fry = ContentWord.builder()
             .lemma("fry")
             .build();
 
-        Word healthy = Word.builder()
+        ContentWord healthy = ContentWord.builder()
             .lemma("healthy")
             .build();
-        Word tasty = Word.builder()
+        ContentWord tasty = ContentWord.builder()
             .lemma("tasty")
             .build();
-        Word greasy = Word.builder()
+        ContentWord greasy = ContentWord.builder()
             .lemma("greasy")
             .build();
-        Word oily = Word.builder()
+        ContentWord oily = ContentWord.builder()
             .lemma("oily")
             .build();
-        Word spicy = Word.builder()
+        ContentWord spicy = ContentWord.builder()
             .lemma("spicy")
             .build();
 
-        HashMap<String, Word> words = new HashMap<>();
-        List<Word> wordList = Arrays.asList(banana, kiwi, plum, apple, fruit, mix, mash, stash, boil, fry, healthy, tasty, greasy, oily, spicy);
-        for (Word word : wordList) {
+        StopWord a = StopWord.builder()
+            .lemma("a")
+            .build();
+        StopWord it = StopWord.builder()
+            .lemma("it")
+            .build();
+        StopWord be= StopWord.builder()
+            .lemma("be")
+            .build();
+        StopWord is = StopWord.builder()
+            .lemma("is")
+            .build();
+        StopWord must = StopWord.builder()
+            .lemma("must")
+            .build();
+        StopWord and = StopWord.builder()
+            .lemma("and")
+            .build();
+        StopWord to = StopWord.builder()
+            .lemma("to")
+            .build();
+
+        HashMap<String, ContentWord> words = new HashMap<>();
+        List<ContentWord> wordList = Arrays.asList(banana, kiwi, plum, apple, fruit, mix, mash, stash, boil, fry, healthy, tasty, greasy, oily, spicy);
+        for (ContentWord word : wordList) {
             word.setTopicProbabilities(dummyTopicProbabilities);
             words.put(word.getLemma(), word);
         }
 
-        // Topic-Word Probabilities
+        // Topic-ContentWord Probabilities
         List<WordProbability> wordProbabilities0 = Arrays.asList(
             WordProbability.builder()
                 .word(banana)
@@ -168,23 +190,31 @@ public class SyntheticDataProvider {
         Document banana_cake = Document.builder()
             .name("banana_cake")
             .tokens(Arrays.asList(
-                Token.builder()
+                ContentToken.builder()
                     .word(banana)
                     .topic(topic0)
                     .build(),
-                Token.builder()
-                    .word(banana)
-                    .topic(topic0)
+                StopToken.builder()
+                    .word(must)
                     .build(),
-                Token.builder()
+                ContentToken.builder()
                     .word(fry)
                     .topic(topic1)
                     .build(),
-                Token.builder()
+                StopToken.builder()
+                    .word(to)
+                    .build(),
+                StopToken.builder()
+                    .word(be)
+                    .build(),
+                ContentToken.builder()
                     .word(oily)
                     .topic(topic2)
                     .build(),
-                Token.builder()
+                StopToken.builder()
+                    .word(and)
+                    .build(),
+                ContentToken.builder()
                     .word(tasty)
                     .topic(topic2)
                     .build()))
@@ -192,23 +222,23 @@ public class SyntheticDataProvider {
         Document church_song = Document.builder()
             .name("church_song")
             .tokens(Arrays.asList(
-                Token.builder()
+                ContentToken.builder()
                     .word(fruit)
                     .topic(topic0)
                     .build(),
-                Token.builder()
+                ContentToken.builder()
                     .word(fry)
                     .topic(topic1)
                     .build(),
-                Token.builder()
+                ContentToken.builder()
                     .word(stash)
                     .topic(topic1)
                     .build(),
-                Token.builder()
+                ContentToken.builder()
                     .word(boil)
                     .topic(topic1)
                     .build(),
-                Token.builder()
+                ContentToken.builder()
                     .word(oily)
                     .topic(topic2)
                     .build()))
@@ -216,23 +246,23 @@ public class SyntheticDataProvider {
         Document wok_manual = Document.builder()
             .name("wok_manual")
             .tokens(Arrays.asList(
-                Token.builder()
+                ContentToken.builder()
                     .word(plum)
                     .topic(topic0)
                     .build(),
-                Token.builder()
+                ContentToken.builder()
                     .word(fry)
                     .topic(topic1)
                     .build(),
-                Token.builder()
+                ContentToken.builder()
                     .word(boil)
                     .topic(topic1)
                     .build(),
-                Token.builder()
+                ContentToken.builder()
                     .word(greasy)
                     .topic(topic2)
                     .build(),
-                Token.builder()
+                ContentToken.builder()
                     .word(tasty)
                     .topic(topic2)
                     .build()))
