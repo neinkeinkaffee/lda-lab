@@ -1,14 +1,14 @@
 package org.tw.neinkeinkaffee.lda.helper;
 
 import org.springframework.stereotype.Component;
-import org.tw.neinkeinkaffee.lda.model.document.Document;
+import org.tw.neinkeinkaffee.lda.model.lda.document.LdaDocument;
 import org.tw.neinkeinkaffee.lda.model.lda.Lda;
-import org.tw.neinkeinkaffee.lda.model.probability.DocumentProbability;
-import org.tw.neinkeinkaffee.lda.model.probability.TopicProbability;
-import org.tw.neinkeinkaffee.lda.model.probability.WordProbability;
-import org.tw.neinkeinkaffee.lda.model.token.ContentToken;
-import org.tw.neinkeinkaffee.lda.model.token.StopToken;
-import org.tw.neinkeinkaffee.lda.model.topic.Topic;
+import org.tw.neinkeinkaffee.lda.model.lda.probability.DocumentProbability;
+import org.tw.neinkeinkaffee.lda.model.lda.probability.TopicProbability;
+import org.tw.neinkeinkaffee.lda.model.lda.probability.WordProbability;
+import org.tw.neinkeinkaffee.lda.model.lda.token.ContentToken;
+import org.tw.neinkeinkaffee.lda.model.lda.token.StopToken;
+import org.tw.neinkeinkaffee.lda.model.lda.topic.Topic;
 import org.tw.neinkeinkaffee.lda.model.word.ContentWord;
 import org.tw.neinkeinkaffee.lda.model.word.StopWord;
 
@@ -197,8 +197,8 @@ public class SyntheticDataProvider {
                 .probability(.6)
                 .build());
 
-        HashMap<String, Document> documents = new HashMap<>();
-        Document banana_cake = Document.builder()
+        HashMap<String, LdaDocument> documents = new HashMap<>();
+        LdaDocument banana_cake = LdaDocument.builder()
             .name("banana_cake")
             .tokens(Arrays.asList(
                 ContentToken.builder()
@@ -230,7 +230,7 @@ public class SyntheticDataProvider {
                     .topic(topic2)
                     .build()))
             .build();
-        Document church_song = Document.builder()
+        LdaDocument church_song = LdaDocument.builder()
             .name("church_song")
             .tokens(Arrays.asList(
                 StopToken.builder()
@@ -266,7 +266,7 @@ public class SyntheticDataProvider {
                     .topic(topic2)
                     .build()))
             .build();
-        Document wok_manual = Document.builder()
+        LdaDocument wok_manual = LdaDocument.builder()
             .name("wok_manual")
             .tokens(Arrays.asList(
                 ContentToken.builder()
@@ -308,17 +308,17 @@ public class SyntheticDataProvider {
                     .topic(topic2)
                     .build()))
             .build();
-        List<Document> documentList = Arrays.asList(
+        List<LdaDocument> documentList = Arrays.asList(
             banana_cake,
             church_song,
             wok_manual);
 
-        for (Document document : documentList) {
+        for (LdaDocument document : documentList) {
             document.setTopicProbabilities(dummyTopicProbabilities);
             documents.put(document.getName(), document);
         }
 
-        // Topic-Document Probabilities
+        // Topic-LdaDocument Probabilities
         // NOTE: In real life, there would be on List of documentProbabilities for each Topic, but here we'll just assign the same dummy documentProbabilities to each word
         List<DocumentProbability> dummyDocumentProbabilities = Arrays.asList(
             DocumentProbability.builder()

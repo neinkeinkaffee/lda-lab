@@ -7,4 +7,6 @@ import lombok.Getter;
 public class Word {
 	@Getter
 	private String lemma;
+	@Getter
+	private boolean stopWord;
 }

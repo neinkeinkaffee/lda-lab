@@ -6,7 +6,7 @@ public class StopWord extends Word {
 
 	@Builder
 	private StopWord(String lemma) {
-		super(lemma);
+		super(lemma, true);
 	}
 
 	public static class StopWordBuilder extends WordBuilder {

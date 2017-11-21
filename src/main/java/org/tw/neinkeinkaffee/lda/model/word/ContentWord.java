@@ -3,7 +3,7 @@ package org.tw.neinkeinkaffee.lda.model.word;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
-import org.tw.neinkeinkaffee.lda.model.probability.TopicProbability;
+import org.tw.neinkeinkaffee.lda.model.lda.probability.TopicProbability;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,7 +16,7 @@ public class ContentWord extends Word {
 
 	@Builder
 	private ContentWord(String lemma, List<TopicProbability> topicProbabilities) {
-		super(lemma);
+		super(lemma, false);
 		this.topicProbabilities = topicProbabilities;
 	}
 
