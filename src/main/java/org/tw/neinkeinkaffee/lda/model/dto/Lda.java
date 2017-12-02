@@ -6,7 +6,6 @@ import org.tw.neinkeinkaffee.lda.model.dto.word.ContentWord;
 
 import java.util.HashMap;
 import java.util.List;
-import java.util.UUID;
 
 @Builder
 public class Lda {
@@ -15,16 +14,16 @@ public class Lda {
 	@Getter
 	HashMap<String, ContentWord> words;
 	@Getter
-	HashMap<String, Document> documents;
+	HashMap<String, DtoDocument> documents;
 
 //	public static Lda initFromCorpus(Corpus corpus, int numberOfTopics) {
 //		Random randomNumberGenerator = new Random();
 //		LdaBuilder ldaBuilder = Lda.builder();
-//		HashMap<String, Document> documents = new HashMap<String, Document>();
-//		for (Document corpusDocument : corpus.getDocuments()) {
-//			Document.LdaDocumentBuilder ldaDocumentBuilder = Document.builder();
+//		HashMap<String, CorpusDocument> documents = new HashMap<String, CorpusDocument>();
+//		for (CorpusDocument corpusDocument : corpus.getDocuments()) {
+//			CorpusDocument.LdaDocumentBuilder ldaDocumentBuilder = CorpusDocument.builder();
 //			for (Word word : corpusDocument.getTokens()) {
-//				Token token;
+//				LdaToken token;
 //				// TODO: having different classes for content and stop token makes the code more verbose
 //				if (word.isStopWord()) {
 //					token = StopToken.builder()

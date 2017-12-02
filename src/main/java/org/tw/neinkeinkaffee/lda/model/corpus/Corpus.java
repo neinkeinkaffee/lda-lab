@@ -13,14 +13,14 @@ public class Corpus {
 	@Getter
 	private String name;
 	@Singular @Getter
-	private List<Document> documents;
+	private List<CorpusDocument> documents;
 
 	public static Corpus fromString(String corpusString, String stopwordsString) {
 		List<String> lines = Arrays.asList(corpusString.split("\n"));
 		List<String> stopwords = Arrays.asList(stopwordsString.split("\n"));
-		List<Document> documents = new ArrayList<>();
+		List<CorpusDocument> documents = new ArrayList<>();
 		for (String line : lines) {
-			Document document = Document.fromString(line, stopwords);
+			CorpusDocument document = CorpusDocument.fromString(line, stopwords);
 			documents.add(document);
 		}
 		return Corpus.builder().documents(documents).build();

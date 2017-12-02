@@ -19,7 +19,7 @@ public class LdaTest {
 		initMocks(this);
 //		corpus = Corpus.builder()
 //			.name("someCorpus")
-//			.document(Document.builder()
+//			.document(DtoDocument.builder()
 //				.name("someDocument")
 //				.word(ContentWord.builder()
 //					.lemma("tasty")

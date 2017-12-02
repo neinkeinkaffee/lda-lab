@@ -2,12 +2,12 @@ package org.tw.neinkeinkaffee.lda.model.dto.probability;
 
 import lombok.Builder;
 import lombok.Getter;
-import org.tw.neinkeinkaffee.lda.model.dto.Document;
+import org.tw.neinkeinkaffee.lda.model.dto.DtoDocument;
 
 @Builder
 public class DocumentProbability {
 	@Getter
-	private Document document;
+	private DtoDocument document;
 	@Getter
 	private Double probability;
 }

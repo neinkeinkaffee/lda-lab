@@ -1,7 +1,7 @@
 package org.tw.neinkeinkaffee.lda.helper;
 
 import org.springframework.stereotype.Component;
-import org.tw.neinkeinkaffee.lda.model.dto.Document;
+import org.tw.neinkeinkaffee.lda.model.dto.DtoDocument;
 import org.tw.neinkeinkaffee.lda.model.dto.Lda;
 import org.tw.neinkeinkaffee.lda.model.dto.probability.DocumentProbability;
 import org.tw.neinkeinkaffee.lda.model.dto.probability.TopicProbability;
@@ -198,8 +198,8 @@ public class SyntheticDataProvider {
                 .probability(.6)
                 .build());
 
-        HashMap<String, Document> documents = new HashMap<>();
-        Document banana_cake = Document.builder()
+        HashMap<String, DtoDocument> documents = new HashMap<>();
+        DtoDocument banana_cake = DtoDocument.builder()
             .title("banana_cake")
             .tokens(Arrays.asList(
                 ContentToken.builder()
@@ -231,7 +231,7 @@ public class SyntheticDataProvider {
                     .topic(topic2)
                     .build()))
             .build();
-        Document church_song = Document.builder()
+        DtoDocument church_song = DtoDocument.builder()
             .title("church_song")
             .tokens(Arrays.asList(
                 StopToken.builder()
@@ -267,7 +267,7 @@ public class SyntheticDataProvider {
                     .topic(topic2)
                     .build()))
             .build();
-        Document wok_manual = Document.builder()
+        DtoDocument wok_manual = DtoDocument.builder()
             .title("wok_manual")
             .tokens(Arrays.asList(
                 ContentToken.builder()
@@ -309,17 +309,17 @@ public class SyntheticDataProvider {
                     .topic(topic2)
                     .build()))
             .build();
-        List<Document> documentList = Arrays.asList(
+        List<DtoDocument> documentList = Arrays.asList(
             banana_cake,
             church_song,
             wok_manual);
 
-        for (Document document : documentList) {
+        for (DtoDocument document : documentList) {
             document.setTopicProbabilities(dummyTopicProbabilities);
             documents.put(document.getTitle(), document);
         }
 
-        // Topic-Document Probabilities
+        // Topic-CorpusDocument Probabilities
         // NOTE: In real life, there would be on List of documentProbabilities for each Topic, but here we'll just assign the same dummy documentProbabilities to each word
         List<DocumentProbability> dummyDocumentProbabilities = Arrays.asList(
             DocumentProbability.builder()

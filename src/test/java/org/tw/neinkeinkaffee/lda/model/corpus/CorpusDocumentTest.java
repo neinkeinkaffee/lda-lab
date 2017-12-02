@@ -15,7 +15,7 @@ public class CorpusDocumentTest {
 
 	@Test
 	public void shouldParseDocumentFromString() {
-		Document document = Document.fromString(DOCUMENT_STRING, STOPWORDS_LIST);
+		CorpusDocument document = CorpusDocument.fromString(DOCUMENT_STRING, STOPWORDS_LIST);
 		assertThat(document.getWords().size(), equalTo(24));
 	}
 }

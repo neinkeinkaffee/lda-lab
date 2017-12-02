@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Builder
-public class Document {
+public class DtoDocument {
 	@Getter
 	private String title;
 	@Singular @Getter

@@ -10,7 +10,7 @@ import java.util.List;
 import static java.util.stream.Collectors.toList;
 
 @Builder
-public class Document {
+public class CorpusDocument {
 	@Getter
 	private String title;
 	@Getter
@@ -19,15 +19,13 @@ public class Document {
 	@Getter
 	private List<Word> words;
 
-	private static final String SINGLE_NON_WHITESPACE_CHAR = "[\\S]";
-
-	public static Document fromString(String documentString, List<String> stopwords) {
+	public static CorpusDocument fromString(String documentString, List<String> stopwords) {
 		String[] title_author_text = splitTitleAuthorText(documentString);
 		String title = title_author_text[0];
 		String author = title_author_text[1];
 		String text = title_author_text[2];
 		List<Word> words = parseWords(stopwords, text);
-		return Document.builder()
+		return CorpusDocument.builder()
 			.title(title)
 			.author(author)
 			.words(words)
