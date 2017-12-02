@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.tw.neinkeinkaffee.lda.model.lda.Lda;
 import org.tw.neinkeinkaffee.lda.service.LdaService;
 
+import java.util.UUID;
+
 @Controller
 public class DocumentController {
     private LdaService ldaService;
@@ -18,11 +20,11 @@ public class DocumentController {
     }
 
     @RequestMapping("/corpus/{corpus_id}/numberOfTopics/{number_of_topics}/document/{document_name}")
-    String listTopic(final @PathVariable("corpus_id") int corpusId,
+    String listTopic(final @PathVariable("corpus_id") UUID corpusId,
                      final @PathVariable("number_of_topics") int numberOfTopics,
                      final @PathVariable("document_name") String documentName,
                      Model model) {
-        Lda lda = ldaService.getByCorpusNameAndNumberOfTopics(corpusId, numberOfTopics);
+        Lda lda = ldaService.fetchBy(corpusId, numberOfTopics);
         model.addAttribute("corpusId", corpusId);
         model.addAttribute("numberOfTopics", numberOfTopics);
         model.addAttribute("document", lda.getDocuments().get(documentName));

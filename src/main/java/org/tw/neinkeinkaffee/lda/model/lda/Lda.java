@@ -2,7 +2,6 @@ package org.tw.neinkeinkaffee.lda.model.lda;
 
 import lombok.Builder;
 import lombok.Getter;
-import lombok.Singular;
 import org.tw.neinkeinkaffee.lda.model.corpus.Corpus;
 import org.tw.neinkeinkaffee.lda.model.corpus.CorpusDocument;
 import org.tw.neinkeinkaffee.lda.model.lda.document.LdaDocument;
@@ -31,7 +30,7 @@ public class Lda {
 	public static Lda initFromCorpus(Corpus corpus, int numberOfTopics) {
 		Random randomNumberGenerator = new Random();
 		LdaBuilder ldaBuilder = Lda.builder();
-		HashMap<String, LdaDocument> documents= new HashMap<String, LdaDocument>();
+		HashMap<String, LdaDocument> documents = new HashMap<String, LdaDocument>();
 		for (CorpusDocument corpusDocument : corpus.getDocuments()) {
 			LdaDocument.LdaDocumentBuilder ldaDocumentBuilder = LdaDocument.builder();
 			for (Word word : corpusDocument.getWords()) {

@@ -15,10 +15,11 @@ import org.tw.neinkeinkaffee.lda.model.word.StopWord;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
+import java.util.UUID;
 
 @Component
 public class SyntheticDataProvider {
-    public Lda getByCorpusIdAndNumberOfTopics(int corpusId, int numberOfTopics) {
+    public Lda getByCorpusIdAndNumberOfTopics(UUID corpusId, int numberOfTopics) {
         // CorpusID and numberOfTopics get ignored by the SyntheticDataProvider.
         // TODO: CorpusID and numberOfTopics should be used to retrieve the lda model from a proper repository with a composite key, as described in http://software-sympathy.blogspot.de/2017/01/spring-data-with-mongodb-and-composite.html
 

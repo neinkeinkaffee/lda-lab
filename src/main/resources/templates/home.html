@@ -9,7 +9,21 @@
 You can explore one of the following topic models
 <ul>
     <li>
-        <a th:href="@{|/corpus/0/numberOfTopics/3/topic|}">Hard coded toy model</a>
+        <a th:href="@{|/corpus/${toyUUID}/numberOfTopics/3/topic|}">Hard coded toy model</a>
+    </li>
+</ul>
+<ul th:each="model: ${models}">
+    <li>
+        <a th:text="Model with ${model.numberOfTopics} topics estimated from corpus ${model.corpus.name}"
+           th:href="@{|/model.uuid/topic|}">
+            Model with 10 topics estimated from corpus toy.txt
+        </a>
+    </li>
+</ul>
+Or create a new one with one of the available corpora
+<ul>
+    <li>
+        TODO
     </li>
 </ul>
 </body>
