@@ -200,7 +200,7 @@ public class SyntheticDataProvider {
 
         HashMap<String, LdaDocument> documents = new HashMap<>();
         LdaDocument banana_cake = LdaDocument.builder()
-            .name("banana_cake")
+            .title("banana_cake")
             .tokens(Arrays.asList(
                 ContentToken.builder()
                     .word(banana)
@@ -232,7 +232,7 @@ public class SyntheticDataProvider {
                     .build()))
             .build();
         LdaDocument church_song = LdaDocument.builder()
-            .name("church_song")
+            .title("church_song")
             .tokens(Arrays.asList(
                 StopToken.builder()
                     .word(oh)
@@ -268,7 +268,7 @@ public class SyntheticDataProvider {
                     .build()))
             .build();
         LdaDocument wok_manual = LdaDocument.builder()
-            .name("wok_manual")
+            .title("wok_manual")
             .tokens(Arrays.asList(
                 ContentToken.builder()
                     .word(plum)
@@ -316,7 +316,7 @@ public class SyntheticDataProvider {
 
         for (LdaDocument document : documentList) {
             document.setTopicProbabilities(dummyTopicProbabilities);
-            documents.put(document.getName(), document);
+            documents.put(document.getTitle(), document);
         }
 
         // Topic-LdaDocument Probabilities

@@ -25,8 +25,8 @@
 <table>
     <tr th:each="documentProbability : ${topic.topDocumentProbabilities}">
         <td>
-            <a th:text="${documentProbability.document.name}"
-               th:href="@{|/corpus/${corpusId}/numberOfTopics/${numberOfTopics}/document/${documentProbability.document.name}|}">
+            <a th:text="${documentProbability.document.title}"
+               th:href="@{|/corpus/${corpusId}/numberOfTopics/${numberOfTopics}/document/${documentProbability.document.title}|}">
                 banana
             </a>
         </td>

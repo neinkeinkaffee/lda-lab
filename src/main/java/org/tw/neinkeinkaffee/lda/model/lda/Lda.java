@@ -27,41 +27,41 @@ public class Lda {
 	@Getter
 	HashMap<String, LdaDocument> documents;
 
-	public static Lda initFromCorpus(Corpus corpus, int numberOfTopics) {
-		Random randomNumberGenerator = new Random();
-		LdaBuilder ldaBuilder = Lda.builder();
-		HashMap<String, LdaDocument> documents = new HashMap<String, LdaDocument>();
-		for (CorpusDocument corpusDocument : corpus.getDocuments()) {
-			LdaDocument.LdaDocumentBuilder ldaDocumentBuilder = LdaDocument.builder();
-			for (Word word : corpusDocument.getWords()) {
-				Token token;
-				// TODO: having different classes for content and stop token makes the code more verbose
-				if (word.isStopWord()) {
-					token = StopToken.builder()
-						.word(StopWord.builder()
-							.lemma(word.getLemma())
-							.build())
-						.stopToken(true)
-						.build();
-				}
-				else {
-					Topic randomTopic = Topic.builder()
-						.id(randomNumberGenerator.nextInt(numberOfTopics + 1))
-						.build();
-					token = ContentToken.builder()
-						.topic(randomTopic)
-						.word(ContentWord.builder()
-							.lemma(word.getLemma())
-							.build())
-						.stopToken(false)
-						.build();
-				}
-				ldaDocumentBuilder.token(token);
-			}
-			documents.put(corpusDocument.getName(), ldaDocumentBuilder.build());
-		}
-		return ldaBuilder
-			.documents(documents)
-			.build();
-	}
+//	public static Lda initFromCorpus(Corpus corpus, int numberOfTopics) {
+//		Random randomNumberGenerator = new Random();
+//		LdaBuilder ldaBuilder = Lda.builder();
+//		HashMap<String, LdaDocument> documents = new HashMap<String, LdaDocument>();
+//		for (CorpusDocument corpusDocument : corpus.getDocuments()) {
+//			LdaDocument.LdaDocumentBuilder ldaDocumentBuilder = LdaDocument.builder();
+//			for (Word word : corpusDocument.getTokens()) {
+//				Token token;
+//				// TODO: having different classes for content and stop token makes the code more verbose
+//				if (word.isStopWord()) {
+//					token = StopToken.builder()
+//						.word(StopWord.builder()
+//							.lemma(word.getLemma())
+//							.build())
+//						.stopToken(true)
+//						.build();
+//				}
+//				else {
+//					Topic randomTopic = Topic.builder()
+//						.id(randomNumberGenerator.nextInt(numberOfTopics + 1))
+//						.build();
+//					token = ContentToken.builder()
+//						.topic(randomTopic)
+//						.word(ContentWord.builder()
+//							.lemma(word.getLemma())
+//							.build())
+//						.stopToken(false)
+//						.build();
+//				}
+//				ldaDocumentBuilder.token(token);
+//			}
+//			documents.put(corpusDocument.getTitle(), ldaDocumentBuilder.build());
+//		}
+//		return ldaBuilder
+//			.documents(documents)
+//			.build();
+//	}
 }

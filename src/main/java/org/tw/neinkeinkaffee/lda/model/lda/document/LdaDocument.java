@@ -13,7 +13,7 @@ import java.util.List;
 @Builder
 public class LdaDocument {
 	@Getter
-	private String name;
+	private String title;
 	@Singular @Getter
 	private List<Token> tokens;
 	@Getter @Setter

@@ -22,36 +22,36 @@ public class LdaTest {
 	@Before
 	public void setup() {
 		initMocks(this);
-		corpus = Corpus.builder()
-			.name("someCorpus")
-			.document(CorpusDocument.builder()
-				.name("someDocument")
-				.word(ContentWord.builder()
-					.lemma("tasty")
-					.build())
-				.word(ContentWord.builder()
-					.lemma("banana")
-					.build())
-				.word(ContentWord.builder()
-					.lemma("mash")
-					.build())
-				.build())
-			.build();
+//		corpus = Corpus.builder()
+//			.name("someCorpus")
+//			.document(CorpusDocument.builder()
+//				.name("someDocument")
+//				.word(ContentWord.builder()
+//					.lemma("tasty")
+//					.build())
+//				.word(ContentWord.builder()
+//					.lemma("banana")
+//					.build())
+//				.word(ContentWord.builder()
+//					.lemma("mash")
+//					.build())
+//				.build())
+//			.build();
 	}
 
-	@Test
-	public void shouldInitializeTokensWithRandomTopics () {
-		lda = Lda.initFromCorpus(corpus, 10);
-
-		// TODO: the casting isn't nice but can't getTopic() otherwise
-		ContentToken firstTokenInFirstDocument = (ContentToken) lda.getDocuments().get("someDocument").getTokens().get(0);
-		ContentToken secondTokenInFirstDocument = (ContentToken) lda.getDocuments().get("someDocument").getTokens().get(1);
-		ContentToken thirdTokenInFirstDocument = (ContentToken) lda.getDocuments().get("someDocument").getTokens().get(2);
-		assertEquals(firstTokenInFirstDocument.getWord().getLemma(), "tasty");
-		assertThat(firstTokenInFirstDocument.getTopic().getId(), Matchers.greaterThan(-1));
-		assertEquals(secondTokenInFirstDocument.getWord().getLemma(), "banana");
-		assertThat(secondTokenInFirstDocument.getTopic().getId(), Matchers.greaterThan(-1));
-		assertEquals(thirdTokenInFirstDocument.getWord().getLemma(), "mash");
-		assertThat(thirdTokenInFirstDocument.getTopic().getId(), Matchers.greaterThan(-1));
-	}
+//	@Test
+//	public void shouldInitializeTokensWithRandomTopics () {
+//		lda = Lda.initFromCorpus(corpus, 10);
+//
+//		// TODO: the casting isn't nice but can't getTopic() otherwise
+//		ContentToken firstTokenInFirstDocument = (ContentToken) lda.getDocuments().get("someDocument").getTokens().get(0);
+//		ContentToken secondTokenInFirstDocument = (ContentToken) lda.getDocuments().get("someDocument").getTokens().get(1);
+//		ContentToken thirdTokenInFirstDocument = (ContentToken) lda.getDocuments().get("someDocument").getTokens().get(2);
+//		assertEquals(firstTokenInFirstDocument.getWord().getLemma(), "tasty");
+//		assertThat(firstTokenInFirstDocument.getTopic().getId(), Matchers.greaterThan(-1));
+//		assertEquals(secondTokenInFirstDocument.getWord().getLemma(), "banana");
+//		assertThat(secondTokenInFirstDocument.getTopic().getId(), Matchers.greaterThan(-1));
+//		assertEquals(thirdTokenInFirstDocument.getWord().getLemma(), "mash");
+//		assertThat(thirdTokenInFirstDocument.getTopic().getId(), Matchers.greaterThan(-1));
+//	}
 }
