@@ -1,4 +1,4 @@
-package org.tw.neinkeinkaffee.lda.model.lda.token;
+package org.tw.neinkeinkaffee.lda.model.dto.token;
 
 import lombok.Builder;
 import lombok.Getter;

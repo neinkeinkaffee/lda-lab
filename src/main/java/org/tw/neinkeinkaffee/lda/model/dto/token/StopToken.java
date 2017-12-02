@@ -1,8 +1,8 @@
-package org.tw.neinkeinkaffee.lda.model.lda.token;
+package org.tw.neinkeinkaffee.lda.model.dto.token;
 
 import lombok.Builder;
 import lombok.Getter;
-import org.tw.neinkeinkaffee.lda.model.word.StopWord;
+import org.tw.neinkeinkaffee.lda.model.dto.word.StopWord;
 
 public class StopToken extends Token {
 	// TODO: field can be just the lemma, except we want straightforward linking of lemma in document with information as to which other topics lemma is associated with?

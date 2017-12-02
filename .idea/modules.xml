@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/lda-lab.iml" filepath="$PROJECT_DIR$/.idea/modules/lda-lab.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/lda-lab_main.iml" filepath="$PROJECT_DIR$/.idea/modules/lda-lab_main.iml" group="lda-lab" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/lda-lab_test.iml" filepath="$PROJECT_DIR$/.idea/modules/lda-lab_test.iml" group="lda-lab" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/dto-lab.iml" filepath="$PROJECT_DIR$/.idea/modules/dto-lab.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/dto-lab_main.iml" filepath="$PROJECT_DIR$/.idea/modules/dto-lab_main.iml" group="dto-lab" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/dto-lab_test.iml" filepath="$PROJECT_DIR$/.idea/modules/dto-lab_test.iml" group="dto-lab" />
     </modules>
   </component>
 </project>

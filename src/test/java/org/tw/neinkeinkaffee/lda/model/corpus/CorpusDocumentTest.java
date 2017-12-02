@@ -7,7 +7,6 @@ import java.util.List;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.junit.Assert.*;
 
 public class CorpusDocumentTest {
 	private static final String DOCUMENT_STRING = "中庸論|張爾岐|中庸之見尊於天下也久矣。而小人每竊其說以便其私。";
@@ -16,7 +15,7 @@ public class CorpusDocumentTest {
 
 	@Test
 	public void shouldParseDocumentFromString() {
-		CorpusDocument document = CorpusDocument.fromString(DOCUMENT_STRING, STOPWORDS_LIST);
-		assertThat(document.getTokens().size(), equalTo(24));
+		Document document = Document.fromString(DOCUMENT_STRING, STOPWORDS_LIST);
+		assertThat(document.getWords().size(), equalTo(24));
 	}
 }

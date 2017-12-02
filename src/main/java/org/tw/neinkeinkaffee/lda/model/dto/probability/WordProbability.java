@@ -1,8 +1,8 @@
-package org.tw.neinkeinkaffee.lda.model.lda.probability;
+package org.tw.neinkeinkaffee.lda.model.dto.probability;
 
 import lombok.Builder;
 import lombok.Getter;
-import org.tw.neinkeinkaffee.lda.model.word.ContentWord;
+import org.tw.neinkeinkaffee.lda.model.dto.word.ContentWord;
 
 @Builder
 public class WordProbability {

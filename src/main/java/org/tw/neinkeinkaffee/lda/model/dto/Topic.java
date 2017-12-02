@@ -1,10 +1,10 @@
-package org.tw.neinkeinkaffee.lda.model.lda.topic;
+package org.tw.neinkeinkaffee.lda.model.dto;
 
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
-import org.tw.neinkeinkaffee.lda.model.lda.probability.DocumentProbability;
-import org.tw.neinkeinkaffee.lda.model.lda.probability.WordProbability;
+import org.tw.neinkeinkaffee.lda.model.dto.probability.DocumentProbability;
+import org.tw.neinkeinkaffee.lda.model.dto.probability.WordProbability;
 
 import java.util.ArrayList;
 import java.util.List;

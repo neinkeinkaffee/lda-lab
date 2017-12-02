@@ -1,7 +1,7 @@
 package org.tw.neinkeinkaffee.lda.repository;
 
 import org.springframework.stereotype.Repository;
-import org.tw.neinkeinkaffee.lda.model.lda.Lda;
+import org.tw.neinkeinkaffee.lda.model.dto.Lda;
 
 import java.util.ArrayList;
 import java.util.List;

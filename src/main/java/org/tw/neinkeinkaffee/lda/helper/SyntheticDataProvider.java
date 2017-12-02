@@ -1,16 +1,16 @@
 package org.tw.neinkeinkaffee.lda.helper;
 
 import org.springframework.stereotype.Component;
-import org.tw.neinkeinkaffee.lda.model.lda.document.LdaDocument;
-import org.tw.neinkeinkaffee.lda.model.lda.Lda;
-import org.tw.neinkeinkaffee.lda.model.lda.probability.DocumentProbability;
-import org.tw.neinkeinkaffee.lda.model.lda.probability.TopicProbability;
-import org.tw.neinkeinkaffee.lda.model.lda.probability.WordProbability;
-import org.tw.neinkeinkaffee.lda.model.lda.token.ContentToken;
-import org.tw.neinkeinkaffee.lda.model.lda.token.StopToken;
-import org.tw.neinkeinkaffee.lda.model.lda.topic.Topic;
-import org.tw.neinkeinkaffee.lda.model.word.ContentWord;
-import org.tw.neinkeinkaffee.lda.model.word.StopWord;
+import org.tw.neinkeinkaffee.lda.model.dto.Document;
+import org.tw.neinkeinkaffee.lda.model.dto.Lda;
+import org.tw.neinkeinkaffee.lda.model.dto.probability.DocumentProbability;
+import org.tw.neinkeinkaffee.lda.model.dto.probability.TopicProbability;
+import org.tw.neinkeinkaffee.lda.model.dto.probability.WordProbability;
+import org.tw.neinkeinkaffee.lda.model.dto.token.ContentToken;
+import org.tw.neinkeinkaffee.lda.model.dto.token.StopToken;
+import org.tw.neinkeinkaffee.lda.model.dto.Topic;
+import org.tw.neinkeinkaffee.lda.model.dto.word.ContentWord;
+import org.tw.neinkeinkaffee.lda.model.dto.word.StopWord;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -21,7 +21,7 @@ import java.util.UUID;
 public class SyntheticDataProvider {
     public Lda getByCorpusIdAndNumberOfTopics(UUID corpusId, int numberOfTopics) {
         // CorpusID and numberOfTopics get ignored by the SyntheticDataProvider.
-        // TODO: CorpusID and numberOfTopics should be used to retrieve the lda model from a proper repository with a composite key, as described in http://software-sympathy.blogspot.de/2017/01/spring-data-with-mongodb-and-composite.html
+        // TODO: CorpusID and numberOfTopics should be used to retrieve the dto model from a proper repository with a composite key, as described in http://software-sympathy.blogspot.de/2017/01/spring-data-with-mongodb-and-composite.html
 
         Topic topic0 = Topic.builder()
             .id(0)
@@ -198,8 +198,8 @@ public class SyntheticDataProvider {
                 .probability(.6)
                 .build());
 
-        HashMap<String, LdaDocument> documents = new HashMap<>();
-        LdaDocument banana_cake = LdaDocument.builder()
+        HashMap<String, Document> documents = new HashMap<>();
+        Document banana_cake = Document.builder()
             .title("banana_cake")
             .tokens(Arrays.asList(
                 ContentToken.builder()
@@ -231,7 +231,7 @@ public class SyntheticDataProvider {
                     .topic(topic2)
                     .build()))
             .build();
-        LdaDocument church_song = LdaDocument.builder()
+        Document church_song = Document.builder()
             .title("church_song")
             .tokens(Arrays.asList(
                 StopToken.builder()
@@ -267,7 +267,7 @@ public class SyntheticDataProvider {
                     .topic(topic2)
                     .build()))
             .build();
-        LdaDocument wok_manual = LdaDocument.builder()
+        Document wok_manual = Document.builder()
             .title("wok_manual")
             .tokens(Arrays.asList(
                 ContentToken.builder()
@@ -309,17 +309,17 @@ public class SyntheticDataProvider {
                     .topic(topic2)
                     .build()))
             .build();
-        List<LdaDocument> documentList = Arrays.asList(
+        List<Document> documentList = Arrays.asList(
             banana_cake,
             church_song,
             wok_manual);
 
-        for (LdaDocument document : documentList) {
+        for (Document document : documentList) {
             document.setTopicProbabilities(dummyTopicProbabilities);
             documents.put(document.getTitle(), document);
         }
 
-        // Topic-LdaDocument Probabilities
+        // Topic-Document Probabilities
         // NOTE: In real life, there would be on List of documentProbabilities for each Topic, but here we'll just assign the same dummy documentProbabilities to each word
         List<DocumentProbability> dummyDocumentProbabilities = Arrays.asList(
             DocumentProbability.builder()

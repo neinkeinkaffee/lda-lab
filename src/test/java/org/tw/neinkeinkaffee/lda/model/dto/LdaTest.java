@@ -1,13 +1,8 @@
-package org.tw.neinkeinkaffee.lda.model.lda;
+package org.tw.neinkeinkaffee.lda.model.dto;
 
-import org.hamcrest.Matchers;
 import org.junit.Before;
-import org.junit.Test;
 import org.mockito.InjectMocks;
 import org.tw.neinkeinkaffee.lda.model.corpus.Corpus;
-import org.tw.neinkeinkaffee.lda.model.corpus.CorpusDocument;
-import org.tw.neinkeinkaffee.lda.model.lda.token.ContentToken;
-import org.tw.neinkeinkaffee.lda.model.word.ContentWord;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.Assert.assertEquals;
@@ -24,7 +19,7 @@ public class LdaTest {
 		initMocks(this);
 //		corpus = Corpus.builder()
 //			.name("someCorpus")
-//			.document(CorpusDocument.builder()
+//			.document(Document.builder()
 //				.name("someDocument")
 //				.word(ContentWord.builder()
 //					.lemma("tasty")
@@ -41,12 +36,12 @@ public class LdaTest {
 
 //	@Test
 //	public void shouldInitializeTokensWithRandomTopics () {
-//		lda = Lda.initFromCorpus(corpus, 10);
+//		dto = Lda.initFromCorpus(corpus, 10);
 //
 //		// TODO: the casting isn't nice but can't getTopic() otherwise
-//		ContentToken firstTokenInFirstDocument = (ContentToken) lda.getDocuments().get("someDocument").getTokens().get(0);
-//		ContentToken secondTokenInFirstDocument = (ContentToken) lda.getDocuments().get("someDocument").getTokens().get(1);
-//		ContentToken thirdTokenInFirstDocument = (ContentToken) lda.getDocuments().get("someDocument").getTokens().get(2);
+//		ContentToken firstTokenInFirstDocument = (ContentToken) dto.getDocuments().get("someDocument").getTokens().get(0);
+//		ContentToken secondTokenInFirstDocument = (ContentToken) dto.getDocuments().get("someDocument").getTokens().get(1);
+//		ContentToken thirdTokenInFirstDocument = (ContentToken) dto.getDocuments().get("someDocument").getTokens().get(2);
 //		assertEquals(firstTokenInFirstDocument.getWord().getLemma(), "tasty");
 //		assertThat(firstTokenInFirstDocument.getTopic().getId(), Matchers.greaterThan(-1));
 //		assertEquals(secondTokenInFirstDocument.getWord().getLemma(), "banana");

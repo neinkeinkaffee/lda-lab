@@ -1,30 +1,25 @@
-package org.tw.neinkeinkaffee.lda.model.word;
+package org.tw.neinkeinkaffee.lda.model.dto;
 
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
-import org.tw.neinkeinkaffee.lda.model.lda.probability.TopicProbability;
+import lombok.Singular;
+import org.tw.neinkeinkaffee.lda.model.dto.probability.TopicProbability;
+import org.tw.neinkeinkaffee.lda.model.dto.token.Token;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ContentWord extends Word {
+@Builder
+public class Document {
+	@Getter
+	private String title;
+	@Singular @Getter
+	private List<Token> tokens;
 	@Getter @Setter
 	private List<TopicProbability> topicProbabilities;
-	@Getter(lazy=true)
+	@Getter(lazy = true)
 	private final List<TopicProbability> topTopicProbabilities = getTopNTopicProbabilities(5);
-
-	@Builder
-	private ContentWord(String lemma, List<TopicProbability> topicProbabilities) {
-		super(lemma, false);
-		this.topicProbabilities = topicProbabilities;
-	}
-
-	public static class ContentWordBuilder extends WordBuilder {
-		ContentWordBuilder() {
-			super();
-		}
-	}
 
 	private List<TopicProbability> getTopNTopicProbabilities(int N) {
 		int endIndex = (N > topicProbabilities.size()) ? topicProbabilities.size() : N;

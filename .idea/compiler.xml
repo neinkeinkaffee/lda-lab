@@ -5,6 +5,8 @@
       <profile default="true" name="Default" enabled="true" />
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="dto-lab_main" target="1.8" />
+      <module name="dto-lab_test" target="1.8" />
       <module name="lda-lab_main" target="1.8" />
       <module name="lda-lab_test" target="1.8" />
     </bytecodeTargetLevel>

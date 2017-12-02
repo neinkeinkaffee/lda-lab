@@ -4,11 +4,9 @@ import lombok.Builder;
 import lombok.Getter;
 
 @Builder
-public class CorpusToken {
+public class Word {
 	@Getter
-	private String word;
-	@Getter
-	private int topic;
+	private String lemma;
 	@Getter
 	private boolean stopword;
 }

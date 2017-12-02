@@ -1,38 +1,28 @@
-package org.tw.neinkeinkaffee.lda.model.lda;
+package org.tw.neinkeinkaffee.lda.model.dto;
 
 import lombok.Builder;
 import lombok.Getter;
-import org.tw.neinkeinkaffee.lda.model.corpus.Corpus;
-import org.tw.neinkeinkaffee.lda.model.corpus.CorpusDocument;
-import org.tw.neinkeinkaffee.lda.model.lda.document.LdaDocument;
-import org.tw.neinkeinkaffee.lda.model.lda.token.ContentToken;
-import org.tw.neinkeinkaffee.lda.model.lda.token.StopToken;
-import org.tw.neinkeinkaffee.lda.model.lda.token.Token;
-import org.tw.neinkeinkaffee.lda.model.lda.topic.Topic;
-import org.tw.neinkeinkaffee.lda.model.word.ContentWord;
-import org.tw.neinkeinkaffee.lda.model.word.StopWord;
-import org.tw.neinkeinkaffee.lda.model.word.Word;
+import org.tw.neinkeinkaffee.lda.model.dto.word.ContentWord;
 
 import java.util.HashMap;
 import java.util.List;
-import java.util.Random;
+import java.util.UUID;
 
 @Builder
 public class Lda {
-    private String id;
     @Getter
     private List<Topic> topics;
 	@Getter
 	HashMap<String, ContentWord> words;
 	@Getter
-	HashMap<String, LdaDocument> documents;
+	HashMap<String, Document> documents;
 
 //	public static Lda initFromCorpus(Corpus corpus, int numberOfTopics) {
 //		Random randomNumberGenerator = new Random();
 //		LdaBuilder ldaBuilder = Lda.builder();
-//		HashMap<String, LdaDocument> documents = new HashMap<String, LdaDocument>();
-//		for (CorpusDocument corpusDocument : corpus.getDocuments()) {
-//			LdaDocument.LdaDocumentBuilder ldaDocumentBuilder = LdaDocument.builder();
+//		HashMap<String, Document> documents = new HashMap<String, Document>();
+//		for (Document corpusDocument : corpus.getDocuments()) {
+//			Document.LdaDocumentBuilder ldaDocumentBuilder = Document.builder();
 //			for (Word word : corpusDocument.getTokens()) {
 //				Token token;
 //				// TODO: having different classes for content and stop token makes the code more verbose
