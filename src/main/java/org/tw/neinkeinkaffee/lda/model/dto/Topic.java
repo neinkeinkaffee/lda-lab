@@ -24,13 +24,17 @@ public class Topic {
     @Getter @Setter
     private List<DocumentProbability> documentProbabilities;
     @Getter(lazy=true)
-    private final List<DocumentProbability> topDocumentProbabilities = getTopNDocumentProbabilities(3);
+    private final List<DocumentProbability> topDocumentProbabilities = getTopNDocumentProbabilities(5);
 
     private List<WordProbability> getTopNWordProbabilities(int N) {
+        // TODO: sort
         return new ArrayList<WordProbability>(wordProbabilities.subList(0, N));
     }
 
     private List<DocumentProbability> getTopNDocumentProbabilities(int N) {
+        //TODO: sort
+        int numberOfDocuments = documentProbabilities.size();
+        N = (N < numberOfDocuments) ? N : numberOfDocuments;
         return new ArrayList<DocumentProbability>(documentProbabilities.subList(0, N));
     }
 

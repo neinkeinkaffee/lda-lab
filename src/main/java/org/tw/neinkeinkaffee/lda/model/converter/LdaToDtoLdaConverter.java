@@ -8,13 +8,14 @@ import org.tw.neinkeinkaffee.lda.model.dto.probability.TopicProbability;
 import org.tw.neinkeinkaffee.lda.model.dto.probability.WordProbability;
 import org.tw.neinkeinkaffee.lda.model.dto.token.ContentToken;
 import org.tw.neinkeinkaffee.lda.model.dto.token.StopToken;
+import org.tw.neinkeinkaffee.lda.model.dto.token.Token;
 import org.tw.neinkeinkaffee.lda.model.dto.word.ContentWord;
 import org.tw.neinkeinkaffee.lda.model.dto.word.StopWord;
 import org.tw.neinkeinkaffee.lda.model.lda.Lda;
-import org.tw.neinkeinkaffee.lda.model.lda.LdaDocument;
 import org.tw.neinkeinkaffee.lda.model.lda.PairCounter;
 import org.tw.neinkeinkaffee.lda.model.lda.SimpleCounter;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -27,11 +28,12 @@ public class LdaToDtoLdaConverter implements Converter<Lda, DtoLda> {
         PairCounter<String, Integer> wordTopicCounts = lda.getWordTopicCounts();
         PairCounter<String, Integer> documentTopicCounts = lda.getDocumentTopicCounts();
 
-        HashMap<Integer, Topic> topicMap = new HashMap<>(topicWordCounts.stream()
+        // TODO: This map has to be String (not Integer) -> Topic because MongoDB casts the Integer keys of the topicCounts into half-integer-half-strings that won't match to Integers but also can't be converted into proper Integers
+        HashMap<String, Topic> topicMap = new HashMap<>(topicWordCounts.stream()
             .map(entry -> Topic.builder()
                 .id(entry.getKey())
                 .build())
-            .collect(Collectors.toMap(topic -> topic.getId(), topic -> topic)));
+            .collect(Collectors.toMap(topic -> topic.getId().toString(), topic -> topic)));
 
         HashMap<String, ContentWord> wordMap = new HashMap<>(wordTopicCounts.stream()
             .map(entry -> ContentWord.builder()
@@ -115,15 +117,25 @@ public class LdaToDtoLdaConverter implements Converter<Lda, DtoLda> {
             .map(entry -> {
                 DtoDocument document = entry.getValue();
 
+                final List<Token> tokens = new ArrayList<>();
+                for (int tokenIndex = 0; tokenIndex < document.getTokens().size(); tokenIndex++) {
+                    Token token = document.getTokens().get(tokenIndex);
+                    if (!token.isStopToken()) {
+                        int topicId = lda.getDocuments().get(document.getTitle()).getTokens().get(tokenIndex).getTopic();
+                        Topic topic = topicMap.get(String.valueOf(topicId));
+                        ((ContentToken) token).setTopic(topic);
+                    }
+                }
+
                 SimpleCounter<Integer> topicCounts = documentTopicCounts.getCount(entry.getKey());
                 int sumOfTopicCounts = topicCounts.stream()
                     .mapToInt(topic -> topic.getValue())
                     .sum();
                 List<TopicProbability> topicProbabilities = topicCounts.stream()
                     .map(topicCount -> TopicProbability.builder()
-                    .topic(topicMap.get(topicCount.getKey()))
-                    .probability((double) topicCount.getValue() / sumOfTopicCounts)
-                    .build())
+                        .topic(topicMap.get(topicCount.getKey()))
+                        .probability((double) topicCount.getValue() / sumOfTopicCounts)
+                        .build())
                     .collect(Collectors.toList());
 
                 document.setTopicProbabilities(topicProbabilities);

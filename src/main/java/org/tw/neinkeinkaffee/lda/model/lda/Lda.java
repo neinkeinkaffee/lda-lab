@@ -2,41 +2,55 @@ package org.tw.neinkeinkaffee.lda.model.lda;
 
 import lombok.Builder;
 import lombok.Getter;
-import org.tw.neinkeinkaffee.lda.model.converter.CorpusToLdaDocumentConverter;
+import lombok.NoArgsConstructor;
+import org.tw.neinkeinkaffee.lda.model.converter.CorpusDocumentToLdaDocumentConverter;
+import org.tw.neinkeinkaffee.lda.model.converter.LdaToDtoLdaConverter;
 import org.tw.neinkeinkaffee.lda.model.corpus.Corpus;
+import org.tw.neinkeinkaffee.lda.model.dto.DtoLda;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
 
+@NoArgsConstructor
 public class Lda {
-    private static CorpusToLdaDocumentConverter documentConverter = new CorpusToLdaDocumentConverter();
+
+    private static CorpusDocumentToLdaDocumentConverter documentConverter = new CorpusDocumentToLdaDocumentConverter();
     private static Random random = new Random();
     private static final int NUMBER_OF_ITERATIONS = 50;
     private static final double DOCUMENT_TOPIC_SMOOTHING = 0.1;
     private static final double TOPIC_WORD_SMOOTHING = 0.1;
+
     private HashMap<Integer, Double> topicWeights;
     private SimpleCounter<Integer> topicCounts;
+    @Getter
     private PairCounter<Integer, String> topicWordCounts;
-    private PairCounter<Integer, LdaDocument> topicDocumentCounts;
+    @Getter
+    private PairCounter<Integer, String> topicDocumentCounts;
+    @Getter
     private PairCounter<String, Integer> wordTopicCounts;
-    private PairCounter<LdaDocument, Integer> documentTopicCounts;
+    @Getter
+    private PairCounter<String, Integer> documentTopicCounts;
     private int sizeOfVocabulary;
 
     @Getter
+    private String corpusName;
+    @Getter
     private int numberOfTopics;
     @Getter
-    private List<LdaDocument> documents;
+    private HashMap<String, LdaDocument> documents;
+    @Getter(lazy = true)
+    private final DtoLda dtoLda = convertToDtoLda();
 
-    public Lda(Corpus corpus, int numberOfTopics) {
-        this.numberOfTopics = numberOfTopics;
-        initializeCountsAndWeights();
-        convertDocuments(corpus);
-        assignRandomTopics();
-        iterate();
-        // TODO: convert to dto
-        // TODO: save to repo
+    public static Lda fromCorpus(Corpus corpus, int numberOfTopics) {
+        Lda lda = new Lda();
+        lda.numberOfTopics = numberOfTopics;
+        lda.corpusName = corpus.getName();
+        lda.initializeCountsAndWeights();
+        lda.convertDocuments(corpus);
+        lda.assignRandomTopics();
+        lda.iterate();
+        return lda;
     }
 
     private void iterate() {
@@ -48,15 +62,15 @@ public class Lda {
     private void initializeCountsAndWeights() {
         topicCounts = new SimpleCounter<Integer>();
         topicWordCounts = new PairCounter<Integer, String>();
-        topicDocumentCounts = new PairCounter<Integer, LdaDocument>();
+        topicDocumentCounts = new PairCounter<Integer, String>();
         wordTopicCounts = new PairCounter<String, Integer>();
-        documentTopicCounts = new PairCounter<LdaDocument, Integer>();
+        documentTopicCounts = new PairCounter<String, Integer>();
         topicWeights = new HashMap<>();
         sizeOfVocabulary = wordTopicCounts.size();
     }
 
     private void sweep() {
-        for (LdaDocument document : documents) {
+        for (LdaDocument document : documents.values()) {
             for (LdaToken token : document.getTokens()) {
                 if (!token.isStopword()) {
                     decreaseCounts(token, document);
@@ -86,7 +100,7 @@ public class Lda {
         for (int topic = 0; topic < numberOfTopics; topic++) {
             String lemma = token.getLemma();
             double updatedWeight =
-                (DOCUMENT_TOPIC_SMOOTHING + documentTopicCounts.get(document, topic)) * (TOPIC_WORD_SMOOTHING + wordTopicCounts.get(lemma, topic)) / (sizeOfVocabulary * TOPIC_WORD_SMOOTHING + topicCounts.get(topic));
+                (DOCUMENT_TOPIC_SMOOTHING + documentTopicCounts.getCount(document.getTitle(), topic)) * (TOPIC_WORD_SMOOTHING + wordTopicCounts.getCount(lemma, topic)) / (sizeOfVocabulary * TOPIC_WORD_SMOOTHING + topicCounts.getCount(topic));
             topicWeights.put(topic, updatedWeight);
         }
     }
@@ -96,9 +110,9 @@ public class Lda {
         String lemma = token.getLemma();
         topicCounts.increaseByOne(topic);
         topicWordCounts.increaseByOne(topic, lemma);
-        topicDocumentCounts.increaseByOne(topic, document);
+        topicDocumentCounts.increaseByOne(topic, document.getTitle());
         wordTopicCounts.increaseByOne(lemma, topic);
-        documentTopicCounts.increaseByOne(document, topic);
+        documentTopicCounts.increaseByOne(document.getTitle(), topic);
     }
 
     private void decreaseCounts(LdaToken token, LdaDocument document) {
@@ -106,13 +120,13 @@ public class Lda {
         String lemma = token.getLemma();
         topicCounts.decreaseByOne(topic);
         topicWordCounts.decreaseByOne(topic, lemma);
-        topicDocumentCounts.decreaseByOne(topic, document);
+        topicDocumentCounts.decreaseByOne(topic, document.getTitle());
         wordTopicCounts.decreaseByOne(lemma, topic);
-        documentTopicCounts.decreaseByOne(document, topic);
+        documentTopicCounts.decreaseByOne(document.getTitle(), topic);
     }
 
     private void assignRandomTopics() {
-        for (LdaDocument document : documents) {
+        for (LdaDocument document : documents.values()) {
             for (LdaToken token : document.getTokens()) {
                 if (!token.isStopword()) {
                     token.setTopic(random.nextInt(numberOfTopics));
@@ -123,8 +137,13 @@ public class Lda {
     }
 
     private void convertDocuments(Corpus corpus) {
-        documents = corpus.getDocuments().stream()
+        documents = new HashMap<>(corpus.getDocuments().stream()
             .map(document -> documentConverter.convert(document))
-            .collect(Collectors.toList());
+            .collect(Collectors.toMap(document -> document.getTitle(), document -> document)));
+    }
+
+    private DtoLda convertToDtoLda() {
+        LdaToDtoLdaConverter ldaConverter = new LdaToDtoLdaConverter();
+        return ldaConverter.convert(this);
     }
 }

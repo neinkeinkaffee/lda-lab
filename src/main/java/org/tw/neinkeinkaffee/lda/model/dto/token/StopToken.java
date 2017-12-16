@@ -2,6 +2,7 @@ package org.tw.neinkeinkaffee.lda.model.dto.token;
 
 import lombok.Builder;
 import lombok.Getter;
+import org.tw.neinkeinkaffee.lda.model.dto.Topic;
 import org.tw.neinkeinkaffee.lda.model.dto.word.StopWord;
 
 public class StopToken extends Token {

@@ -2,34 +2,42 @@ package org.tw.neinkeinkaffee.lda.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.tw.neinkeinkaffee.lda.helper.SyntheticDataProvider;
-import org.tw.neinkeinkaffee.lda.model.dto.Lda;
+import org.tw.neinkeinkaffee.lda.helper.ToyDataProvider;
+import org.tw.neinkeinkaffee.lda.model.dto.DtoLda;
+import org.tw.neinkeinkaffee.lda.model.lda.Lda;
 import org.tw.neinkeinkaffee.lda.repository.LdaRepository;
 
 import java.util.List;
-import java.util.UUID;
+import java.util.stream.Collectors;
 
 @Service
 public class LdaService {
 	private LdaRepository ldaRepository;
-    private SyntheticDataProvider provider;
+    private ToyDataProvider toyDataProvider;
 
     @Autowired
-    public LdaService(final LdaRepository ldaRepository, final SyntheticDataProvider provider) {
+    public LdaService(final LdaRepository ldaRepository, final ToyDataProvider provider) {
         this.ldaRepository = ldaRepository;
-    	this.provider = provider;
+    	this.toyDataProvider = provider;
     }
 
-    public Lda fetchBy(UUID corpusId, int numberOfTopics) {
-    	if (corpusId.toString().equals("c2cef191-e025-43bb-9021-6413335bbf5d")) {
-		    return provider.getByCorpusIdAndNumberOfTopics(corpusId, numberOfTopics);
+    public DtoLda fetchBy(String corpusName, int numberOfTopics) {
+    	if (corpusName.equals("toyCorpus")) {
+		    return toyDataProvider.produceToyLda("toyCorpus");
 	    }
-	    else {
-    		return ldaRepository.findBy(corpusId, numberOfTopics);
-	    }
+	    Lda lda = ldaRepository.findByCorpusNameAndNumberOfTopics(corpusName, numberOfTopics);
+	    return lda.getDtoLda();
     }
 
-	public List<Lda> fetchAll() {
-    	return ldaRepository.findAll();
+	public List<DtoLda> fetchAll() {
+    	return ldaRepository.findAll().stream()
+		    .map(lda -> lda.getDtoLda())
+		    .collect(Collectors.toList());
+	}
+
+	public void save(Lda lda) { ldaRepository.save(lda); }
+
+	public void clearAll() {
+    	ldaRepository.deleteAll();
 	}
 }

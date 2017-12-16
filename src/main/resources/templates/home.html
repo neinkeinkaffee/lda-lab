@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Getting Started: Hello World</title>
+    <title>Lda Lab</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
@@ -9,13 +9,13 @@
 You can explore one of the following topic models
 <ul>
     <li>
-        <a th:href="@{|/corpus/${toyUUID}/numberOfTopics/3/topic|}">Hard coded toy model</a>
+        <a th:href="@{|/corpus/${toyCorpusName}/numberOfTopics/3/topic|}">Hard coded toy model</a>
     </li>
 </ul>
-<ul th:each="model: ${models}">
+<ul th:each="model: ${availableModels}">
     <li>
-        <a th:text="Model with ${model.numberOfTopics} topics estimated from corpus ${model.corpus.name}"
-           th:href="@{|/model.uuid/topic|}">
+        <a th:text="@{|Model with ${model.numberOfTopics} topics estimated from corpus ${model.corpusName}|}"
+           th:href="@{|/corpus/${model.corpusName}/numberOfTopics/${model.numberOfTopics}/topic|}">
             Model with 10 topics estimated from corpus toy.txt
         </a>
     </li>

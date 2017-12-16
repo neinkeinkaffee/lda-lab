@@ -1,6 +1,7 @@
 package org.tw.neinkeinkaffee.lda.model.converter;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -38,6 +39,7 @@ public class LdaToDtoLdaConverterTest {
         initMocks(this);
     }
 
+    @Ignore
     @Test
     public void shouldConvertLdaToDtoLda() throws Exception {
 
@@ -108,6 +110,7 @@ public class LdaToDtoLdaConverterTest {
 
         HashMap<String, ContentWord> words = dtoLda.getWords();
         TopicProbability wordTopicProbability = words.get("oneWord").getTopicProbabilities().get(0);
+        assertThat(wordTopicProbability.getTopic().getId(), is(0));
         assertThat(wordTopicProbability.getProbability(), is(closeTo(1.0, 0.01)));
 
         HashMap<String, DtoDocument> documents = dtoLda.getDocuments();
