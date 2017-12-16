@@ -7,6 +7,7 @@ import org.tw.neinkeinkaffee.lda.model.dto.probability.DocumentProbability;
 import org.tw.neinkeinkaffee.lda.model.dto.probability.WordProbability;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import static java.util.stream.Collectors.joining;
@@ -28,6 +29,8 @@ public class Topic {
 
     private List<WordProbability> getTopNWordProbabilities(int N) {
         // TODO: sort
+
+        Collections.sort(wordProbabilities, Collections.reverseOrder());
         return new ArrayList<WordProbability>(wordProbabilities.subList(0, N));
     }
 

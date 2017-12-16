@@ -36,7 +36,8 @@ public class CorpusDocument {
 	private static String[] splitTitleAuthorText(String documentString) {
 		String[] title_author_text = documentString.split("[|]");
 		if (title_author_text.length != 3) {
-			throw new IllegalArgumentException("String " + documentString.substring(0, 15) + "... does not contain '|'");
+			int length = documentString.length() < 15 ? documentString.length() : 15;
+			throw new IllegalArgumentException("String " + documentString.substring(0, length) + "... does not contain '|'");
 		}
 		return title_author_text;
 	}

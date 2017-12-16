@@ -5,7 +5,17 @@ import lombok.Getter;
 import org.tw.neinkeinkaffee.lda.model.dto.word.ContentWord;
 
 @Builder
-public class WordProbability {
+public class WordProbability implements Comparable<WordProbability> {
     @Getter private ContentWord word;
     @Getter private Double probability;
+
+    @Override
+    public int compareTo(WordProbability other) {
+        if (this.probability > other.probability)
+            return 1;
+        else if (this.probability < other.probability)
+            return -1;
+        else
+            return 0;
+    }
 }

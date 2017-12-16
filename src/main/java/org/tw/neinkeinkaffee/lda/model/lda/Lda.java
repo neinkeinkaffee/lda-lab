@@ -1,16 +1,15 @@
 package org.tw.neinkeinkaffee.lda.model.lda;
 
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.tw.neinkeinkaffee.lda.model.converter.CorpusDocumentToLdaDocumentConverter;
 import org.tw.neinkeinkaffee.lda.model.converter.LdaToDtoLdaConverter;
 import org.tw.neinkeinkaffee.lda.model.corpus.Corpus;
+import org.tw.neinkeinkaffee.lda.model.corpus.CorpusDocument;
 import org.tw.neinkeinkaffee.lda.model.dto.DtoLda;
 
 import java.util.HashMap;
 import java.util.Random;
-import java.util.stream.Collectors;
 
 @NoArgsConstructor
 public class Lda {
@@ -137,9 +136,15 @@ public class Lda {
     }
 
     private void convertDocuments(Corpus corpus) {
-        documents = new HashMap<>(corpus.getDocuments().stream()
-            .map(document -> documentConverter.convert(document))
-            .collect(Collectors.toMap(document -> document.getTitle(), document -> document)));
+        documents = new HashMap<>();
+        for (CorpusDocument corpusDocument : corpus.getDocuments()) {
+            LdaDocument document = documentConverter.convert(corpusDocument);
+            String title = document.getTitle();
+            if (documents.containsKey(title)) {
+                document.setTitle(title + "_DUPLICATE");
+            }
+            documents.put(document.getTitle(), document);
+        }
     }
 
     private DtoLda convertToDtoLda() {

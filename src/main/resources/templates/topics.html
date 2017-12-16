@@ -14,11 +14,7 @@
                 0
             </a>
         </td>
-        <td th:each="topicWordProbability : ${topic.wordProbabilities}">
-            <span th:text="${topicWordProbability.word.lemma}">
-                banana
-            </span>
-        </td>
+        <td th:text="${topic.topWordsSignature}">banana apple pie cake boost</td>
     </tr>
 </table>
 </body>

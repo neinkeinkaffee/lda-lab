@@ -31,16 +31,16 @@ public class HomeController {
     String home(Model model) {
         model.addAttribute("toyCorpusName", "toyCorpus");
 
-        String corpusString = FileToStringReader.readFileToString("/Users/gstupper/repos/lda-lab/src/test/resources/corpora/hcjswb_micro.txt");
+        String corpusString = FileToStringReader.readFileToString("/Users/gstupper/repos/lda-lab/src/test/resources/corpora/hcjswb_small.txt");
         String stopwordString = FileToStringReader.readFileToString("/Users/gstupper/repos/lda-lab/src/test/resources/corpora/hcjswb_stop.txt");
 
         ldaService.clearAll();
         Corpus corpus = Corpus.fromString("hcjswb", corpusString, stopwordString);
-        Lda lda = Lda.fromCorpus(corpus, 3);
+        Lda lda = Lda.fromCorpus(corpus, 5);
         System.out.println("PRESAVE size of repo: " + ldaService.fetchAll().size());
         ldaService.save(lda);
         System.out.println("POSTSAVE size of repo: " + ldaService.fetchAll().size());
-        DtoLda dtolda = ldaService.fetchBy("hcjswb", 3);
+        DtoLda dtolda = ldaService.fetchBy("hcjswb", 5);
         System.out.println("POSTFETCHsize of repo: " + ldaService.fetchAll().size());
         List<DtoLda> availableLdaModels = ldaService.fetchAll();
 
