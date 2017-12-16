@@ -13,7 +13,7 @@
     <tr th:each="topicProbability : ${document.topTopicProbabilities}">
         <td>
             <a th:text="${topicProbability.topic.id}"
-               th:href="@{|/corpus/${corpusId}/numberOfTopics/${numberOfTopics}/topic/${topicProbability.topic.id}|}">
+               th:href="@{|/corpus/${corpusName}/numberOfTopics/${numberOfTopics}/topic/${topicProbability.topic.id}|}">
                 0
             </a>
             <span th:text="${topicProbability.topic.topWordsSignature}">banana kiwi plum apple fruit</span>
@@ -22,7 +22,7 @@
     </tr>
 </table>
 
-<h3>Content (Topics in Brackets)</h3>
+<h3>Content (Topic Ids in Brackets)</h3>
 <div class="tokens">
     <div class="token" th:each="token : ${document.tokens}">
         <span th:text="@{|${token.word.lemma}|}">banana</span>

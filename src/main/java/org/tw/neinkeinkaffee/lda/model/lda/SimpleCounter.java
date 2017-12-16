@@ -1,6 +1,8 @@
 package org.tw.neinkeinkaffee.lda.model.lda;
 
 import java.util.HashMap;
+import java.util.Map;
+import java.util.stream.Stream;
 
 public class SimpleCounter<K> {
 	private HashMap<K, Integer> counts;
@@ -9,7 +11,7 @@ public class SimpleCounter<K> {
 		counts = new HashMap<>();
 	}
 
-	public int get(K key) {
+	public int getCount(K key) {
 		return counts.getOrDefault(key, 0);
 	}
 
@@ -27,5 +29,9 @@ public class SimpleCounter<K> {
 
 	public int size() {
 		return counts.entrySet().size();
+	}
+
+	public Stream<Map.Entry<K, Integer>> stream() {
+		 return counts.entrySet().stream();
 	}
 }

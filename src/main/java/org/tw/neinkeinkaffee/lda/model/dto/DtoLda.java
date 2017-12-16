@@ -11,10 +11,10 @@ import java.util.UUID;
 
 @Builder
 public class DtoLda {
-	@Id
-	private String id;
 
+	@Getter
 	private String corpusName;
+	@Getter
 	private int numberOfTopics;
 
     @Getter

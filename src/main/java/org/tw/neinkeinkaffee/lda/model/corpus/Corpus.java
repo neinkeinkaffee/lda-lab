@@ -15,7 +15,7 @@ public class Corpus {
 	@Singular @Getter
 	private List<CorpusDocument> documents;
 
-	public static Corpus fromString(String corpusString, String stopwordsString) {
+	public static Corpus fromString(String corpusName, String corpusString, String stopwordsString) {
 		List<String> lines = Arrays.asList(corpusString.split("\n"));
 		List<String> stopwords = Arrays.asList(stopwordsString.split("\n"));
 		List<CorpusDocument> documents = new ArrayList<>();
@@ -23,6 +23,9 @@ public class Corpus {
 			CorpusDocument document = CorpusDocument.fromString(line, stopwords);
 			documents.add(document);
 		}
-		return Corpus.builder().documents(documents).build();
+		return Corpus.builder()
+			.name(corpusName)
+			.documents(documents)
+			.build();
 	}
 }

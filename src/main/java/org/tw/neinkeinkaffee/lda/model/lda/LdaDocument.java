@@ -9,5 +9,7 @@ import java.util.List;
 @Builder
 public class LdaDocument {
 	@Getter
+	private String title;
+	@Singular @Getter
 	private List<LdaToken> tokens;
 }

@@ -6,6 +6,7 @@ import lombok.Singular;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.regex.Pattern;
 
 import static java.util.stream.Collectors.toList;
 
@@ -48,7 +49,9 @@ public class CorpusDocument {
 	}
 
 	private static Word wordFromString(String string, List<String> stopwords) {
-		boolean isStopword = stopwords.contains(string);
+		Pattern punctuation = Pattern.compile("\\p{Punct}", Pattern.UNICODE_CHARACTER_CLASS);
+		boolean isStopword = stopwords.contains(string) || punctuation.matcher(string).matches();
+		if (string.equals("_")) string = "\n";
 		return Word.builder()
 			.lemma(string)
 			.stopword(isStopword)

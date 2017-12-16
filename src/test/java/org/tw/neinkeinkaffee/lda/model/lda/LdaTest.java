@@ -6,8 +6,12 @@ import org.mockito.Mock;
 import org.tw.neinkeinkaffee.lda.model.corpus.Corpus;
 import org.tw.neinkeinkaffee.lda.model.corpus.CorpusDocument;
 import org.tw.neinkeinkaffee.lda.model.corpus.Word;
+import org.tw.neinkeinkaffee.lda.model.dto.DtoDocument;
+import org.tw.neinkeinkaffee.lda.service.LdaService;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 
 import static org.hamcrest.Matchers.equalTo;
@@ -24,16 +28,20 @@ public class LdaTest {
 	@Mock
 	Corpus corpus;
 
+	@Mock
+	LdaService ldaService;
+
 	@Before
 	public void setup() {
 		initMocks(this);
+		when(corpus.getName()).thenReturn("someChineseCorpus");
 		when(corpus.getDocuments()).thenReturn(Arrays.asList(corpusDocument));
-		lda = new Lda(corpus, 10);
+		lda = Lda.fromCorpus(corpus, 2);
 	}
 
 	@Test
 	public void shouldInitializeFromCorpus() {
-		List<LdaDocument> documents = lda.getDocuments();
+		List<LdaDocument> documents = new ArrayList<>(lda.getDocuments().values());
 		List<LdaToken> tokens = documents.get(0).getTokens();
 		LdaToken stopToken = tokens.get(2);
 		LdaToken contentToken = tokens.get(4);
@@ -46,9 +54,14 @@ public class LdaTest {
 
 		assertThat(contentToken.getLemma(), is("尊"));
 		assertThat(contentToken.getTopic(), greaterThan(-1));
+
+		HashMap<String, DtoDocument> dtoDocuments = lda.getDtoLda().getDocuments();
+		assertThat(dtoDocuments.size(), is(1));
+		assertThat(dtoDocuments.get("中庸").getTokens().get(4).isStopToken(), is(false));
 	}
 
 	private static final CorpusDocument corpusDocument = CorpusDocument.builder()
+		.title("中庸")
 		.word(Word.builder()
 			.lemma("中")
 			.stopword(false)
