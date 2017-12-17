@@ -8,8 +8,8 @@ import org.tw.neinkeinkaffee.lda.model.corpus.Corpus;
 import org.tw.neinkeinkaffee.lda.model.corpus.CorpusDocument;
 import org.tw.neinkeinkaffee.lda.model.dto.DtoLda;
 
-import java.util.HashMap;
-import java.util.Random;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @NoArgsConstructor
 public class Lda {
@@ -31,7 +31,6 @@ public class Lda {
     @Getter
     private PairCounter<String, Integer> documentTopicCounts;
     private int sizeOfVocabulary;
-
     @Getter
     private String corpusName;
     @Getter
@@ -50,6 +49,30 @@ public class Lda {
         lda.assignRandomTopics();
         lda.iterate();
         return lda;
+    }
+
+    public static Lda fromCountersAndDocuments(LdaCounters ldaCounters, List<LdaDocument> documents, String corpusName, int numberOfTopics) {
+        Lda lda = new Lda();
+        lda.corpusName = corpusName;
+        lda.numberOfTopics = numberOfTopics;
+        lda.documents = new HashMap<>(documents.stream()
+            .collect(Collectors.toMap(document -> document.getTitle(), document -> document)));
+        lda.topicWordCounts = ldaCounters.getTopicWordCounts();
+        lda.topicDocumentCounts = ldaCounters.getTopicDocumentCounts();
+        lda.wordTopicCounts = ldaCounters.getWordTopicCounts();
+        lda.documentTopicCounts = ldaCounters.getDocumentTopicCounts();
+        return lda;
+    }
+
+    public LdaCounters getCounters() {
+        return LdaCounters.builder()
+            .corpusName(this.corpusName)
+            .numberOfTopics(this.numberOfTopics)
+            .topicWordCounts(this.topicWordCounts)
+            .topicDocumentCounts(this.topicDocumentCounts)
+            .wordTopicCounts(this.wordTopicCounts)
+            .documentTopicCounts(this.documentTopicCounts)
+            .build();
     }
 
     private void iterate() {
