@@ -28,7 +28,7 @@ public class HomeController {
     String home(Model model) {
         model.addAttribute("toyCorpusName", "toyCorpus");
 
-        String corpusString = FileToStringReader.readFileToString("/Users/gstupper/repos/lda-lab/src/test/resources/corpora/hcjswb_small.txt");
+        String corpusString = FileToStringReader.readFileToString("/Users/gstupper/repos/lda-lab/src/test/resources/corpora/hcjswb.txt");
         String stopwordString = FileToStringReader.readFileToString("/Users/gstupper/repos/lda-lab/src/test/resources/corpora/hcjswb_stop.txt");
 
         ldaService.clearAll();
