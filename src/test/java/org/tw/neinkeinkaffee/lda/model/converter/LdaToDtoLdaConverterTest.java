@@ -39,7 +39,10 @@ public class LdaToDtoLdaConverterTest {
         initMocks(this);
     }
 
+<<<<<<< HEAD
     // TODO: Bad. Have to disable this test or change the implementation everytime. Slightly more acceptable workaround would be to change the key type for topic in the counters inside the Lda from Integer to String
+=======
+>>>>>>> cf9bbd68547a90fbe7bd53979ce811a5ec1e78eb
     @Ignore
     @Test
     public void shouldConvertLdaToDtoLda() throws Exception {

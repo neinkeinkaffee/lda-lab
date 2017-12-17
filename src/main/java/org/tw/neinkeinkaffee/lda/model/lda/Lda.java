@@ -8,7 +8,9 @@ import org.tw.neinkeinkaffee.lda.model.corpus.Corpus;
 import org.tw.neinkeinkaffee.lda.model.corpus.CorpusDocument;
 import org.tw.neinkeinkaffee.lda.model.dto.DtoLda;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Random;
 import java.util.stream.Collectors;
 
 @NoArgsConstructor
