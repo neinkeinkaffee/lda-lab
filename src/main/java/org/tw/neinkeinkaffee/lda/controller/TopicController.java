@@ -6,28 +6,29 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.tw.neinkeinkaffee.lda.model.dto.DtoLda;
+import org.tw.neinkeinkaffee.lda.model.dto.Topic;
 import org.tw.neinkeinkaffee.lda.service.LdaService;
+import org.tw.neinkeinkaffee.lda.service.TopicService;
+
+import java.util.List;
 
 @Controller
 public class TopicController {
-    private LdaService ldaService;
+    private TopicService topicService;
 
     @Autowired
-    public TopicController(final LdaService ldaService) {
-        this.ldaService = ldaService;
+    public TopicController(final TopicService topicService) {
+        this.topicService = topicService;
     }
 
     @RequestMapping("/corpus/{corpus_name}/numberOfTopics/{number_of_topics}/topic")
     String listTopics(final @PathVariable("corpus_name") String corpusName,
                       final @PathVariable("number_of_topics") int numberOfTopics,
                       Model model) {
-//        System.out.println("PREFETCH size of repo: " + ldaService.fetchAll().size());
-        DtoLda lda = ldaService.fetchBy(corpusName, numberOfTopics);
-//        System.out.println("POSTFETCH size of repo: " + ldaService.fetchAll().size());
-//        System.out.println("FETCHBY size of repo: " + ldaService.fetchBy(corpusName, numberOfTopics).equals(null));
+        List<Topic> topics = topicService.fetchAllBy(corpusName, numberOfTopics);
         model.addAttribute("corpusName", corpusName);
         model.addAttribute("numberOfTopics", numberOfTopics);
-        model.addAttribute("topics", lda.getTopics());
+        model.addAttribute("topics", topics);
         return "topics";
     }
 
@@ -36,10 +37,10 @@ public class TopicController {
                      final @PathVariable("number_of_topics") int numberOfTopics,
                      final @PathVariable("topic_id") int topicId,
                      Model model) {
-        DtoLda lda = ldaService.fetchBy(corpusName, numberOfTopics);
+        Topic topic = topicService.fetchBy(corpusName, numberOfTopics, topicId);
         model.addAttribute("corpusName", corpusName);
         model.addAttribute("numberOfTopics", numberOfTopics);
-        model.addAttribute("topic", lda.getTopics().get(topicId));
+        model.addAttribute("topic", topic);
         return "topic";
     }
 }

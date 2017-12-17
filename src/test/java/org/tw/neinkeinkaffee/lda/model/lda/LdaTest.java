@@ -55,9 +55,9 @@ public class LdaTest {
 		assertThat(contentToken.getLemma(), is("尊"));
 		assertThat(contentToken.getTopic(), greaterThan(-1));
 
-		HashMap<String, DtoDocument> dtoDocuments = lda.getDtoLda().getDocuments();
+		List<DtoDocument> dtoDocuments = lda.getDtoLda().getDocuments();
 		assertThat(dtoDocuments.size(), is(1));
-		assertThat(dtoDocuments.get("中庸").getTokens().get(4).isStopToken(), is(false));
+		assertThat(dtoDocuments.get(0).getTokens().get(4).isStopToken(), is(false));
 	}
 
 	private static final CorpusDocument corpusDocument = CorpusDocument.builder()

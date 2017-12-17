@@ -1,9 +1,6 @@
 package org.tw.neinkeinkaffee.lda.model.dto;
 
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.Singular;
+import lombok.*;
 import org.tw.neinkeinkaffee.lda.model.dto.probability.TopicProbability;
 import org.tw.neinkeinkaffee.lda.model.dto.token.Token;
 
@@ -11,7 +8,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class DtoDocument {
+	@Setter
+	String corpusName;
+	@Setter
+	int numberOfTopics;
 	@Getter
 	private String title;
 	@Singular @Getter

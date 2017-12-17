@@ -23,13 +23,13 @@ public class ToyDataProvider {
         // TODO: CorpusID and numberOfTopics should be used to retrieve the dto model from a proper repository with a composite key, as described in http://software-sympathy.blogspot.de/2017/01/spring-data-with-mongodb-and-composite.html
 
         Topic topic0 = Topic.builder()
-            .id(0)
+            .topicId(0)
             .build();
         Topic topic1 = Topic.builder()
-            .id(1)
+            .topicId(1)
             .build();
         Topic topic2 = Topic.builder()
-            .id(2)
+            .topicId(2)
             .build();
 
         List<Topic> topics = Arrays.asList(topic0, topic1, topic2);
@@ -127,7 +127,7 @@ public class ToyDataProvider {
         List<ContentWord> wordList = Arrays.asList(banana, kiwi, plum, apple, fruit, mix, mash, stash, boil, fry, healthy, tasty, greasy, oily, spicy);
         for (ContentWord word : wordList) {
             word.setTopicProbabilities(dummyTopicProbabilities);
-            words.put(word.getLemma(), word);
+//            words.put(word.getLemma(), word);
         }
 
         // Topic-ContentWord Probabilities
@@ -315,7 +315,7 @@ public class ToyDataProvider {
 
         for (DtoDocument document : documentList) {
             document.setTopicProbabilities(dummyTopicProbabilities);
-            documents.put(document.getTitle(), document);
+//            documents.put(document.getTitle(), document);
         }
 
         // Topic-CorpusDocument Probabilities
@@ -344,9 +344,9 @@ public class ToyDataProvider {
         DtoLda lda = DtoLda.builder()
             .corpusName(corpusName)
             .numberOfTopics(3)
-            .documents(documents)
+            .documents(documentList)
             .topics(topics)
-            .words(words)
+            .words(wordList)
             .build();
 
         return lda;

@@ -6,15 +6,17 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.tw.neinkeinkaffee.lda.model.dto.DtoLda;
+import org.tw.neinkeinkaffee.lda.model.dto.word.ContentWord;
 import org.tw.neinkeinkaffee.lda.service.LdaService;
+import org.tw.neinkeinkaffee.lda.service.WordService;
 
 @Controller
 public class WordController {
-    private LdaService ldaService;
+    private WordService wordService;
 
     @Autowired
-    public WordController(final LdaService ldaService) {
-        this.ldaService = ldaService;
+    public WordController(final WordService wordService) {
+        this.wordService = wordService;
     }
 
     @RequestMapping("/corpus/{corpus_name}/numberOfTopics/{number_of_topics}/word/{word_lemma}")
@@ -22,10 +24,10 @@ public class WordController {
                      final @PathVariable("number_of_topics") int numberOfTopics,
                      final @PathVariable("word_lemma") String wordLemma,
                      Model model) {
-        DtoLda lda = ldaService.fetchBy(corpusName, numberOfTopics);
+        ContentWord word = wordService.fetchBy(corpusName, numberOfTopics, wordLemma);
         model.addAttribute("corpusName", corpusName);
         model.addAttribute("numberOfTopics", numberOfTopics);
-        model.addAttribute("word", lda.getWords().get(wordLemma));
+        model.addAttribute("word", word);
         return "word";
     }
 }

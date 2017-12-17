@@ -11,11 +11,12 @@
 <table>
     <tr th:each="topicProbability : ${word.topTopicProbabilities}">
         <td>
-            <a th:text="${topicProbability.topic.id}"
-               th:href="@{|/corpus/${corpusName}/numberOfTopics/${numberOfTopics}/topic/${topicProbability.topic.id}|}">
+            <a th:text="${topicProbability.topic.topicId}"
+               th:href="@{|/corpus/${corpusName}/numberOfTopics/${numberOfTopics}/topic/${topicProbability.topic.topicId}|}">
                 0
             </a>
-            <span th:text="${topicProbability.topic.topWordsSignature}">banana kiwi plum apple fruit</span>
+            <!--<span th:text="${topicProbability.topic.topWordsSignature}">banana kiwi plum apple fruit</span>-->
+            <span th:text="${topicProbability.topic.topWords}">banana kiwi plum apple fruit</span>
         </td>
         <td th:text="${topicProbability.probability}">0.15</td>
     </tr>

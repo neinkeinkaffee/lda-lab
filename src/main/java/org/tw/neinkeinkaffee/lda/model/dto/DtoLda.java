@@ -20,7 +20,7 @@ public class DtoLda {
     @Getter
     private List<Topic> topics;
 	@Getter
-	private HashMap<String, ContentWord> words;
+	private List<ContentWord> words;
 	@Getter
-	private HashMap<String, DtoDocument> documents;
+	private List<DtoDocument> documents;
 }

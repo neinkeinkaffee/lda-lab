@@ -8,14 +8,12 @@ import org.tw.neinkeinkaffee.lda.model.dto.probability.TopicProbability;
 import org.tw.neinkeinkaffee.lda.model.dto.probability.WordProbability;
 import org.tw.neinkeinkaffee.lda.model.dto.token.ContentToken;
 import org.tw.neinkeinkaffee.lda.model.dto.token.StopToken;
-import org.tw.neinkeinkaffee.lda.model.dto.token.Token;
 import org.tw.neinkeinkaffee.lda.model.dto.word.ContentWord;
 import org.tw.neinkeinkaffee.lda.model.dto.word.StopWord;
 import org.tw.neinkeinkaffee.lda.model.lda.Lda;
 import org.tw.neinkeinkaffee.lda.model.lda.PairCounter;
 import org.tw.neinkeinkaffee.lda.model.lda.SimpleCounter;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -29,19 +27,19 @@ public class LdaToDtoLdaConverter implements Converter<Lda, DtoLda> {
         PairCounter<String, Integer> wordTopicCounts = lda.getWordTopicCounts();
         PairCounter<String, Integer> documentTopicCounts = lda.getDocumentTopicCounts();
 
-        // TODO: This map has to be String (not Integer) -> Topic because MongoDB casts the Integer keys of the topicCounts into half-integer-half-strings that won't match to Integers but also can't be converted into proper Integers
-        HashMap<String, Topic> topicMap = new HashMap<>(topicWordCounts.stream()
-            .map(entry -> Topic.builder()
-                .id(entry.getKey())
-                .build())
-            .collect(Collectors.toMap(topic -> topic.getId().toString(), topic -> topic)));
-
-        HashMap<String, ContentWord> wordMap = new HashMap<>(wordTopicCounts.stream()
-            .map(entry -> ContentWord.builder()
-                .lemma(entry.getKey())
-                .build())
-            .collect(Collectors.toMap(word -> word.getLemma(), word -> word)));
-
+//        // TODO: This map has to be String (not Integer) -> Topic because MongoDB casts the Integer keys of the topicCounts into half-integer-half-strings that won't match to Integers but also can't be converted into proper Integers
+//        HashMap<Integer, Topic> topicMap = new HashMap<Integer, Topic>(topicWordCounts.stream()
+//            .map(entry -> Topic.builder()
+//                .topicId(entry.getKey())
+//                .build())
+//            .collect(Collectors.toMap(topic -> topic.getTopicId(), topic -> topic)));
+//
+//        HashMap<String, ContentWord> wordMap = new HashMap<>(wordTopicCounts.stream()
+//            .map(entry -> ContentWord.builder()
+//                .lemma(entry.getKey())
+//                .build())
+//            .collect(Collectors.toMap(word -> word.getLemma(), word -> word)));
+//
         // TODO: It would be nice to extract the nested document and token conversions, but how to achieve the linking of the references to the ContentWords from the wordMap into the ContentTokens in that case?
         HashMap<String, DtoDocument> documentMap = new HashMap<>(documentTopicCounts.stream()
             .map(entry -> DtoDocument.builder()
@@ -54,28 +52,29 @@ public class LdaToDtoLdaConverter implements Converter<Lda, DtoLda> {
                                 .build();
                         else
                             return ContentToken.builder()
-                                .word(wordMap.get(token.getLemma()))
+                                .word(ContentWord.builder().lemma(token.getLemma()).build())
+                                .topic(Topic.builder().topicId(token.getTopic()).build())
                                 .build();
                     })
                     .collect(Collectors.toList()))
                 .build())
             .collect((Collectors.toMap(document -> document.getTitle(), document -> document))));
 
-        List<Topic> topics = topicMap.entrySet().stream()
-            .map(entry -> {
-                Topic topic = entry.getValue();
-                int topicId = topic.getId();
+        List<Topic> topics = topicWordCounts.stream()
+            .map(counterEntry -> {
+                int topicId = counterEntry.getKey();
 
-                SimpleCounter<String> wordCounts = topicWordCounts.getCount(topicId);
+                SimpleCounter<String> wordCounts = counterEntry.getValue();
                 int sumOfWordCounts = wordCounts.stream()
                     .mapToInt(w -> w.getValue())
                     .sum();
                 List<WordProbability> wordProbabilities = wordCounts.stream()
                     .map(wordCount -> WordProbability.builder()
-                        .word(wordMap.get(wordCount.getKey()))
+                        .word(ContentWord.builder().lemma(wordCount.getKey()).build())
                         .probability((double) wordCount.getValue() / sumOfWordCounts)
                         .build())
                     .collect(Collectors.toList());
+                Collections.sort(wordProbabilities, Collections.reverseOrder());
 
                 SimpleCounter<String> documentCounts = topicDocumentCounts.getCount(topicId);
                 int sumOfDocumentCounts = documentCounts.stream()
@@ -83,71 +82,70 @@ public class LdaToDtoLdaConverter implements Converter<Lda, DtoLda> {
                     .sum();
                 List<DocumentProbability> documentProbabilities = documentCounts.stream()
                     .map(documentCount -> DocumentProbability.builder()
-                        .document(documentMap.get(documentCount.getKey()))
+                        .document(DtoDocument.builder().title(documentCount.getKey()).build())
                         .probability((double) documentCount.getValue() / sumOfDocumentCounts)
                         .build())
                     .collect(Collectors.toList());
-
-
-                Collections.sort(wordProbabilities, Collections.reverseOrder());
                 Collections.sort(documentProbabilities, Collections.reverseOrder());
-                topic.setWordProbabilities(wordProbabilities);
-                topic.setDocumentProbabilities(documentProbabilities);
-                return topic;
+
+                return Topic.builder()
+                    .topicId(topicId)
+                    .wordProbabilities(wordProbabilities)
+                    .documentProbabilities(documentProbabilities)
+                    .build();
             })
             .collect(Collectors.toList());
 
-        HashMap<String, ContentWord> words = new HashMap<String, ContentWord>(wordMap.entrySet().stream()
-            .map(entry -> {
-                ContentWord word = entry.getValue();
+        List<ContentWord> words = wordTopicCounts.stream()
+            .map(counterEntry -> {
+                String lemma = counterEntry.getKey();
 
-                SimpleCounter<Integer> topicCounts = wordTopicCounts.getCount(entry.getKey());
+                SimpleCounter<Integer> topicCounts = counterEntry.getValue();
                 int sumOfTopicCounts = topicCounts.stream()
                     .mapToInt(topic -> topic.getValue())
                     .sum();
                 List<TopicProbability> topicProbabilities = topicCounts.stream()
                     .map(topicCount -> TopicProbability.builder()
-                        .topic(topicMap.get(topicCount.getKey()))
+                        .topic(Topic.builder()
+                            .topicId(topicCount.getKey())
+                            .topWords(topics.get(topicCount.getKey()).getTopWordsSignature())
+                            .build())
                         .probability((double) topicCount.getValue() / sumOfTopicCounts)
                         .build())
                     .collect(Collectors.toList());
-
                 Collections.sort(topicProbabilities, Collections.reverseOrder());
-                word.setTopicProbabilities(topicProbabilities);
-                return word;
+
+                return ContentWord.builder()
+                    .lemma(lemma)
+                    .topicProbabilities(topicProbabilities)
+                    .build();
             })
-            .collect(Collectors.toMap(word -> word.getLemma(), word -> word)));
+            .collect(Collectors.toList());
 
-        HashMap<String, DtoDocument> documents = new HashMap<>(documentMap.entrySet().stream()
-            .map(entry -> {
-                DtoDocument document = entry.getValue();
+        List<DtoDocument> documents = documentTopicCounts.stream()
+            .map(counterEntry -> {
+                String title = counterEntry.getKey();
 
-                final List<Token> tokens = new ArrayList<>();
-                for (int tokenIndex = 0; tokenIndex < document.getTokens().size(); tokenIndex++) {
-                    Token token = document.getTokens().get(tokenIndex);
-                    if (!token.isStopToken()) {
-                        int topicId = lda.getDocuments().get(document.getTitle()).getTokens().get(tokenIndex).getTopic();
-                        Topic topic = topicMap.get(String.valueOf(topicId));
-                        ((ContentToken) token).setTopic(topic);
-                    }
-                }
-
-                SimpleCounter<Integer> topicCounts = documentTopicCounts.getCount(entry.getKey());
+                SimpleCounter<Integer> topicCounts = counterEntry.getValue();
                 int sumOfTopicCounts = topicCounts.stream()
                     .mapToInt(topic -> topic.getValue())
                     .sum();
                 List<TopicProbability> topicProbabilities = topicCounts.stream()
                     .map(topicCount -> TopicProbability.builder()
-                        .topic(topicMap.get(topicCount.getKey()))
+                        .topic(Topic.builder()
+                            .topicId(topicCount.getKey())
+                            .topWords(topics.get(topicCount.getKey()).getTopWordsSignature())
+                            .build())
                         .probability((double) topicCount.getValue() / sumOfTopicCounts)
                         .build())
                     .collect(Collectors.toList());
-
                 Collections.sort(topicProbabilities, Collections.reverseOrder());
+
+                DtoDocument document = documentMap.get(title);
                 document.setTopicProbabilities(topicProbabilities);
                 return document;
             })
-            .collect(Collectors.toMap(document -> document.getTitle(), document -> document)));
+            .collect(Collectors.toList());
 
         return DtoLda.builder()
             .corpusName(lda.getCorpusName())

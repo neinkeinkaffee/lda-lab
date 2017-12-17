@@ -50,7 +50,7 @@ public class CorpusDocument {
 	}
 
 	private static Word wordFromString(String string, List<String> stopwords) {
-		Pattern punctuation = Pattern.compile("\\p{Punct}", Pattern.UNICODE_CHARACTER_CLASS);
+		Pattern punctuation = Pattern.compile("[\\p{Punct}|\\p{Space}]", Pattern.UNICODE_CHARACTER_CLASS);
 		boolean isStopword = stopwords.contains(string) || punctuation.matcher(string).matches();
 		if (string.equals("_")) string = "\n";
 		return Word.builder()

@@ -1,8 +1,6 @@
 package org.tw.neinkeinkaffee.lda.model.dto;
 
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import org.tw.neinkeinkaffee.lda.model.dto.probability.DocumentProbability;
 import org.tw.neinkeinkaffee.lda.model.dto.probability.WordProbability;
 
@@ -13,15 +11,23 @@ import java.util.List;
 import static java.util.stream.Collectors.joining;
 
 @Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class Topic {
+    @Setter
+    private String corpusName;
+    @Setter
+    private int numberOfTopics;
     @Getter
-    private Integer id;
+    private int topicId;
     @Getter @Setter
     private List<WordProbability> wordProbabilities;
     @Getter(lazy=true)
     private final List<WordProbability> topWordProbabilities = getTopNWordProbabilities(10);
     @Getter(lazy=true)
     private final String topWordsSignature = getTopNWordsSignature(10);
+    @Getter
+    private String topWords;
     @Getter @Setter
     private List<DocumentProbability> documentProbabilities;
     @Getter(lazy=true)

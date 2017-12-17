@@ -2,13 +2,19 @@ package org.tw.neinkeinkaffee.lda.model.dto.word;
 
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.tw.neinkeinkaffee.lda.model.dto.probability.TopicProbability;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@NoArgsConstructor
 public class ContentWord extends Word {
+	@Setter
+	String corpusName;
+	@Setter
+	int numberOfTopics;
 	@Getter @Setter
 	private List<TopicProbability> topicProbabilities;
 	@Getter(lazy=true)
