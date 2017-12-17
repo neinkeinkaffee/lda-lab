@@ -16,6 +16,7 @@ import org.tw.neinkeinkaffee.lda.model.lda.PairCounter;
 import org.tw.neinkeinkaffee.lda.model.lda.SimpleCounter;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -87,6 +88,9 @@ public class LdaToDtoLdaConverter implements Converter<Lda, DtoLda> {
                         .build())
                     .collect(Collectors.toList());
 
+
+                Collections.sort(wordProbabilities, Collections.reverseOrder());
+                Collections.sort(documentProbabilities, Collections.reverseOrder());
                 topic.setWordProbabilities(wordProbabilities);
                 topic.setDocumentProbabilities(documentProbabilities);
                 return topic;
@@ -108,6 +112,7 @@ public class LdaToDtoLdaConverter implements Converter<Lda, DtoLda> {
                         .build())
                     .collect(Collectors.toList());
 
+                Collections.sort(topicProbabilities, Collections.reverseOrder());
                 word.setTopicProbabilities(topicProbabilities);
                 return word;
             })
@@ -138,6 +143,7 @@ public class LdaToDtoLdaConverter implements Converter<Lda, DtoLda> {
                         .build())
                     .collect(Collectors.toList());
 
+                Collections.sort(topicProbabilities, Collections.reverseOrder());
                 document.setTopicProbabilities(topicProbabilities);
                 return document;
             })

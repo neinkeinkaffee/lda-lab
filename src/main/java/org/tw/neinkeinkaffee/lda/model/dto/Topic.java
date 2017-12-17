@@ -19,30 +19,26 @@ public class Topic {
     @Getter @Setter
     private List<WordProbability> wordProbabilities;
     @Getter(lazy=true)
-    private final List<WordProbability> topWordProbabilities = getTopNWordProbabilities(5);
+    private final List<WordProbability> topWordProbabilities = getTopNWordProbabilities(10);
     @Getter(lazy=true)
-    private final String topWordsSignature = getTopNWordsSignature(5);
+    private final String topWordsSignature = getTopNWordsSignature(10);
     @Getter @Setter
     private List<DocumentProbability> documentProbabilities;
     @Getter(lazy=true)
     private final List<DocumentProbability> topDocumentProbabilities = getTopNDocumentProbabilities(5);
 
-    private List<WordProbability> getTopNWordProbabilities(int N) {
-        // TODO: sort
-
-        Collections.sort(wordProbabilities, Collections.reverseOrder());
-        return new ArrayList<WordProbability>(wordProbabilities.subList(0, N));
+    private List<WordProbability> getTopNWordProbabilities(int n) {
+        return new ArrayList<WordProbability>(wordProbabilities.subList(0, n));
     }
 
-    private List<DocumentProbability> getTopNDocumentProbabilities(int N) {
-        //TODO: sort
+    private List<DocumentProbability> getTopNDocumentProbabilities(int n) {
         int numberOfDocuments = documentProbabilities.size();
-        N = (N < numberOfDocuments) ? N : numberOfDocuments;
-        return new ArrayList<DocumentProbability>(documentProbabilities.subList(0, N));
+        n = (n < numberOfDocuments) ? n : numberOfDocuments;
+        return new ArrayList<DocumentProbability>(documentProbabilities.subList(0, n));
     }
 
-    private String getTopNWordsSignature(int N) {
-        return getTopNWordProbabilities(N).stream()
+    private String getTopNWordsSignature(int n) {
+        return getTopNWordProbabilities(n).stream()
             .map(wordProbability -> wordProbability.getWord().getLemma())
             .collect(joining(" "));
     }
