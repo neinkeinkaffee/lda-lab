@@ -32,7 +32,7 @@ public class HomeController {
     String home(Model model) {
         model.addAttribute("toyCorpusName", "toyCorpus");
 
-        String corpusString = FileToStringReader.readFileToString("/Users/gstupper/repos/lda-lab/src/test/resources/corpora/hcjswb_small.txt");
+        String corpusString = FileToStringReader.readFileToString("/Users/gstupper/repos/lda-lab/src/test/resources/corpora/hcjswb_first500.txt");
         String stopwordString = FileToStringReader.readFileToString("/Users/gstupper/repos/lda-lab/src/test/resources/corpora/hcjswb_stop.txt");
 
         ldaService.clearAll();
@@ -40,7 +40,6 @@ public class HomeController {
         Lda lda = Lda.fromCorpus(corpus, 10);
         ldaService.save(lda);
         List<LdaParameterCombination> availableLdaModels = ldaParameterCombinationService.fetchAll();
-        System.out.println("AVAILABLE: " + availableLdaModels.size());
         model.addAttribute("availableModels", availableLdaModels);
         return "home";
     }
