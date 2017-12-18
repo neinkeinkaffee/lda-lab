@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6a51af1c-45ba-4e74-84b6-a44b9d5a1b13" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.5-rc-2/fileContent/annotation-processors.bin" afterPath="$PROJECT_DIR$/.gradle/3.5-rc-2/fileContent/annotation-processors.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.5-rc-2/fileContent/fileContent.lock" afterPath="$PROJECT_DIR$/.gradle/3.5-rc-2/fileContent/fileContent.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.5-rc-2/taskHistory/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/3.5-rc-2/taskHistory/fileHashes.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.5-rc-2/taskHistory/fileSnapshots.bin" afterPath="$PROJECT_DIR$/.gradle/3.5-rc-2/taskHistory/fileSnapshots.bin" />
@@ -10,7 +9,11 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.5-rc-2/taskHistory/taskHistory.bin" afterPath="$PROJECT_DIR$/.gradle/3.5-rc-2/taskHistory/taskHistory.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.5-rc-2/taskHistory/taskHistory.lock" afterPath="$PROJECT_DIR$/.gradle/3.5-rc-2/taskHistory/taskHistory.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/org/tw/neinkeinkaffee/lda/service/LdaServiceTest.java" afterPath="$PROJECT_DIR$/src/test/java/org/tw/neinkeinkaffee/lda/service/LdaServiceTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/resources/main/templates/home.html" afterPath="$PROJECT_DIR$/build/resources/main/templates/home.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/tw/neinkeinkaffee/lda/controller/HomeController.java" afterPath="$PROJECT_DIR$/src/main/java/org/tw/neinkeinkaffee/lda/controller/HomeController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/tw/neinkeinkaffee/lda/model/dto/LdaParameterCombination.java" afterPath="$PROJECT_DIR$/src/main/java/org/tw/neinkeinkaffee/lda/model/dto/LdaParameterCombination.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/tw/neinkeinkaffee/lda/service/LdaService.java" afterPath="$PROJECT_DIR$/src/main/java/org/tw/neinkeinkaffee/lda/service/LdaService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/templates/home.html" afterPath="$PROJECT_DIR$/src/main/resources/templates/home.html" />
     </list>
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -25,14 +28,34 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="HomeController.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="home.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/home.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-12">
+              <caret line="21" column="12" lean-forward="true" selection-start-line="21" selection-start-column="12" selection-end-line="21" selection-end-column="12" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="HomeController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/org/tw/neinkeinkaffee/lda/controller/HomeController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="144">
-              <caret line="67" column="74" lean-forward="true" selection-start-line="67" selection-start-column="74" selection-end-line="67" selection-end-column="74" />
+            <state relative-caret-position="288">
+              <caret line="87" column="88" lean-forward="true" selection-start-line="86" selection-start-column="8" selection-end-line="87" selection-end-column="88" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Corpus.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/org/tw/neinkeinkaffee/lda/model/corpus/Corpus.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="75">
+              <caret line="12" column="13" lean-forward="false" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -40,43 +63,23 @@
       <file leaf-file-name="LdaService.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/org/tw/neinkeinkaffee/lda/service/LdaService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-236">
-              <caret line="18" column="13" lean-forward="false" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+            <state relative-caret-position="-902">
+              <caret line="20" column="224" lean-forward="false" selection-start-line="20" selection-start-column="224" selection-end-line="20" selection-end-column="224" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#4494#4495#0" expanded="true" />
-                <element signature="e#4560#4561#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LdaServiceTest.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/test/java/org/tw/neinkeinkaffee/lda/service/LdaServiceTest.java">
+      <file leaf-file-name="LdaParameterCombination.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/org/tw/neinkeinkaffee/lda/model/dto/LdaParameterCombination.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="346">
-              <caret line="59" column="44" lean-forward="false" selection-start-line="59" selection-start-column="44" selection-end-line="59" selection-end-column="44" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="home.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/home.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="9" column="0" lean-forward="true" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CorpusService.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/org/tw/neinkeinkaffee/lda/service/CorpusService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="252">
-              <caret line="41" column="26" lean-forward="true" selection-start-line="41" selection-start-column="26" selection-end-line="41" selection-end-column="26" />
-              <folding />
+            <state relative-caret-position="210">
+              <caret line="14" column="19" lean-forward="false" selection-start-line="14" selection-start-column="19" selection-end-line="14" selection-end-column="19" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -123,7 +126,6 @@
         <option value="$PROJECT_DIR$/src/main/java/org/tw/neinkeinkaffee/lda/service/DocumentService.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/tw/neinkeinkaffee/lda/helper/ToyDataProvider.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/tw/neinkeinkaffee/lda/model/converter/LdaToDtoLdaConverter.java" />
-        <option value="$PROJECT_DIR$/src/test/java/org/tw/neinkeinkaffee/lda/ApplicationTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/org/tw/neinkeinkaffee/lda/model/converter/LdaToDtoLdaConverterTest.java" />
         <option value="$PROJECT_DIR$/.idea/workspace.xml" />
         <option value="$PROJECT_DIR$/src/test/java/org/tw/neinkeinkaffee/lda/model/lda/LdaTest.java" />
@@ -134,7 +136,6 @@
         <option value="$PROJECT_DIR$/src/main/java/org/tw/neinkeinkaffee/lda/model/dto/Topic.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/tw/neinkeinkaffee/lda/model/dto/word/ContentWord.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/tw/neinkeinkaffee/lda/model/dto/DtoDocument.java" />
-        <option value="$PROJECT_DIR$/src/main/java/org/tw/neinkeinkaffee/lda/model/dto/LdaParameterCombination.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/tw/neinkeinkaffee/lda/model/dto/DtoLda.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/tw/neinkeinkaffee/lda/repository/TopicRepository.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/tw/neinkeinkaffee/lda/repository/ContentWordRepository.java" />
@@ -147,10 +148,12 @@
         <option value="$PROJECT_DIR$/src/main/java/org/tw/neinkeinkaffee/lda/model/CorpusName.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/tw/neinkeinkaffee/lda/repository/CorpusRepository.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/tw/neinkeinkaffee/lda/service/CorpusService.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/home.html" />
-        <option value="$PROJECT_DIR$/src/main/java/org/tw/neinkeinkaffee/lda/service/LdaService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/org/tw/neinkeinkaffee/lda/controller/HomeController.java" />
         <option value="$PROJECT_DIR$/src/test/java/org/tw/neinkeinkaffee/lda/service/LdaServiceTest.java" />
+        <option value="$PROJECT_DIR$/src/test/java/org/tw/neinkeinkaffee/lda/ApplicationTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/tw/neinkeinkaffee/lda/model/dto/LdaParameterCombination.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/home.html" />
+        <option value="$PROJECT_DIR$/src/main/java/org/tw/neinkeinkaffee/lda/controller/HomeController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/tw/neinkeinkaffee/lda/service/LdaService.java" />
       </list>
     </option>
   </component>
@@ -531,7 +534,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="SearchEverywhereHistoryKey" value="cs&#9;FILE&#9;file:///Users/gstupper/repos/lda-lab/src/main/java/org/tw/neinkeinkaffee/lda/service/CorpusService.java&#10;cr&#9;FILE&#9;file:///Users/gstupper/repos/lda-lab/src/main/java/org/tw/neinkeinkaffee/lda/repository/CorpusRepository.java&#10;hc&#9;FILE&#9;file:///Users/gstupper/repos/lda-lab/src/main/java/org/tw/neinkeinkaffee/lda/controller/HomeController.java&#10;ldaser&#9;FILE&#9;file:///Users/gstupper/repos/lda-lab/src/main/java/org/tw/neinkeinkaffee/lda/service/LdaService.java&#10;ldaserv&#9;FILE&#9;file:///Users/gstupper/repos/lda-lab/src/main/java/org/tw/neinkeinkaffee/lda/service/LdaService.java&#10;lpcr&#9;FILE&#9;file:///Users/gstupper/repos/lda-lab/src/main/java/org/tw/neinkeinkaffee/lda/repository/LdaParameterCombinationRepository.java&#10;contentw&#9;FILE&#9;file:///Users/gstupper/repos/lda-lab/src/main/java/org/tw/neinkeinkaffee/lda/repository/ContentWordRepository.java&#10;topic&#9;FILE&#9;file:///Users/gstupper/repos/lda-lab/src/main/java/org/tw/neinkeinkaffee/lda/model/dto/Topic.java&#10;tdp&#9;FILE&#9;file:///Users/gstupper/repos/lda-lab/src/main/java/org/tw/neinkeinkaffee/lda/helper/ToyDataProvider.java&#10;ldas&#9;FILE&#9;file:///Users/gstupper/repos/lda-lab/src/main/java/org/tw/neinkeinkaffee/lda/service/LdaService.java&#10;app&#9;FILE&#9;file:///Users/gstupper/repos/lda-lab/src/test/java/org/tw/neinkeinkaffee/lda/ApplicationTest.java&#10;ldadoc&#9;FILE&#9;file:///Users/gstupper/repos/lda-lab/src/main/java/org/tw/neinkeinkaffee/lda/model/lda/LdaDocument.java&#10;lt&#9;FILE&#9;file:///Users/gstupper/repos/lda-lab/src/main/java/org/tw/neinkeinkaffee/lda/model/converter/LdaToDtoLdaConverter.java&#10;ctld&#9;FILE&#9;file:///Users/gstupper/repos/lda-lab/src/main/java/org/tw/neinkeinkaffee/lda/model/converter/CorpusDocumentToLdaDocumentConverter.java" />
+    <property name="SearchEverywhereHistoryKey" value="hc&#9;FILE&#9;file:///Users/gstupper/repos/lda-lab/src/main/java/org/tw/neinkeinkaffee/lda/controller/HomeController.java&#10;appli&#9;FILE&#9;file:///Users/gstupper/repos/lda-lab/src/test/java/org/tw/neinkeinkaffee/lda/ApplicationTest.java&#10;cs&#9;FILE&#9;file:///Users/gstupper/repos/lda-lab/src/main/java/org/tw/neinkeinkaffee/lda/service/CorpusService.java&#10;cr&#9;FILE&#9;file:///Users/gstupper/repos/lda-lab/src/main/java/org/tw/neinkeinkaffee/lda/repository/CorpusRepository.java&#10;ldaser&#9;FILE&#9;file:///Users/gstupper/repos/lda-lab/src/main/java/org/tw/neinkeinkaffee/lda/service/LdaService.java&#10;ldaserv&#9;FILE&#9;file:///Users/gstupper/repos/lda-lab/src/main/java/org/tw/neinkeinkaffee/lda/service/LdaService.java&#10;lpcr&#9;FILE&#9;file:///Users/gstupper/repos/lda-lab/src/main/java/org/tw/neinkeinkaffee/lda/repository/LdaParameterCombinationRepository.java&#10;contentw&#9;FILE&#9;file:///Users/gstupper/repos/lda-lab/src/main/java/org/tw/neinkeinkaffee/lda/repository/ContentWordRepository.java&#10;topic&#9;FILE&#9;file:///Users/gstupper/repos/lda-lab/src/main/java/org/tw/neinkeinkaffee/lda/model/dto/Topic.java&#10;tdp&#9;FILE&#9;file:///Users/gstupper/repos/lda-lab/src/main/java/org/tw/neinkeinkaffee/lda/helper/ToyDataProvider.java&#10;ldas&#9;FILE&#9;file:///Users/gstupper/repos/lda-lab/src/main/java/org/tw/neinkeinkaffee/lda/service/LdaService.java&#10;app&#9;FILE&#9;file:///Users/gstupper/repos/lda-lab/src/test/java/org/tw/neinkeinkaffee/lda/ApplicationTest.java&#10;ldadoc&#9;FILE&#9;file:///Users/gstupper/repos/lda-lab/src/main/java/org/tw/neinkeinkaffee/lda/model/lda/LdaDocument.java&#10;lt&#9;FILE&#9;file:///Users/gstupper/repos/lda-lab/src/main/java/org/tw/neinkeinkaffee/lda/model/converter/LdaToDtoLdaConverter.java&#10;ctld&#9;FILE&#9;file:///Users/gstupper/repos/lda-lab/src/main/java/org/tw/neinkeinkaffee/lda/model/converter/CorpusDocumentToLdaDocumentConverter.java" />
   </component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
@@ -712,9 +715,12 @@
     <history-entry file="LdaServiceTest_shouldFetchDtoLda - 2017.12.18 at 22h 05m 21s.xml">
       <configuration name="LdaServiceTest.shouldFetchDtoLda" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="LdaServiceTest_shouldFetchDtoLda - 2017.12.18 at 22h 06m 16s.xml">
+      <configuration name="LdaServiceTest.shouldFetchDtoLda" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="24126000" />
+    <option name="totallyTimeSpent" value="27145000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="877" extended-state="6" />
@@ -735,10 +741,10 @@
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.44117647" sideWeight="0.49713877" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.44117647" sideWeight="0.49713877" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32736573" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.38746804" sideWeight="0.49570817" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.41432226" sideWeight="0.49570817" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24248926" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3286445" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -810,14 +816,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/tw/neinkeinkaffee/lda/model/lda/SimpleCounter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="6" column="13" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/tw/neinkeinkaffee/lda/model/lda/PairCounter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
@@ -982,16 +980,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/org/tw/neinkeinkaffee/lda/ApplicationTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="32" column="49" lean-forward="false" selection-start-line="32" selection-start-column="49" selection-end-line="33" selection-end-column="48" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="367">
@@ -1092,16 +1080,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/tw/neinkeinkaffee/lda/model/dto/LdaParameterCombination.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/tw/neinkeinkaffee/lda/model/dto/DtoLda.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="300">
@@ -1169,14 +1147,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/tw/neinkeinkaffee/lda/model/corpus/Corpus.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="282">
-          <caret line="32" column="5" lean-forward="false" selection-start-line="32" selection-start-column="5" selection-end-line="32" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/tw/neinkeinkaffee/lda/repository/CorpusNameRepository.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
@@ -1221,41 +1191,75 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/home.html">
+    <entry file="file://$PROJECT_DIR$/src/test/java/org/tw/neinkeinkaffee/lda/service/LdaServiceTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="0" lean-forward="true" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+        <state relative-caret-position="399">
+          <caret line="59" column="51" lean-forward="false" selection-start-line="59" selection-start-column="51" selection-end-line="59" selection-end-column="51" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/tw/neinkeinkaffee/lda/controller/HomeController.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/org/tw/neinkeinkaffee/lda/ApplicationTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="67" column="74" lean-forward="true" selection-start-line="67" selection-start-column="74" selection-end-line="67" selection-end-column="74" />
+        <state relative-caret-position="364">
+          <caret line="32" column="36" lean-forward="true" selection-start-line="32" selection-start-column="36" selection-end-line="32" selection-end-column="36" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/tw/neinkeinkaffee/lda/Application.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="6" column="13" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/tw/neinkeinkaffee/lda/model/corpus/Corpus.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="12" column="13" lean-forward="false" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/tw/neinkeinkaffee/lda/model/dto/LdaParameterCombination.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="19" lean-forward="false" selection-start-line="14" selection-start-column="19" selection-end-line="14" selection-end-column="19" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/home.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-12">
+          <caret line="21" column="12" lean-forward="true" selection-start-line="21" selection-start-column="12" selection-end-line="21" selection-end-column="12" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/tw/neinkeinkaffee/lda/service/LdaService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-236">
-          <caret line="18" column="13" lean-forward="false" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+        <state relative-caret-position="-902">
+          <caret line="20" column="224" lean-forward="false" selection-start-line="20" selection-start-column="224" selection-end-line="20" selection-end-column="224" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#4494#4495#0" expanded="true" />
-            <element signature="e#4560#4561#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/org/tw/neinkeinkaffee/lda/service/LdaServiceTest.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/tw/neinkeinkaffee/lda/controller/HomeController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="346">
-          <caret line="59" column="44" lean-forward="false" selection-start-line="59" selection-start-column="44" selection-end-line="59" selection-end-column="44" />
-          <folding />
+        <state relative-caret-position="288">
+          <caret line="87" column="88" lean-forward="true" selection-start-line="86" selection-start-column="8" selection-end-line="87" selection-end-column="88" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

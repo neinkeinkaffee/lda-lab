@@ -3,9 +3,7 @@ package org.tw.neinkeinkaffee.lda.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import org.tw.neinkeinkaffee.lda.helper.FileToStringReader;
 import org.tw.neinkeinkaffee.lda.model.CorpusName;
 import org.tw.neinkeinkaffee.lda.model.corpus.Corpus;
@@ -32,7 +30,22 @@ public class HomeController {
     @RequestMapping("/")
     String home(Model model) {
         model.addAttribute("toyCorpusName", "toyCorpus");
+//        Lda lda = Lda.fromCorpus(corpus, 3);
+//        Lda lda1 = Lda.fromCorpus(corpus1, 2);
+//        Lda lda2 = Lda.fromCorpus(corpus2, 1);
+//        ldaService.save(lda);
+//        ldaService.save(lda1);
+//        ldaService.save(lda2);
+        List<LdaParameterCombination> availableLdaModels = ldaService.fetchAll();
+        model.addAttribute("availableModels", availableLdaModels);
+        model.addAttribute("ldaParameterCombination", new LdaParameterCombination());
+        List<CorpusName> availableCorpora = corpusService.fetchAll();
+        model.addAttribute("availableCorpora", availableCorpora);
+        return "home";
+    }
 
+    @RequestMapping("/createAllCorpora")
+    String createAllCorpora(Model model) {
         String nanoCorpusString = FileToStringReader.readFileToString("/Users/gstupper/repos/lda-lab/src/test/resources/corpora/hcjswb_nano.txt");
         String smallCorpusString = FileToStringReader.readFileToString("/Users/gstupper/repos/lda-lab/src/test/resources/corpora/hcjswb_small.txt");
         String first100CorpusString = FileToStringReader.readFileToString("/Users/gstupper/repos/lda-lab/src/test/resources/corpora/hcjswb_first100.txt");
@@ -50,17 +63,7 @@ public class HomeController {
         corpusService.save(first100Corpus);
         corpusService.save(first500Corpus);
         corpusService.save(fullCorpus);
-//        Lda lda = Lda.fromCorpus(corpus, 3);
-//        Lda lda1 = Lda.fromCorpus(corpus1, 2);
-//        Lda lda2 = Lda.fromCorpus(corpus2, 1);
-//        ldaService.save(lda);
-//        ldaService.save(lda1);
-//        ldaService.save(lda2);
-        List<LdaParameterCombination> availableLdaModels = ldaService.fetchAll();
-        model.addAttribute("availableModels", availableLdaModels);
-        List<CorpusName> availableCorpora = corpusService.fetchAll();
-        model.addAttribute("availableCorpora", availableCorpora);
-        return "home";
+        return "redirect:/";
     }
 
     // TODO: This should go into its own LdaController
@@ -72,10 +75,18 @@ public class HomeController {
         return "redirect:/";
     }
 
-    @RequestMapping("/delete")
+    @RequestMapping("/deleteAll")
     String deleteAllLda(Model model) {
         ldaService.clearAll();
         corpusService.clearAll();
+        return "redirect:/";
+    }
+
+    @PostMapping("/createLda")
+    public String createLda(@ModelAttribute LdaParameterCombination ldaParameterCombination) {
+        System.out.println("CONTROLLER " + ldaParameterCombination.getCorpusName());
+        System.out.println("CONTROLLER " + ldaParameterCombination.getNumberOfTopics());
+        ldaService.create(ldaParameterCombination);
         return "redirect:/";
     }
 }

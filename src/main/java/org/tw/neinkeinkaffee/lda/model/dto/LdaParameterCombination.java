@@ -10,8 +10,8 @@ import org.springframework.data.annotation.Id;
 public class LdaParameterCombination {
     @Id
     private String id;
-    @Getter
+    @Getter @Setter
     private String corpusName;
-    @Getter
+    @Getter @Setter
     private int numberOfTopics;
 }

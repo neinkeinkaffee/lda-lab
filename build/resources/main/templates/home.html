@@ -2,17 +2,17 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Lda Lab</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 </head>
 <body>
-<p th:text="'Hello, User!'" />
+<p th:text="'Hello, User!'"/>
 You can explore one of the following topic models or create a new one with one of the available corpora.
 
 Available Models
 <!--<ul>-->
-    <!--<li>-->
-        <!--<a th:href="@{|/corpus/${toyCorpusName}/numberOfTopics/3/topic|}">Hard coded toy model</a>-->
-    <!--</li>-->
+<!--<li>-->
+<!--<a th:href="@{|/corpus/${toyCorpusName}/numberOfTopics/3/topic|}">Hard coded toy model</a>-->
+<!--</li>-->
 <!--</ul>-->
 <ul th:each="model: ${availableModels}">
     <li>
@@ -27,12 +27,18 @@ Available Models
     </li>
 </ul>
 Available Corpora
-<ul th:each="corpus: ${availableCorpora}">
-    <li>
-        <a th:text="@{|Corpus ${corpus.name}|}">
-            Corpus toy
-        </a>
-    </li>
-</ul>
+<form action="#" th:action="@{/createLda}" th:object="${ldaParameterCombination}" method="post">
+    <p>Corpus:
+        <select th:field="*{corpusName}">
+            <option th:each="corpus : ${availableCorpora}"
+                    th:value="${corpus.name}"
+                    th:text="${corpus.name}">
+                toy
+            </option>
+        </select>
+    </p>
+    <p>Number of topics <input type="text" th:field="*{numberOfTopics}"/></p>
+    <p><input type="submit" value="Submit"/> <input type="reset" value="Reset"/></p>
+</form>
 </body>
 </html>

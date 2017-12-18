@@ -3,6 +3,7 @@ package org.tw.neinkeinkaffee.lda.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.tw.neinkeinkaffee.lda.helper.ToyDataProvider;
+import org.tw.neinkeinkaffee.lda.model.corpus.Corpus;
 import org.tw.neinkeinkaffee.lda.model.dto.DtoDocument;
 import org.tw.neinkeinkaffee.lda.model.dto.DtoLda;
 import org.tw.neinkeinkaffee.lda.model.dto.LdaParameterCombination;
@@ -17,9 +18,11 @@ import java.util.stream.Collectors;
 
 @Service
 public class LdaService {
+    // TODO: Should encapsulate the repositories for the Corpus and for the Lda in super repositories that are injected into the CorpusService and LdaService (LdaService can also get a corpusRepository instead of the corpusService)
     private TopicRepository topicRepository;
     private ContentWordRepository contentWordRepository;
     private DocumentRepository documentRepository;
+    private CorpusService corpusService;
     private LdaParameterCombinationRepository ldaParameterCombinationRepository;
     private ToyDataProvider toyDataProvider;
 
@@ -27,11 +30,13 @@ public class LdaService {
     public LdaService(final TopicRepository topicRepository,
                       final ContentWordRepository contentWordRepository,
                       final DocumentRepository documentRepository,
+                      final CorpusService corpusService,
                       final LdaParameterCombinationRepository ldaParameterCombinationRepository,
                       final ToyDataProvider provider) {
         this.topicRepository = topicRepository;
         this.contentWordRepository = contentWordRepository;
         this.documentRepository = documentRepository;
+        this.corpusService = corpusService;
         this.ldaParameterCombinationRepository = ldaParameterCombinationRepository;
         this.toyDataProvider = provider;
     }
@@ -97,5 +102,15 @@ public class LdaService {
 
     public List<LdaParameterCombination> fetchAll() {
         return ldaParameterCombinationRepository.findAll();
+    }
+
+    public void create(LdaParameterCombination ldaParameterCombination) {
+        System.out.println("SERVICE " + ldaParameterCombination.getCorpusName());
+        System.out.println("SERVICE " + ldaParameterCombination.getNumberOfTopics());
+        String corpusName = ldaParameterCombination.getCorpusName();
+        int numberOfTopics = ldaParameterCombination.getNumberOfTopics();
+        Corpus corpus = corpusService.fetchBy(corpusName);
+        Lda lda = Lda.fromCorpus(corpus, numberOfTopics);
+        save(lda);
     }
 }
