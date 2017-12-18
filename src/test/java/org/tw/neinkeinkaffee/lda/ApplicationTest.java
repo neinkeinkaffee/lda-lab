@@ -23,7 +23,7 @@ public class ApplicationTest {
     @Test
     public void greetingShouldReturnDefaultMessage() throws Exception {
         assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/",
-            String.class)).contains("Hello, User!");
+            String.class)).contains("You can explore");
 //        assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/corpus/hcjswb/numberOfTopics/3/topic",
 //            String.class)).contains("Topics");
 //        assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/corpus/hcjswb/numberOfTopics/3/word/久",

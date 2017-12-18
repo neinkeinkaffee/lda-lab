@@ -5,10 +5,10 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 </head>
 <body>
-<p th:text="'Hello, User!'"/>
-You can explore one of the following topic models or create a new one with one of the available corpora.
+<h2>Lda Lab</h2>
+<p>You can explore one of the following topic models or create a new model with one of the available corpora.</p>
 
-Available Models
+<h3>Available Models</h3>
 <!--<ul>-->
 <!--<li>-->
 <!--<a th:href="@{|/corpus/${toyCorpusName}/numberOfTopics/3/topic|}">Hard coded toy model</a>-->
@@ -26,7 +26,7 @@ Available Models
         </a>
     </li>
 </ul>
-Available Corpora
+<h3>Available Corpora</h3>
 <form action="#" th:action="@{/createLda}" th:object="${ldaParameterCombination}" method="post">
     <p>Corpus:
         <select th:field="*{corpusName}">
