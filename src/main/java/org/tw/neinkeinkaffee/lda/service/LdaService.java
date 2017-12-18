@@ -81,6 +81,13 @@ public class LdaService {
         save(lda.getDtoLda());
     }
 
+    public void clearBy(String corpusName, int numberOfTopics) {
+        topicRepository.deleteByCorpusNameAndNumberOfTopics(corpusName, numberOfTopics);
+        contentWordRepository.deleteByCorpusNameAndNumberOfTopics(corpusName, numberOfTopics);
+        documentRepository.deleteByCorpusNameAndNumberOfTopics(corpusName, numberOfTopics);
+        ldaParameterCombinationRepository.deleteByCorpusNameAndNumberOfTopics(corpusName, numberOfTopics);
+    }
+
     public void clearAll() {
         topicRepository.deleteAll();
         contentWordRepository.deleteAll();
@@ -88,10 +95,7 @@ public class LdaService {
         ldaParameterCombinationRepository.deleteAll();
     }
 
-    public void clearBy(String corpusName, int numberOfTopics) {
-        topicRepository.deleteByCorpusNameAndNumberOfTopics(corpusName, numberOfTopics);
-        contentWordRepository.deleteByCorpusNameAndNumberOfTopics(corpusName, numberOfTopics);
-        documentRepository.deleteByCorpusNameAndNumberOfTopics(corpusName, numberOfTopics);
-        ldaParameterCombinationRepository.deleteByCorpusNameAndNumberOfTopics(corpusName, numberOfTopics);
+    public List<LdaParameterCombination> fetchAll() {
+        return ldaParameterCombinationRepository.findAll();
     }
 }

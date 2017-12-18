@@ -2,7 +2,9 @@ package org.tw.neinkeinkaffee.lda.model.corpus;
 
 import lombok.Builder;
 import lombok.Getter;
+import lombok.Setter;
 import lombok.Singular;
+import org.springframework.data.annotation.Id;
 
 import java.util.Arrays;
 import java.util.List;
@@ -12,6 +14,10 @@ import static java.util.stream.Collectors.toList;
 
 @Builder
 public class CorpusDocument {
+	@Id
+	private String id;
+	@Setter @Getter
+	private String corpusName;
 	@Getter
 	private String title;
 	@Getter
