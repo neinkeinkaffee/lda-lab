@@ -22,4 +22,8 @@ public class CorpusService {
 	public List<Corpus> fetchAll() { return corpusRepository.findAll(); }
 
 	public void save(Corpus corpus) { corpusRepository.save(corpus); }
+
+	public void clearAll() {
+		corpusRepository.deleteAll();
+	}
 }

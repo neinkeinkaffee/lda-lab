@@ -3,6 +3,7 @@ package org.tw.neinkeinkaffee.lda.model.corpus;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Singular;
+import org.springframework.data.annotation.Id;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -10,6 +11,8 @@ import java.util.List;
 
 @Builder
 public class Corpus {
+	@Id
+	private String id;
 	@Getter
 	private String name;
 	@Singular @Getter

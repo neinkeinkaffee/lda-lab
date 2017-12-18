@@ -1,6 +1,7 @@
 package org.tw.neinkeinkaffee.lda.model.dto;
 
 import lombok.*;
+import org.springframework.data.annotation.Id;
 import org.tw.neinkeinkaffee.lda.model.dto.probability.DocumentProbability;
 import org.tw.neinkeinkaffee.lda.model.dto.probability.WordProbability;
 
@@ -14,6 +15,8 @@ import static java.util.stream.Collectors.joining;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Topic {
+    @Id
+    private String id;
     @Setter
     private String corpusName;
     @Setter
@@ -34,6 +37,8 @@ public class Topic {
     private final List<DocumentProbability> topDocumentProbabilities = getTopNDocumentProbabilities(5);
 
     private List<WordProbability> getTopNWordProbabilities(int n) {
+        int numberOfDocuments = documentProbabilities.size();
+        n = (n < numberOfDocuments) ? n : numberOfDocuments;
         return new ArrayList<WordProbability>(wordProbabilities.subList(0, n));
     }
 

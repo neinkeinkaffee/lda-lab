@@ -21,7 +21,6 @@ public class LdaService {
     private ContentWordRepository contentWordRepository;
     private DocumentRepository documentRepository;
     private LdaParameterCombinationRepository ldaParameterCombinationRepository;
-    private CountersRepository countersRepository;
     private ToyDataProvider toyDataProvider;
 
     @Autowired
@@ -29,21 +28,17 @@ public class LdaService {
                       final ContentWordRepository contentWordRepository,
                       final DocumentRepository documentRepository,
                       final LdaParameterCombinationRepository ldaParameterCombinationRepository,
-//                      final CountersRepository countersRepository,
                       final ToyDataProvider provider) {
         this.topicRepository = topicRepository;
         this.contentWordRepository = contentWordRepository;
         this.documentRepository = documentRepository;
         this.ldaParameterCombinationRepository = ldaParameterCombinationRepository;
-//        this.countersRepository = countersRepository;
         this.toyDataProvider = provider;
     }
 
     public DtoLda fetchBy(String corpusName, int numberOfTopics) {
-        if (corpusName.equals("toyCorpus")) return toyDataProvider.produceToyLda("toyCorpus");
-//        LdaCounters counters = countersRepository.findByCorpusNameAndNumberOfTopics(corpusName, numberOfTopics);
-//        List<LdaDocument> documents = lda.findByCorpusNameAndNumberOfTopics(corpusName, numberOfTopics);
-//        Lda lda = Lda.fromCountersAndDocuments(counters, documents, corpusName, numberOfTopics);
+//        if (corpusName.equals("toyCorpus")) return toyDataProvider.produceToyLda("toyCorpus");
+        // TODO: check in parametercombinationsrepository whether model exists
         List<Topic> topics = topicRepository.findAllByCorpusNameAndNumberOfTopics(corpusName, numberOfTopics);
         List<ContentWord> words = contentWordRepository.findAllByCorpusNameAndNumberOfTopics(corpusName, numberOfTopics);
         List<DtoDocument> documents = documentRepository.findAllByCorpusNameAndNumberOfTopics(corpusName, numberOfTopics);
@@ -56,18 +51,15 @@ public class LdaService {
             .build();
     }
 
-//    public List<DtoLda> fetchAll() {
-//        return countersRepository.findAll().stream()
-//            .map(counter -> fetchBy(counter.getCorpusName(), counter.getNumberOfTopics()))
-//            .collect(Collectors.toList());
-//    }
-
     public void save(DtoLda dtoLda) {
         // TODO: Maybe a composite key will remove the need for storing corpusName and numberOfTopics in each document for retrieval
-//        countersRepository.save(lda.getCounters());
         final String corpusName = dtoLda.getCorpusName();
         final int numberOfTopics = dtoLda.getNumberOfTopics();
-
+        LdaParameterCombination ldaParameterCombination = LdaParameterCombination.builder()
+            .corpusName(corpusName)
+            .numberOfTopics(numberOfTopics)
+            .build();
+        ldaParameterCombinationRepository.save(ldaParameterCombination);
         for (Topic topic : dtoLda.getTopics()) {
             topic.setCorpusName(corpusName);
             topic.setNumberOfTopics(numberOfTopics);
@@ -83,11 +75,6 @@ public class LdaService {
             document.setNumberOfTopics(numberOfTopics);
             documentRepository.save(document);
         }
-        LdaParameterCombination ldaParameterCombination = LdaParameterCombination.builder()
-            .corpusName(corpusName)
-            .numberOfTopics(numberOfTopics)
-            .build();
-        ldaParameterCombinationRepository.save(ldaParameterCombination);
     }
 
     public void save(Lda lda) {
@@ -95,10 +82,16 @@ public class LdaService {
     }
 
     public void clearAll() {
-//        countersRepository.deleteAll();
         topicRepository.deleteAll();
         contentWordRepository.deleteAll();
         documentRepository.deleteAll();
         ldaParameterCombinationRepository.deleteAll();
+    }
+
+    public void clearBy(String corpusName, int numberOfTopics) {
+        topicRepository.deleteByCorpusNameAndNumberOfTopics(corpusName, numberOfTopics);
+        contentWordRepository.deleteByCorpusNameAndNumberOfTopics(corpusName, numberOfTopics);
+        documentRepository.deleteByCorpusNameAndNumberOfTopics(corpusName, numberOfTopics);
+        ldaParameterCombinationRepository.deleteByCorpusNameAndNumberOfTopics(corpusName, numberOfTopics);
     }
 }

@@ -4,6 +4,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.data.annotation.Id;
 import org.tw.neinkeinkaffee.lda.model.dto.probability.TopicProbability;
 
 import java.util.ArrayList;
@@ -11,10 +12,12 @@ import java.util.List;
 
 @NoArgsConstructor
 public class ContentWord extends Word {
+	@Id
+	private String id;
 	@Setter
-	String corpusName;
+	private String corpusName;
 	@Setter
-	int numberOfTopics;
+	private int numberOfTopics;
 	@Getter @Setter
 	private List<TopicProbability> topicProbabilities;
 	@Getter(lazy=true)

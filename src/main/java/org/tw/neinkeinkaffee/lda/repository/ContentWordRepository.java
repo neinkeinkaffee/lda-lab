@@ -11,4 +11,6 @@ public interface ContentWordRepository extends MongoRepository<ContentWord, Stri
     public List<ContentWord> findAllByCorpusNameAndNumberOfTopics(String corpusName, int numberOfTopics);
 
     public ContentWord findByCorpusNameAndNumberOfTopicsAndLemma(String corpusName, int numberOfTopics, String lemma);
+
+    public Long deleteByCorpusNameAndNumberOfTopics(String corpusName, int numberOfTopics);
 }

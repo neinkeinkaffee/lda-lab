@@ -9,4 +9,6 @@ import java.util.List;
 @Repository
 public interface LdaParameterCombinationRepository extends MongoRepository<LdaParameterCombination, String> {
     public List<LdaParameterCombination> findAll();
+
+    public Long deleteByCorpusNameAndNumberOfTopics(String corpusName, int numberOfTopics);
 }

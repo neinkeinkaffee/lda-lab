@@ -10,4 +10,6 @@ import java.util.List;
 public interface TopicRepository extends MongoRepository<Topic, String> {
     public List<Topic> findAllByCorpusNameAndNumberOfTopics(String corpusName, int numberOfTopics);
     public Topic findAllByCorpusNameAndNumberOfTopicsAndTopicId(String corpusName, int numberOfTopics, int topicId);
+
+    public Long deleteByCorpusNameAndNumberOfTopics(String corpusName, int numberOfTopics);
 }

@@ -23,4 +23,8 @@ public class DtoLda {
 	private List<ContentWord> words;
 	@Getter
 	private List<DtoDocument> documents;
+
+	public boolean isEmpty() {
+		return documents.isEmpty();
+	}
 }

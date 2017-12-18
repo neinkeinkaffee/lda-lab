@@ -1,6 +1,8 @@
 package org.tw.neinkeinkaffee.lda.model.dto;
 
+import com.sun.javafx.beans.IDProperty;
 import lombok.*;
+import org.springframework.data.annotation.Id;
 import org.tw.neinkeinkaffee.lda.model.dto.probability.TopicProbability;
 import org.tw.neinkeinkaffee.lda.model.dto.token.Token;
 
@@ -11,6 +13,8 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class DtoDocument {
+	@Id
+	private String id;
 	@Setter
 	String corpusName;
 	@Setter
