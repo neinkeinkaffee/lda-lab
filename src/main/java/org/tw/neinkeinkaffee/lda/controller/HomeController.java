@@ -45,7 +45,7 @@ public class HomeController {
     }
 
     @RequestMapping("/createAllCorpora")
-    String createAllCorpora(Model model) {
+    String createAllCorpora() {
         String nanoCorpusString = FileToStringReader.readFileToString("/Users/gstupper/repos/lda-lab/src/test/resources/corpora/hcjswb_nano.txt");
         String smallCorpusString = FileToStringReader.readFileToString("/Users/gstupper/repos/lda-lab/src/test/resources/corpora/hcjswb_small.txt");
         String first100CorpusString = FileToStringReader.readFileToString("/Users/gstupper/repos/lda-lab/src/test/resources/corpora/hcjswb_first100.txt");
