@@ -20,9 +20,9 @@
            th:href="@{|/corpus/${model.corpusName}/numberOfTopics/${model.numberOfTopics}/topic|}">
             Model with 10 topics estimated from corpus toy
         </a>
-        <a th:text="x"
+        <a th:text="[x]"
            th:href="@{|/corpus/${model.corpusName}/numberOfTopics/${model.numberOfTopics}/delete|}">
-            x
+            [x]
         </a>
     </li>
 </ul>
