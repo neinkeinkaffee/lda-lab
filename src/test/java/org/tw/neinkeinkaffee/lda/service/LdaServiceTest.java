@@ -5,9 +5,16 @@ import org.junit.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.tw.neinkeinkaffee.lda.model.corpus.Corpus;
+import org.tw.neinkeinkaffee.lda.model.dto.DtoDocument;
 import org.tw.neinkeinkaffee.lda.model.dto.DtoLda;
+import org.tw.neinkeinkaffee.lda.model.dto.Topic;
 import org.tw.neinkeinkaffee.lda.model.lda.Lda;
+import org.tw.neinkeinkaffee.lda.repository.ContentWordRepository;
+import org.tw.neinkeinkaffee.lda.repository.DocumentRepository;
 import org.tw.neinkeinkaffee.lda.repository.LdaRepository;
+import org.tw.neinkeinkaffee.lda.repository.TopicRepository;
+
+import java.util.ArrayList;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.mockito.Matchers.any;
@@ -18,7 +25,12 @@ import static org.hamcrest.core.Is.is;
 public class LdaServiceTest {
 
     @Mock
-    LdaRepository ldaRepository;
+    TopicRepository topicRepository;
+    @Mock
+    ContentWordRepository contentWordRepository;
+    @Mock
+    DocumentRepository documentRepository;
+
     @InjectMocks
     LdaService ldaService;
 
@@ -30,16 +42,23 @@ public class LdaServiceTest {
     @Test
     public void shouldFetchDtoLda() {
         // given
-        DtoLda expectedDtoLda = DtoLda.builder().corpusName("someCorpus").build();
-        Lda lda = Lda.fromCorpus(Corpus.builder().name("someCorpus").build(), 3);
-        when(ldaRepository.findByCorpusNameAndNumberOfTopics("someCorpus", 3))
-            .thenReturn(lda);
+        DtoLda expectedDtoLda = DtoLda.builder()
+            .corpusName("someCorpus")
+            .numberOfTopics(3)
+            .build();
+        when(topicRepository.findAllByCorpusNameAndNumberOfTopics("someCorpus", 3))
+            .thenReturn(new ArrayList<>());
+        when(contentWordRepository.findAllByCorpusNameAndNumberOfTopics("someCorpus", 3))
+            .thenReturn(new ArrayList<>());
+        when(documentRepository.findAllByCorpusNameAndNumberOfTopics("someCorpus", 3))
+            .thenReturn(new ArrayList<>());
 
         // when
         DtoLda dtoLda = ldaService.fetchBy("someCorpus", 3);
 
         // then
         assertThat(dtoLda.getCorpusName(), is("someCorpus"));
+        assertThat(dtoLda.getNumberOfTopics(), is(3));
     }
 
 }

@@ -22,15 +22,15 @@ public class ApplicationTest {
 
     @Test
     public void greetingShouldReturnDefaultMessage() throws Exception {
-//        assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/",
-//            String.class)).contains("Hello, User!");
+        assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/",
+            String.class)).contains("Hello, User!");
 //        assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/corpus/hcjswb/numberOfTopics/3/topic",
 //            String.class)).contains("Topics");
 //        assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/corpus/hcjswb/numberOfTopics/3/word/久",
 //            String.class)).contains("Word");
 //        assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/corpus/hcjswb/numberOfTopics/3/topic/0",
 //            String.class)).contains("Topic");
-        assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/corpus/hcjswb/numberOfTopics/3/document/中庸論",
-            String.class)).contains("Document");
+//        assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/corpus/hcjswb/numberOfTopics/3/document/中庸論",
+//            String.class)).contains("Document");
     }
 }
