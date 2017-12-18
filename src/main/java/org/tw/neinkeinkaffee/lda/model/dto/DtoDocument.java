@@ -1,6 +1,5 @@
 package org.tw.neinkeinkaffee.lda.model.dto;
 
-import com.sun.javafx.beans.IDProperty;
 import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.tw.neinkeinkaffee.lda.model.dto.probability.TopicProbability;
