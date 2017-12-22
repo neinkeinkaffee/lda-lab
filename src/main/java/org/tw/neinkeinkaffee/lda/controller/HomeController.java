@@ -29,13 +29,7 @@ public class HomeController {
 
     @RequestMapping("/")
     String home(Model model) {
-        model.addAttribute("toyCorpusName", "toyCorpus");
-//        Lda lda = Lda.fromCorpus(corpus, 3);
-//        Lda lda1 = Lda.fromCorpus(corpus1, 2);
-//        Lda lda2 = Lda.fromCorpus(corpus2, 1);
-//        ldaService.save(lda);
-//        ldaService.save(lda1);
-//        ldaService.save(lda2);
+//        model.addAttribute("toyCorpusName", "toyCorpus");
         List<LdaParameterCombination> availableLdaModels = ldaService.fetchAll();
         model.addAttribute("availableModels", availableLdaModels);
         model.addAttribute("ldaParameterCombination", new LdaParameterCombination());

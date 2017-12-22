@@ -1,0 +1,1 @@
+web java -Dspring.profiles.active=test -jar build/libs/lda-lab-0.1.0.jar
