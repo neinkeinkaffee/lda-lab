@@ -2,6 +2,7 @@ package org.tw.neinkeinkaffee.lda.model.lda;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class SimpleCounter<K> {
@@ -29,6 +30,12 @@ public class SimpleCounter<K> {
 
 	public int size() {
 		return counts.entrySet().size();
+	}
+
+	public void filterCountsLessThan(int min) {
+		counts = new HashMap<>(counts.entrySet().stream()
+			.filter(entry -> entry.getValue() >= min)
+			.collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue)));
 	}
 
 	public Stream<Map.Entry<K, Integer>> stream() {

@@ -16,6 +16,7 @@ import java.util.stream.Collectors;
 @NoArgsConstructor
 public class Lda {
 
+    public static final int MULTI_WORDS_MIN_COUNT = 2;
     private static CorpusDocumentToLdaDocumentConverter documentConverter = new CorpusDocumentToLdaDocumentConverter();
     private static Random random = new Random();
     private static final int NUMBER_OF_ITERATIONS = 50;
@@ -26,6 +27,8 @@ public class Lda {
     private SimpleCounter<Integer> topicCounts;
     @Getter
     private PairCounter<Integer, String> topicWordCounts;
+    @Getter
+    private PairCounter<Integer, String> topicMultiWordCounts;
     @Getter
     private PairCounter<Integer, String> topicDocumentCounts;
     @Getter
@@ -50,6 +53,7 @@ public class Lda {
         lda.convertDocuments(corpus);
         lda.assignRandomTopics();
         lda.iterate();
+        lda.countMultiWords(MULTI_WORDS_MIN_COUNT);
         return lda;
     }
 
@@ -60,6 +64,7 @@ public class Lda {
         lda.documents = new HashMap<>(documents.stream()
             .collect(Collectors.toMap(document -> document.getTitle(), document -> document)));
         lda.topicWordCounts = ldaCounters.getTopicWordCounts();
+        lda.topicMultiWordCounts = ldaCounters.getTopicMultiWordCounts();
         lda.topicDocumentCounts = ldaCounters.getTopicDocumentCounts();
         lda.wordTopicCounts = ldaCounters.getWordTopicCounts();
         lda.documentTopicCounts = ldaCounters.getDocumentTopicCounts();
@@ -71,6 +76,7 @@ public class Lda {
             .corpusName(this.corpusName)
             .numberOfTopics(this.numberOfTopics)
             .topicWordCounts(this.topicWordCounts)
+            .topicMultiWordCounts(this.topicMultiWordCounts)
             .topicDocumentCounts(this.topicDocumentCounts)
             .wordTopicCounts(this.wordTopicCounts)
             .documentTopicCounts(this.documentTopicCounts)
@@ -86,6 +92,7 @@ public class Lda {
     private void initializeCountsAndWeights() {
         topicCounts = new SimpleCounter<Integer>();
         topicWordCounts = new PairCounter<Integer, String>();
+        topicMultiWordCounts = new PairCounter<Integer, String>();
         topicDocumentCounts = new PairCounter<Integer, String>();
         wordTopicCounts = new PairCounter<String, Integer>();
         documentTopicCounts = new PairCounter<String, Integer>();
@@ -175,5 +182,37 @@ public class Lda {
     private DtoLda convertToDtoLda() {
         LdaToDtoLdaConverter ldaConverter = new LdaToDtoLdaConverter();
         return ldaConverter.convert(this);
+    }
+
+    // TODO: In order to be testable, this method would have to be package-private and get the Lda object passed in as a parameter
+    private void countMultiWords(int minCount) {
+        for (LdaDocument document : this.documents.values()) {
+            List<LdaToken> tokens = document.getTokens();
+            countMultiWords(tokens, topicMultiWordCounts, minCount);
+        }
+    }
+
+    void countMultiWords(List<LdaToken> tokens, PairCounter<Integer, String> topicMultiWordCounts, int minCount) {
+        for (int i = 0; i < tokens.size() - 1; i++) {
+            int currentIndex = i;
+            LdaToken currentToken = tokens.get(currentIndex);
+            if (!currentToken.isStopword()) {
+                int nextIndex = i + 1;
+                LdaToken nextToken = tokens.get(nextIndex);
+                if (!nextToken.isStopword() && currentToken.getTopic() == nextToken.getTopic()) {
+                    i++;
+                    String multiWord = currentToken.getLemma() + nextToken.getLemma();
+                    topicMultiWordCounts.increaseByOne(currentToken.getTopic(), multiWord);
+                    while (i < tokens.size() - 1
+                        && !tokens.get(i + 1).isStopword()
+                        && tokens.get(i + 1).getTopic() == currentToken.getTopic()) {
+                        i++;
+                        multiWord += tokens.get(i).getLemma();
+                        topicMultiWordCounts.increaseByOne(currentToken.getTopic(), multiWord);
+                    }
+                }
+            }
+        }
+        topicMultiWordCounts.filterCountsLessThan(minCount);
     }
 }

@@ -2,6 +2,7 @@ package org.tw.neinkeinkaffee.lda.model.lda;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class PairCounter<K1, K2> {
@@ -36,6 +37,11 @@ public class PairCounter<K1, K2> {
 
 	public int size() {
 		return pairCounts.entrySet().size();
+	}
+
+	public void filterCountsLessThan(int min) {
+		pairCounts.keySet().forEach(key ->
+			pairCounts.get(key).filterCountsLessThan(min));
 	}
 
 	public Stream<Map.Entry<K1, SimpleCounter<K2>>> stream() {

@@ -32,14 +32,25 @@ public class Topic {
     @Getter
     private String topWords;
     @Getter @Setter
+    private List<WordProbability> multiWordProbabilities;
+    @Getter(lazy=true)
+    private final List<WordProbability> topMultiWordProbabilities = getTopNMultiWordProbabilities(10);
+
+    @Getter @Setter
     private List<DocumentProbability> documentProbabilities;
     @Getter(lazy=true)
     private final List<DocumentProbability> topDocumentProbabilities = getTopNDocumentProbabilities(5);
 
     private List<WordProbability> getTopNWordProbabilities(int n) {
-        int numberOfDocuments = documentProbabilities.size();
-        n = (n < numberOfDocuments) ? n : numberOfDocuments;
+        int numberOfWords = wordProbabilities.size();
+        n = (n < numberOfWords) ? n : numberOfWords;
         return new ArrayList<WordProbability>(wordProbabilities.subList(0, n));
+    }
+
+    private List<WordProbability> getTopNMultiWordProbabilities(int n) {
+        int numberOfMultiWords = multiWordProbabilities.size();
+        n = (n < numberOfMultiWords) ? n : numberOfMultiWords;
+        return new ArrayList<WordProbability>(multiWordProbabilities.subList(0, n));
     }
 
     private List<DocumentProbability> getTopNDocumentProbabilities(int n) {

@@ -21,6 +21,16 @@
     </tr>
 </table>
 
+<h3>Word Sequences</h3>
+<table>
+    <tr th:each="wordProbability : ${topic.topMultiWordProbabilities}">
+        <td th:text="${wordProbability.word.lemma}">
+            banana cake
+        </td>
+        <td th:text="${wordProbability.probability}">0.015</td>
+    </tr>
+</table>
+
 <h3>Documents</h3>
 <table>
     <tr th:each="documentProbability : ${topic.topDocumentProbabilities}">

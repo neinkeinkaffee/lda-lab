@@ -16,6 +16,8 @@ public class LdaCounters {
     @Getter
     private PairCounter<Integer, String> topicWordCounts;
     @Getter
+    private PairCounter<Integer, String> topicMultiWordCounts;
+    @Getter
     private PairCounter<Integer, String> topicDocumentCounts;
     @Getter
     private PairCounter<String, Integer> wordTopicCounts;
