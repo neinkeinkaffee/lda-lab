@@ -10,6 +10,9 @@ import org.tw.neinkeinkaffee.lda.model.dto.DtoLda;
 import org.tw.neinkeinkaffee.lda.service.DocumentService;
 import org.tw.neinkeinkaffee.lda.service.LdaService;
 
+import java.sql.Timestamp;
+import java.time.Instant;
+
 @Controller
 public class DocumentController {
     private DocumentService documentService;
@@ -19,14 +22,16 @@ public class DocumentController {
         this.documentService = documentService;
     }
 
-    @RequestMapping("/corpus/{corpus_name}/numberOfTopics/{number_of_topics}/document/{document_name}")
+    @RequestMapping("/corpus/{corpus_name}/numberOfTopics/{number_of_topics}/timestamp/{timestamp}/document/{document_name}")
     String listTopic(final @PathVariable("corpus_name") String corpusName,
                      final @PathVariable("number_of_topics") int numberOfTopics,
+                     final @PathVariable("timestamp") Instant timestamp,
                      final @PathVariable("document_name") String documentName,
                      Model model) {
-        DtoDocument document = documentService.fetchBy(corpusName, numberOfTopics, documentName);
+        DtoDocument document = documentService.fetchBy(corpusName, numberOfTopics, timestamp, documentName);
         model.addAttribute("corpusName", corpusName);
         model.addAttribute("numberOfTopics", numberOfTopics);
+        model.addAttribute("timestamp", timestamp);
         model.addAttribute("document", document);
         return "document";
     }

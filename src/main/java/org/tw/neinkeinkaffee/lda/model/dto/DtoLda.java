@@ -2,12 +2,10 @@ package org.tw.neinkeinkaffee.lda.model.dto;
 
 import lombok.Builder;
 import lombok.Getter;
-import org.springframework.data.annotation.Id;
 import org.tw.neinkeinkaffee.lda.model.dto.word.ContentWord;
 
-import java.util.HashMap;
+import java.time.Instant;
 import java.util.List;
-import java.util.UUID;
 
 @Builder
 public class DtoLda {
@@ -16,6 +14,8 @@ public class DtoLda {
 	private String corpusName;
 	@Getter
 	private int numberOfTopics;
+	@Getter
+	private Instant timestamp;
 
     @Getter
     private List<Topic> topics;

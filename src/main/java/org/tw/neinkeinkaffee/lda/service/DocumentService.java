@@ -7,6 +7,8 @@ import org.tw.neinkeinkaffee.lda.model.dto.word.ContentWord;
 import org.tw.neinkeinkaffee.lda.repository.ContentWordRepository;
 import org.tw.neinkeinkaffee.lda.repository.DocumentRepository;
 
+import java.sql.Timestamp;
+import java.time.Instant;
 import java.util.List;
 
 @Service
@@ -18,11 +20,11 @@ public class DocumentService {
         this.documentRepository = documentRepository;
     }
 
-    public List<DtoDocument> fetchAllBy(String corpusName, int numberOfTopics) {
-        return documentRepository.findAllByCorpusNameAndNumberOfTopics(corpusName, numberOfTopics);
+    public List<DtoDocument> fetchAllBy(String corpusName, int numberOfTopics, Instant timestamp) {
+        return documentRepository.findAllByCorpusNameAndNumberOfTopicsAndTimestamp(corpusName, numberOfTopics, timestamp);
     }
 
-    public DtoDocument fetchBy(String corpusName, int numberOfTopics, String title) {
-        return documentRepository.findByCorpusNameAndNumberOfTopicsAndTitle(corpusName, numberOfTopics, title);
+    public DtoDocument fetchBy(String corpusName, int numberOfTopics, Instant timestamp, String title) {
+        return documentRepository.findByCorpusNameAndNumberOfTopicsAndTimestampAndTitle(corpusName, numberOfTopics, timestamp, title);
     }
 }

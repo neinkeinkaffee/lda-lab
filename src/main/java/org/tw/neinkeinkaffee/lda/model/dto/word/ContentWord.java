@@ -7,6 +7,7 @@ import lombok.Setter;
 import org.springframework.data.annotation.Id;
 import org.tw.neinkeinkaffee.lda.model.dto.probability.TopicProbability;
 
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,6 +19,8 @@ public class ContentWord extends Word {
 	private String corpusName;
 	@Setter
 	private int numberOfTopics;
+	@Setter
+	private Instant timestamp;
 	@Getter @Setter
 	private List<TopicProbability> topicProbabilities;
 	@Getter(lazy=true)

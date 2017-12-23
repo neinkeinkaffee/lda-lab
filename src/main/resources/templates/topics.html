@@ -10,7 +10,7 @@
     <tr th:each="topic : ${topics}">
         <td>
             <a th:text="${topic.topicId}"
-               th:href="@{|/corpus/${corpusName}/numberOfTopics/${numberOfTopics}/topic/${topic.topicId}|}">
+               th:href="@{|/corpus/${corpusName}/numberOfTopics/${numberOfTopics}/timestamp/${timestamp}/topic/${topic.topicId}|}">
                 0
             </a>
         </td>

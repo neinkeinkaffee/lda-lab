@@ -14,6 +14,7 @@ import org.tw.neinkeinkaffee.lda.model.lda.Lda;
 import org.tw.neinkeinkaffee.lda.model.lda.PairCounter;
 import org.tw.neinkeinkaffee.lda.model.lda.SimpleCounter;
 
+import java.time.Instant;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -152,6 +153,7 @@ public class LdaToDtoLdaConverter implements Converter<Lda, DtoLda> {
         return DtoLda.builder()
             .corpusName(lda.getCorpusName())
             .numberOfTopics(lda.getNumberOfTopics())
+            .timestamp(Instant.now())
             .topics(topics)
             .words(words)
             .documents(documents)

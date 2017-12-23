@@ -9,19 +9,14 @@
 <p>You can explore one of the following topic models or create a new model with one of the available corpora.</p>
 
 <h3>Available Models</h3>
-<!--<ul>-->
-<!--<li>-->
-<!--<a th:href="@{|/corpus/${toyCorpusName}/numberOfTopics/3/topic|}">Hard coded toy model</a>-->
-<!--</li>-->
-<!--</ul>-->
 <ul th:each="model: ${availableModels}">
     <li>
-        <a th:text="@{|Model with ${model.numberOfTopics} topics estimated from corpus ${model.corpusName}|}"
-           th:href="@{|/corpus/${model.corpusName}/numberOfTopics/${model.numberOfTopics}/topic|}">
+        <a th:text="@{|Model with ${model.numberOfTopics} topics estimated from corpus ${model.corpusName} (${model.timestamp})|}"
+           th:href="@{|/corpus/${model.corpusName}/numberOfTopics/${model.numberOfTopics}/timestamp/${model.timestamp}/topic|}">
             Model with 10 topics estimated from corpus toy
         </a>
         <a th:text="[x]"
-           th:href="@{|/corpus/${model.corpusName}/numberOfTopics/${model.numberOfTopics}/delete|}">
+           th:href="@{|/corpus/${model.corpusName}/numberOfTopics/${model.numberOfTopics}/timestamp/${model.timestamp}/delete|}">
             [x]
         </a>
     </li>

@@ -10,6 +10,8 @@ import org.tw.neinkeinkaffee.lda.model.dto.Topic;
 import org.tw.neinkeinkaffee.lda.service.LdaService;
 import org.tw.neinkeinkaffee.lda.service.TopicService;
 
+import java.sql.Timestamp;
+import java.time.Instant;
 import java.util.List;
 
 @Controller
@@ -21,25 +23,29 @@ public class TopicController {
         this.topicService = topicService;
     }
 
-    @RequestMapping("/corpus/{corpus_name}/numberOfTopics/{number_of_topics}/topic")
+    @RequestMapping("/corpus/{corpus_name}/numberOfTopics/{number_of_topics}/timestamp/{timestamp}/topic")
     String listTopics(final @PathVariable("corpus_name") String corpusName,
                       final @PathVariable("number_of_topics") int numberOfTopics,
+                      final @PathVariable("timestamp") Instant timestamp,
                       Model model) {
-        List<Topic> topics = topicService.fetchAllBy(corpusName, numberOfTopics);
+        List<Topic> topics = topicService.fetchAllBy(corpusName, numberOfTopics, timestamp);
         model.addAttribute("corpusName", corpusName);
         model.addAttribute("numberOfTopics", numberOfTopics);
+        model.addAttribute("timestamp", timestamp);
         model.addAttribute("topics", topics);
         return "topics";
     }
 
-    @RequestMapping("/corpus/{corpus_name}/numberOfTopics/{number_of_topics}/topic/{topic_id}")
+    @RequestMapping("/corpus/{corpus_name}/numberOfTopics/{number_of_topics}/timestamp/{timestamp}/topic/{topic_id}")
     String listTopic(final @PathVariable("corpus_name") String corpusName,
                      final @PathVariable("number_of_topics") int numberOfTopics,
+                     final @PathVariable("timestamp") Instant timestamp,
                      final @PathVariable("topic_id") int topicId,
                      Model model) {
-        Topic topic = topicService.fetchBy(corpusName, numberOfTopics, topicId);
+        Topic topic = topicService.fetchBy(corpusName, numberOfTopics, timestamp, topicId);
         model.addAttribute("corpusName", corpusName);
         model.addAttribute("numberOfTopics", numberOfTopics);
+        model.addAttribute("timestamp", timestamp);
         model.addAttribute("topic", topic);
         return "topic";
     }

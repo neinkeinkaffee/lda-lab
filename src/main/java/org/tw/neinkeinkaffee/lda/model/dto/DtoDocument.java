@@ -5,6 +5,7 @@ import org.springframework.data.annotation.Id;
 import org.tw.neinkeinkaffee.lda.model.dto.probability.TopicProbability;
 import org.tw.neinkeinkaffee.lda.model.dto.token.Token;
 
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,6 +19,8 @@ public class DtoDocument {
 	String corpusName;
 	@Setter
 	int numberOfTopics;
+	@Setter
+	Instant timestamp;
 	@Getter
 	private String title;
 	@Singular @Getter

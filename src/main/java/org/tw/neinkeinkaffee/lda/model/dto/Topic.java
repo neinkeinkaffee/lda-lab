@@ -5,6 +5,8 @@ import org.springframework.data.annotation.Id;
 import org.tw.neinkeinkaffee.lda.model.dto.probability.DocumentProbability;
 import org.tw.neinkeinkaffee.lda.model.dto.probability.WordProbability;
 
+import java.sql.Timestamp;
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -21,6 +23,8 @@ public class Topic {
     private String corpusName;
     @Setter
     private int numberOfTopics;
+    @Setter
+    private Instant timestamp;
     @Getter
     private int topicId;
     @Getter @Setter

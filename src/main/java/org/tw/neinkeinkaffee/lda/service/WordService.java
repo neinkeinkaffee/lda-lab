@@ -5,6 +5,8 @@ import org.springframework.stereotype.Service;
 import org.tw.neinkeinkaffee.lda.model.dto.word.ContentWord;
 import org.tw.neinkeinkaffee.lda.repository.ContentWordRepository;
 
+import java.sql.Timestamp;
+import java.time.Instant;
 import java.util.List;
 
 @Service
@@ -16,11 +18,11 @@ public class WordService {
         this.contentWordRepository = contentWordRepository;
     }
 
-    public List<ContentWord> fetchAllBy(String corpusName, int numberOfTopics) {
-        return contentWordRepository.findAllByCorpusNameAndNumberOfTopics(corpusName, numberOfTopics);
+    public List<ContentWord> fetchAllBy(String corpusName, int numberOfTopics, Instant timestamp) {
+        return contentWordRepository.findAllByCorpusNameAndNumberOfTopicsAndTimestamp(corpusName, numberOfTopics, timestamp);
     }
 
-    public ContentWord fetchBy(String corpusName, int numberOfTopics, String lemma) {
-        return contentWordRepository.findByCorpusNameAndNumberOfTopicsAndLemma(corpusName, numberOfTopics, lemma);
+    public ContentWord fetchBy(String corpusName, int numberOfTopics, Instant timestamp, String lemma) {
+        return contentWordRepository.findByCorpusNameAndNumberOfTopicsAndTimestampAndLemma(corpusName, numberOfTopics, timestamp, lemma);
     }
 }

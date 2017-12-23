@@ -10,6 +10,9 @@ import org.tw.neinkeinkaffee.lda.model.dto.word.ContentWord;
 import org.tw.neinkeinkaffee.lda.service.LdaService;
 import org.tw.neinkeinkaffee.lda.service.WordService;
 
+import java.sql.Timestamp;
+import java.time.Instant;
+
 @Controller
 public class WordController {
     private WordService wordService;
@@ -19,14 +22,16 @@ public class WordController {
         this.wordService = wordService;
     }
 
-    @RequestMapping("/corpus/{corpus_name}/numberOfTopics/{number_of_topics}/word/{word_lemma}")
+    @RequestMapping("/corpus/{corpus_name}/numberOfTopics/{number_of_topics}/timestamp/{timestamp}/word/{word_lemma}")
     String listTopic(final @PathVariable("corpus_name") String corpusName,
                      final @PathVariable("number_of_topics") int numberOfTopics,
+                     final @PathVariable("timestamp") Instant timestamp,
                      final @PathVariable("word_lemma") String wordLemma,
                      Model model) {
-        ContentWord word = wordService.fetchBy(corpusName, numberOfTopics, wordLemma);
+        ContentWord word = wordService.fetchBy(corpusName, numberOfTopics, timestamp, wordLemma);
         model.addAttribute("corpusName", corpusName);
         model.addAttribute("numberOfTopics", numberOfTopics);
+        model.addAttribute("timestamp", timestamp);
         model.addAttribute("word", word);
         return "word";
     }

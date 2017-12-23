@@ -5,6 +5,8 @@ import org.springframework.stereotype.Service;
 import org.tw.neinkeinkaffee.lda.model.dto.Topic;
 import org.tw.neinkeinkaffee.lda.repository.TopicRepository;
 
+import java.sql.Timestamp;
+import java.time.Instant;
 import java.util.List;
 
 @Service
@@ -16,12 +18,12 @@ public class TopicService {
         this.topicRepository = topicRepository;
     }
 
-    public List<Topic> fetchAllBy(String corpusName, int numberOfTopics) {
-        return topicRepository.findAllByCorpusNameAndNumberOfTopics(corpusName, numberOfTopics);
+    public List<Topic> fetchAllBy(String corpusName, int numberOfTopics, Instant timestamp) {
+        return topicRepository.findAllByCorpusNameAndNumberOfTopicsAndTimestamp(corpusName, numberOfTopics, timestamp);
     }
 
-    public Topic fetchBy(String corpusName, int numberOfTopics, int topicId) {
-        return topicRepository.findAllByCorpusNameAndNumberOfTopicsAndTopicId(corpusName, numberOfTopics, topicId);
+    public Topic fetchBy(String corpusName, int numberOfTopics, Instant timestamp, int topicId) {
+        return topicRepository.findByCorpusNameAndNumberOfTopicsAndTimestampAndTopicId(corpusName, numberOfTopics, timestamp, topicId);
     }
 
     public void save(Topic topic) {

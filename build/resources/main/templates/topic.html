@@ -13,7 +13,7 @@
     <tr th:each="wordProbability : ${topic.topWordProbabilities}">
         <td>
             <a th:text="${wordProbability.word.lemma}"
-           th:href="@{|/corpus/${corpusName}/numberOfTopics/${numberOfTopics}/word/${wordProbability.word.lemma}|}">
+           th:href="@{|/corpus/${corpusName}/numberOfTopics/${numberOfTopics}/timestamp/${timestamp}/word/${wordProbability.word.lemma}|}">
                 banana
             </a>
         </td>
@@ -36,7 +36,7 @@
     <tr th:each="documentProbability : ${topic.topDocumentProbabilities}">
         <td>
             <a th:text="${documentProbability.document.title}"
-               th:href="@{|/corpus/${corpusName}/numberOfTopics/${numberOfTopics}/document/${documentProbability.document.title}|}">
+               th:href="@{|/corpus/${corpusName}/numberOfTopics/${numberOfTopics}/timestamp/${timestamp}/document/${documentProbability.document.title}|}">
                 banana
             </a>
         </td>
