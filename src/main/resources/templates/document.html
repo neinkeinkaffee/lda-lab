@@ -6,30 +6,28 @@
     <link type="text/css" href="/css/style.css" th:href="@{/css/style.css}" rel="stylesheet"/>
 </head>
 <body>
-<h2>Document <span th:text="${document.title}">banana_cake.txt</span></h2>
+<h2>Document <span id="title" th:text="${document.title}">banana_cake.txt</span></h2>
+<span class="parameter" id="corpusName" th:text="${document.corpusName}"/>
+<span class="parameter" id="numberOfTopics" th:text="${document.numberOfTopics}">25</span>
+<span class="parameter" id="timestamp" th:text="${document.timestamp}">2017-12-16</span>
 
-<h3>Topics</h3>
-<table>
-    <tr th:each="topicProbability : ${document.topTopicProbabilities}">
-        <td>
-            <a th:text="${topicProbability.topic.topicId}"
-               th:href="@{|/corpus/${corpusName}/numberOfTopics/${numberOfTopics}/timestamp/${timestamp}/topic/${topicProbability.topic.topicId}|}">
-                0
-            </a>
-            <!--<span th:text="${topicProbability.topic.topWordsSignature}">banana kiwi plum apple fruit</span>-->
-            <span th:text="${topicProbability.topic.topWords}">banana kiwi plum apple fruit</span>
-        </td>
-        <td th:text="${topicProbability.probability}">0.15</td>
-    </tr>
-</table>
+<div id="documentTopics">
+    <h3>Topics</h3>
+    <table id="documentTopicsTable"></table>
+</div>
 
-<h3>Content (Topic Ids in Brackets)</h3>
-<div class="tokens">
-    <div class="token" th:each="token : ${document.tokens}">
-        <span th:text="@{|${token.word.lemma}|}">banana</span>
-        <span th:if="${!token.stopToken}" th:text="@{|(${token.topic.topicId})|}">(0)</span>
+<div id="documentContent">
+    <h3>Content (Topic Ids in Brackets)</h3>
+    <div class="tokens">
+        <div class="token" th:each="token : ${document.tokens}">
+            <span th:text="@{|${token.word.lemma}|}">banana</span>
+            <span th:if="${!token.stopToken}" th:text="@{|(${token.topic.topicId})|}">(0)</span>
+        </div>
     </div>
 </div>
 
+<script src="https://d3js.org/d3.v4.min.js" type="text/javascript" charset="utf-8" />
+<script src="/js/util.js" th:href="@{/js/util.js}" type="text/javascript" charset="utf-8" />
+<script src="/js/document.js" th:href="@{/js/document.js}" type="text/javascript" charset="utf-8" />
 </body>
 </html>

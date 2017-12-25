@@ -7,7 +7,6 @@ d3.request(topic_url)
         return JSON.parse(xhr.responseText);
     })
     .get(function (data) {
-        console.log(data);
         util.buildTable(data.wordProbabilities, "topicWords", "word", "lemma", null);
         util.buildTable(data.multiWordProbabilities, "topicMultiWords", null, null, "lemma");
         util.buildTable(data.documentProbabilities, "topicDocuments", "document", "title", null);

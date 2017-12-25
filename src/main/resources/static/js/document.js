@@ -1,7 +1,7 @@
-var lemma = d3.select("#lemma").text();
-var lemma_url = "http://localhost:8080/api/corpus/" + corpusName + "/numberOfTopics/" + numberOfTopics + "/timestamp/" + timestamp + "/word/" + lemma;
+var title = d3.select("#title").text();
+var document_url = "http://localhost:8080/api/corpus/" + corpusName + "/numberOfTopics/" + numberOfTopics + "/timestamp/" + timestamp + "/document/" + title;
 
-d3.request(decodeURI(lemma_url))
+d3.request(decodeURI(document_url))
     .mimeType("application/json")
     .response(function (xhr) {
         return JSON.parse(xhr.responseText);
@@ -17,5 +17,5 @@ d3.request(decodeURI(lemma_url))
                 return topicProbability
             }
         )
-        util.buildTable(topicProbabilities, "wordTopics", "topic", "topicId", "topWords");
+        util.buildTable(topicProbabilities, "documentTopics", "topic", "topicId", "topWords");
     });

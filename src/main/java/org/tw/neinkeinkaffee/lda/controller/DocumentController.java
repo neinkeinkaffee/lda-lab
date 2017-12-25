@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.tw.neinkeinkaffee.lda.model.dto.DtoDocument;
 import org.tw.neinkeinkaffee.lda.model.dto.DtoLda;
 import org.tw.neinkeinkaffee.lda.service.DocumentService;
@@ -23,7 +24,7 @@ public class DocumentController {
     }
 
     @RequestMapping("/corpus/{corpus_name}/numberOfTopics/{number_of_topics}/timestamp/{timestamp}/document/{document_name}")
-    String listTopic(final @PathVariable("corpus_name") String corpusName,
+    String listDocument(final @PathVariable("corpus_name") String corpusName,
                      final @PathVariable("number_of_topics") int numberOfTopics,
                      final @PathVariable("timestamp") Instant timestamp,
                      final @PathVariable("document_name") String documentName,
@@ -34,5 +35,20 @@ public class DocumentController {
         model.addAttribute("timestamp", timestamp);
         model.addAttribute("document", document);
         return "document";
+    }
+
+    @RequestMapping("/api/corpus/{corpus_name}/numberOfTopics/{number_of_topics}/timestamp/{timestamp}/document/{document_name}")
+    @ResponseBody
+    DtoDocument listDocumentJson(final @PathVariable("corpus_name") String corpusName,
+                     final @PathVariable("number_of_topics") int numberOfTopics,
+                     final @PathVariable("timestamp") Instant timestamp,
+                     final @PathVariable("document_name") String documentName,
+                     Model model) {
+        DtoDocument document = documentService.fetchBy(corpusName, numberOfTopics, timestamp, documentName);
+//        model.addAttribute("corpusName", corpusName);
+//        model.addAttribute("numberOfTopics", numberOfTopics);
+//        model.addAttribute("timestamp", timestamp);
+        model.addAttribute("document", document);
+        return document;
     }
 }

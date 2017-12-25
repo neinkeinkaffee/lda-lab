@@ -16,11 +16,11 @@ import java.util.List;
 public class DtoDocument {
 	@Id
 	private String id;
-	@Setter
+	@Getter @Setter
 	String corpusName;
-	@Setter
+	@Getter @Setter
 	int numberOfTopics;
-	@Setter
+	@Getter @Setter
 	Instant timestamp;
 	@Getter
 	private String title;
