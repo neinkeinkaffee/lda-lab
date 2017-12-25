@@ -91,7 +91,7 @@ public class LdaService {
         save(lda.getDtoLda());
     }
 
-    public void clearBy(String corpusName, int numberOfTopics, Timestamp timestamp) {
+    public void clearBy(String corpusName, int numberOfTopics, Instant timestamp) {
         topicRepository.deleteByCorpusNameAndNumberOfTopicsAndTimestamp(corpusName, numberOfTopics, timestamp);
         contentWordRepository.deleteByCorpusNameAndNumberOfTopicsAndTimestamp(corpusName, numberOfTopics, timestamp);
         documentRepository.deleteByCorpusNameAndNumberOfTopicsAndTimestamp(corpusName, numberOfTopics, timestamp);

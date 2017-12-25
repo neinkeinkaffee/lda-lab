@@ -1,48 +1,51 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <title th:text="@{|Topic ${topic.topicId}|}">Topic 0</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link type="text/css" href="/css/style.css" th:href="@{/css/style.css}" rel="stylesheet"/>
 </head>
 <body>
 
-<h2>Topic <span th:text="${topic.topicId}">0</span></h2>
+<h2>Topic <span id="topicId" th:text="${topic.topicId}">0</span></h2>
+<span class="parameter" id="corpusName" th:text="${topic.corpusName}" />
+<span class="parameter" id="numberOfTopics" th:text="${topic.numberOfTopics}">25</span>
+<span class="parameter" id="timestamp" th:text="${topic.timestamp}">2017-12-16</span>
 
-<h3>Words</h3>
-<table>
-    <tr th:each="wordProbability : ${topic.topWordProbabilities}">
-        <td>
-            <a th:text="${wordProbability.word.lemma}"
-           th:href="@{|/corpus/${corpusName}/numberOfTopics/${numberOfTopics}/timestamp/${timestamp}/word/${wordProbability.word.lemma}|}">
-                banana
-            </a>
-        </td>
-        <td th:text="${wordProbability.probability}">0.15</td>
-    </tr>
-</table>
+<div id="topicWords">
+    <h3>Words</h3>
+    <table id="test">
+    </table>
+</div>
 
-<h3>Word Sequences</h3>
-<table>
-    <tr th:each="wordProbability : ${topic.topMultiWordProbabilities}">
-        <td th:text="${wordProbability.word.lemma}">
-            banana cake
-        </td>
-        <td th:text="${wordProbability.probability}">0.015</td>
-    </tr>
-</table>
+<div id="topicMultiWords">
+    <h3>Word Sequences</h3>
+    <table>
+        <tr th:each="wordProbability : ${topic.topMultiWordProbabilities}">
+            <td th:text="${wordProbability.lemma}">
+                banana cake
+            </td>
+            <td th:text="${wordProbability.probability}">0.015</td>
+        </tr>
+    </table>
+</div>
 
-<h3>Documents</h3>
-<table>
-    <tr th:each="documentProbability : ${topic.topDocumentProbabilities}">
-        <td>
-            <a th:text="${documentProbability.document.title}"
-               th:href="@{|/corpus/${corpusName}/numberOfTopics/${numberOfTopics}/timestamp/${timestamp}/document/${documentProbability.document.title}|}">
-                banana
-            </a>
-        </td>
-        <td th:text="${documentProbability.probability}">0.15</td>
-    </tr>
-</table>
+<div id="topicDocuments">
+    <h3>Documents</h3>
+    <table>
+        <tr th:each="documentProbability : ${topic.topDocumentProbabilities}">
+            <td>
+                <a th:text="${documentProbability.title}"
+                   th:href="@{|/corpus/${corpusName}/numberOfTopics/${numberOfTopics}/timestamp/${timestamp}/document/${documentProbability.title}|}">
+                    banana
+                </a>
+            </td>
+            <td th:text="${documentProbability.probability}">0.15</td>
+        </tr>
+    </table>
+</div>
 
+<script src="https://d3js.org/d3.v4.min.js" type="text/javascript" />
+<script src="/js/words.js" th:href="@{/js/words.css}" type="text/javascript" />
 </body>
 </html>

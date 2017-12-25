@@ -1,5 +1,6 @@
 package org.tw.neinkeinkaffee.lda.model.dto.word;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -23,7 +24,7 @@ public class ContentWord extends Word {
 	private Instant timestamp;
 	@Getter @Setter
 	private List<TopicProbability> topicProbabilities;
-	@Getter(lazy=true)
+	@JsonIgnore @Getter(lazy=true)
 	private final List<TopicProbability> topTopicProbabilities = getTopNTopicProbabilities(5);
 
 	@Builder

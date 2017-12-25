@@ -1,5 +1,6 @@
 package org.tw.neinkeinkaffee.lda.model.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.tw.neinkeinkaffee.lda.model.dto.probability.TopicProbability;
@@ -27,7 +28,7 @@ public class DtoDocument {
 	private List<Token> tokens;
 	@Getter @Setter
 	private List<TopicProbability> topicProbabilities;
-	@Getter(lazy = true)
+	@JsonIgnore @Getter(lazy = true)
 	private final List<TopicProbability> topTopicProbabilities = getTopNTopicProbabilities(5);
 
 	private List<TopicProbability> getTopNTopicProbabilities(int N) {

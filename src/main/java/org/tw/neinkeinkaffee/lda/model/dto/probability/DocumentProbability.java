@@ -7,7 +7,7 @@ import org.tw.neinkeinkaffee.lda.model.dto.DtoDocument;
 @Builder
 public class DocumentProbability implements Comparable<DocumentProbability> {
 	@Getter
-	private DtoDocument document;
+	private String title;
 	@Getter
 	private Double probability;
 

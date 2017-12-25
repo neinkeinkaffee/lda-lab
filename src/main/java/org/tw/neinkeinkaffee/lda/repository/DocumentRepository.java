@@ -14,5 +14,5 @@ public interface DocumentRepository extends MongoRepository<DtoDocument, String>
 
     public DtoDocument findByCorpusNameAndNumberOfTopicsAndTimestampAndTitle(String corpusName, int numberOfTopics, Instant timestamp, String title);
 
-    public Long deleteByCorpusNameAndNumberOfTopicsAndTimestamp(String corpusName, int numberOfTopics, Timestamp timestamp);
+    public Long deleteByCorpusNameAndNumberOfTopicsAndTimestamp(String corpusName, int numberOfTopics, Instant timestamp);
 }

@@ -13,5 +13,5 @@ public interface TopicRepository extends MongoRepository<Topic, String> {
     public List<Topic> findAllByCorpusNameAndNumberOfTopicsAndTimestamp(String corpusName, int numberOfTopics, Instant timestamp);
     public Topic findByCorpusNameAndNumberOfTopicsAndTimestampAndTopicId(String corpusName, int numberOfTopics, Instant timestamp, int topicId);
 
-    public Long deleteByCorpusNameAndNumberOfTopicsAndTimestamp(String corpusName, int numberOfTopics, Timestamp timestamp);
+    public Long deleteByCorpusNameAndNumberOfTopicsAndTimestamp(String corpusName, int numberOfTopics, Instant timestamp);
 }

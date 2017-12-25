@@ -29,7 +29,6 @@ public class LdaToDtoLdaConverter implements Converter<Lda, DtoLda> {
         PairCounter<String, Integer> wordTopicCounts = lda.getWordTopicCounts();
         PairCounter<String, Integer> documentTopicCounts = lda.getDocumentTopicCounts();
 
-        // TODO: It would be nice to extract the nested document and token conversions, but how to achieve the linking of the references to the ContentWords from the wordMap into the ContentTokens in that case?
         HashMap<String, DtoDocument> documentMap = new HashMap<>(documentTopicCounts.stream()
             .map(entry -> DtoDocument.builder()
                 .title(entry.getKey())
@@ -59,7 +58,7 @@ public class LdaToDtoLdaConverter implements Converter<Lda, DtoLda> {
                     .sum();
                 List<WordProbability> wordProbabilities = wordCounts.stream()
                     .map(wordCount -> WordProbability.builder()
-                        .word(ContentWord.builder().lemma(wordCount.getKey()).build())
+                        .lemma(wordCount.getKey())
                         .probability((double) wordCount.getValue() / sumOfWordCounts)
                         .build())
                     .collect(Collectors.toList());
@@ -72,7 +71,7 @@ public class LdaToDtoLdaConverter implements Converter<Lda, DtoLda> {
                 // TODO: multiWord isn't strictly a ContentWord and the statistics aren't strictly probabilities
                 List<WordProbability> multiWordProbabilities = multiWordCounts.stream()
                     .map(multiWordCount -> WordProbability.builder()
-                        .word(ContentWord.builder().lemma(multiWordCount.getKey()).build())
+                        .lemma(multiWordCount.getKey())
                         .probability((double) multiWordCount.getValue() / sumOfMultiWordCounts)
                         .build())
                     .collect(Collectors.toList());
@@ -84,7 +83,7 @@ public class LdaToDtoLdaConverter implements Converter<Lda, DtoLda> {
                     .sum();
                 List<DocumentProbability> documentProbabilities = documentCounts.stream()
                     .map(documentCount -> DocumentProbability.builder()
-                        .document(DtoDocument.builder().title(documentCount.getKey()).build())
+                        .title(documentCount.getKey())
                         .probability((double) documentCount.getValue() / sumOfDocumentCounts)
                         .build())
                     .collect(Collectors.toList());

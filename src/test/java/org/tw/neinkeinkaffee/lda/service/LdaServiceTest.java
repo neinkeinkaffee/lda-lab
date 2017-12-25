@@ -14,6 +14,7 @@ import org.tw.neinkeinkaffee.lda.repository.DocumentRepository;
 import org.tw.neinkeinkaffee.lda.repository.LdaRepository;
 import org.tw.neinkeinkaffee.lda.repository.TopicRepository;
 
+import java.time.Instant;
 import java.util.ArrayList;
 
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -42,19 +43,21 @@ public class LdaServiceTest {
     @Test
     public void shouldFetchDtoLda() {
         // given
+        Instant instant = Instant.now();
         DtoLda expectedDtoLda = DtoLda.builder()
             .corpusName("someCorpus")
             .numberOfTopics(3)
+            .timestamp(instant)
             .build();
-        when(topicRepository.findAllByCorpusNameAndNumberOfTopics("someCorpus", 3))
+        when(topicRepository.findAllByCorpusNameAndNumberOfTopicsAndTimestamp("someCorpus", 3, instant))
             .thenReturn(new ArrayList<>());
-        when(contentWordRepository.findAllByCorpusNameAndNumberOfTopics("someCorpus", 3))
+        when(contentWordRepository.findAllByCorpusNameAndNumberOfTopicsAndTimestamp("someCorpus", 3, instant))
             .thenReturn(new ArrayList<>());
-        when(documentRepository.findAllByCorpusNameAndNumberOfTopics("someCorpus", 3))
+        when(documentRepository.findAllByCorpusNameAndNumberOfTopicsAndTimestamp("someCorpus", 3, instant))
             .thenReturn(new ArrayList<>());
 
         // when
-        DtoLda dtoLda = ldaService.fetchBy("someCorpus", 3);
+        DtoLda dtoLda = ldaService.fetchBy("someCorpus", 3, instant);
 
         // then
         assertThat(dtoLda.getCorpusName(), is("someCorpus"));

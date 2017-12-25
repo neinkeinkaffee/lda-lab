@@ -6,7 +6,7 @@ import org.tw.neinkeinkaffee.lda.model.dto.word.ContentWord;
 
 @Builder
 public class WordProbability implements Comparable<WordProbability> {
-    @Getter private ContentWord word;
+    @Getter private String lemma;
     @Getter private Double probability;
 
     @Override

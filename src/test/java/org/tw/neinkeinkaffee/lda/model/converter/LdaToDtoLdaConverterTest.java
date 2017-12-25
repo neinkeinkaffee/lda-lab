@@ -106,7 +106,7 @@ public class LdaToDtoLdaConverterTest {
 //        assertThat(topicWordProbability.getWord().getLemma(), either(is("oneWord")).or(is("someOtherWord")));
 //        assertThat(topicWordProbability.getProbability(), is(closeTo(1.0, 0.01)));
 //        DocumentProbability topicDocumentProbability = topics.get(0).getDocumentProbabilities().get(0);
-//        assertThat(topicDocumentProbability.getDocument().getTitle(), either(is("oneDocument")).or(is("someOtherDocument")));
+//        assertThat(topicDocumentProbability.getTitle().getTitle(), either(is("oneDocument")).or(is("someOtherDocument")));
 //        assertThat(topicDocumentProbability.getProbability(), is(closeTo(1.0, 0.01)));
 //
 //        HashMap<String, ContentWord> words = dtoLda.getWords();
