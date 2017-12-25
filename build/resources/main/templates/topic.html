@@ -14,40 +14,20 @@
 
 <div id="topicWords">
     <h3>Words</h3>
-    <table id="topicWordsTable">
-    </table>
-    <button id="topicWordsMore">+</button>
-    <button id="topicWordsLess">-</button>
+    <table id="topicWordsTable"></table>
 </div>
 
 <div id="topicMultiWords">
     <h3>Word Sequences</h3>
-    <table>
-        <tr th:each="wordProbability : ${topic.topMultiWordProbabilities}">
-            <td th:text="${wordProbability.lemma}">
-                banana cake
-            </td>
-            <td th:text="${wordProbability.probability}">0.015</td>
-        </tr>
-    </table>
+    <table id="topicMultiWordsTable"></table>
 </div>
 
 <div id="topicDocuments">
     <h3>Documents</h3>
-    <table>
-        <tr th:each="documentProbability : ${topic.topDocumentProbabilities}">
-            <td>
-                <a th:text="${documentProbability.title}"
-                   th:href="@{|/corpus/${corpusName}/numberOfTopics/${numberOfTopics}/timestamp/${timestamp}/document/${documentProbability.title}|}">
-                    banana
-                </a>
-            </td>
-            <td th:text="${documentProbability.probability}">0.15</td>
-        </tr>
-    </table>
+    <table id="topicDocumentsTable"></table>
 </div>
 
 <script src="https://d3js.org/d3.v4.min.js" type="text/javascript" />
-<script src="/js/words.js" th:href="@{/js/words.css}" type="text/javascript" />
+<script src="/js/words.js" th:href="@{/js/words.js}" type="text/javascript" />
 </body>
 </html>

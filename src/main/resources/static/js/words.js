@@ -47,17 +47,27 @@ function appendLinks(rows, key, value) {
             return lda_url + "/" + key + "/" + row[value];
         })
         .text(function (row) {
-            return row['lemma'];
+            return row[value];
         });
 }
 
-function showMore(tbody, data, max, n, key, value) {
+function appendText(rows, value) {
+    rows.append("td")
+        .text(function (row) {
+            return row[value];
+        });
+}
+
+function showMore(tbody, data, max, n, key, value, noLinks) {
     var currentLength = tbody.selectAll("tr").size();
     var rows = tbody.selectAll("tr")
         .data(data.slice(0, currentLength + n))
         .enter()
         .append("tr");
-    appendLinks(rows, key, value);
+    if (noLinks)
+        appendText(rows, value);
+    else
+        appendLinks(rows, key, value);
     appendProbabilities(rows, max);
 }
 
@@ -69,17 +79,23 @@ function showLess(tbody, data, n) {
         .remove();
 }
 
-function buildTable(data, tableName, key, value) {
+function buildTable(data, tableName, key, value, noLinks) {
     var table = d3.select("#" + tableName + "Table");
     var tbody = table.append("tbody");
-    var max = data[0]['probability'];
-    showMore(tbody, data, max, 10, key, value);
-    document.getElementById(tableName + "Less").onclick = function () {
-        showLess(tbody, data, 5);
-    }
-    document.getElementById(tableName + "More").onclick = function () {
-        showMore(tbody, data, max, 5, key, value);
-    }
+    var max = data[0]["probability"];
+    showMore(tbody, data, max, 10, key, value, noLinks);
+    table.append("button")
+        .attr("id", tableName + "More")
+        .text("+")
+        .on("click", function () {
+            showMore(tbody, data, max, 5, key, value, noLinks);
+        });
+    table.append("button")
+        .attr("id", tableName + "Less")
+        .text("-")
+        .on("click", function () {
+            showLess(tbody, data, 5);
+        });
 }
 
 d3.request(topic_url)
@@ -88,10 +104,11 @@ d3.request(topic_url)
         return JSON.parse(xhr.responseText);
     })
     .get(function (data) {
-        buildTable(data.wordProbabilities, "topicWords", "word", "lemma");
+        console.log(data);
+        buildTable(data.wordProbabilities, "topicWords", "word", "lemma", false);
+        buildTable(data.multiWordProbabilities, "topicMultiWords", null, "lemma", true);
+        buildTable(data.documentProbabilities, "topicDocuments", "document", "title", false);
     });
-
-
 
 
 // d3.request(topic_url)
