@@ -16,11 +16,11 @@ import java.util.List;
 public class ContentWord extends Word {
 	@Id
 	private String id;
-	@Setter
+	@Getter @Setter
 	private String corpusName;
-	@Setter
+	@Getter @Setter
 	private int numberOfTopics;
-	@Setter
+	@Getter @Setter
 	private Instant timestamp;
 	@Getter @Setter
 	private List<TopicProbability> topicProbabilities;

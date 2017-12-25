@@ -11,12 +11,33 @@ var util = {
         showMore(tbody, data, max, 10, key, value, noLinks);
         appendButtons(table, tableName, tbody, data, max, key, value, noLinks);
 
-        function appendButtons(table, tableName, tbody, data, max, key, value, noLinks) {
+        function showMore(tbody, data, max, n, linkKey, linkValue, plaintext) {
+            var currentLength = tbody.selectAll("tr").size();
+            var rows = tbody.selectAll("tr")
+                .data(data.slice(0, currentLength + n))
+                .enter()
+                .append("tr");
+            if (linkKey)
+                appendLinks(rows, linkKey, linkValue);
+            if (plaintext)
+                appendText(rows, plaintext);
+            appendProbabilities(rows, max);
+        }
+
+        function showLess(tbody, data, n) {
+            var currentLength = tbody.selectAll("tr").size();
+            var rows = tbody.selectAll("tr")
+                .data(data.slice(0, currentLength - n))
+                .exit()
+                .remove();
+        }
+
+        function appendButtons(table, tableName, tbody, data, max, linkKey, linkValue, plaintext) {
             table.append("button")
                 .attr("id", tableName + "More")
                 .text("+")
                 .on("click", function () {
-                    showMore(tbody, data, max, 5, key, value, noLinks);
+                    showMore(tbody, data, max, 5, linkKey, linkValue, plaintext);
                 });
             table.append("button")
                 .attr("id", tableName + "Less")
@@ -27,11 +48,6 @@ var util = {
         }
 
         function appendProbabilities(rows, max) {
-            rows.append("td")
-                .text(function (row) {
-                    return row['probability'];
-                });
-
             rows.append("td").classed("weight", true)
                 .append("div")
                 .classed("proportion", true)
@@ -40,6 +56,11 @@ var util = {
                 })
                 .append("span")
                 .classed("proportion", true)
+                .text(function (row) {
+                    return row['probability'];
+                });
+
+            rows.append("td")
                 .text(function (row) {
                     return row['probability'];
                 });
@@ -61,27 +82,6 @@ var util = {
                 .text(function (row) {
                     return row[value];
                 });
-        }
-
-        function showMore(tbody, data, max, n, linkKey, linkValue, plaintext) {
-            var currentLength = tbody.selectAll("tr").size();
-            var rows = tbody.selectAll("tr")
-                .data(data.slice(0, currentLength + n))
-                .enter()
-                .append("tr");
-            if (linkKey)
-                appendLinks(rows, linkKey, linkValue);
-            if (plaintext)
-                appendText(rows, plaintext);
-            appendProbabilities(rows, max);
-        }
-
-        function showLess(tbody, data, n) {
-            var currentLength = tbody.selectAll("tr").size();
-            var rows = tbody.selectAll("tr")
-                .data(data.slice(0, currentLength - n))
-                .exit()
-                .remove();
         }
     }
 }
