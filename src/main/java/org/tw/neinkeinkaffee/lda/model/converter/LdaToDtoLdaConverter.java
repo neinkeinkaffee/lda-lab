@@ -11,6 +11,7 @@ import org.tw.neinkeinkaffee.lda.model.dto.token.StopToken;
 import org.tw.neinkeinkaffee.lda.model.dto.word.ContentWord;
 import org.tw.neinkeinkaffee.lda.model.dto.word.StopWord;
 import org.tw.neinkeinkaffee.lda.model.lda.Lda;
+import org.tw.neinkeinkaffee.lda.model.lda.LdaDocument;
 import org.tw.neinkeinkaffee.lda.model.lda.PairCounter;
 import org.tw.neinkeinkaffee.lda.model.lda.SimpleCounter;
 
@@ -28,24 +29,31 @@ public class LdaToDtoLdaConverter implements Converter<Lda, DtoLda> {
         PairCounter<Integer, String> topicDocumentCounts = lda.getTopicDocumentCounts();
         PairCounter<String, Integer> wordTopicCounts = lda.getWordTopicCounts();
         PairCounter<String, Integer> documentTopicCounts = lda.getDocumentTopicCounts();
+        HashMap<String, LdaDocument> ldaDocuments = lda.getDocuments();
 
         HashMap<String, DtoDocument> documentMap = new HashMap<>(documentTopicCounts.stream()
-            .map(entry -> DtoDocument.builder()
-                .title(entry.getKey())
-                .tokens(lda.getDocuments().get(entry.getKey()).getTokens().stream()
-                    .map(token -> {
-                        if (token.isStopword())
-                            return StopToken.builder()
-                                .word(StopWord.builder().lemma(token.getLemma()).build())
-                                .build();
-                        else
-                            return ContentToken.builder()
-                                .word(ContentWord.builder().lemma(token.getLemma()).build())
-                                .topic(Topic.builder().topicId(token.getTopic()).build())
-                                .build();
-                    })
-                    .collect(Collectors.toList()))
-                .build())
+            .map(entry -> {
+                String title = entry.getKey();
+                LdaDocument ldaDocument = ldaDocuments.get(title);
+                return DtoDocument.builder()
+                    .title(title)
+                    .author(ldaDocument.getAuthor())
+                    .volume(ldaDocument.getVolume())
+                    .tokens(ldaDocument.getTokens().stream()
+                        .map(token -> {
+                            if (token.isStopword())
+                                return StopToken.builder()
+                                    .word(StopWord.builder().lemma(token.getLemma()).build())
+                                    .build();
+                            else
+                                return ContentToken.builder()
+                                    .word(ContentWord.builder().lemma(token.getLemma()).build())
+                                    .topic(Topic.builder().topicId(token.getTopic()).build())
+                                    .build();
+                        })
+                        .collect(Collectors.toList()))
+                    .build();
+            })
             .collect((Collectors.toMap(document -> document.getTitle(), document -> document))));
 
         List<Topic> topics = topicWordCounts.stream()
@@ -82,10 +90,17 @@ public class LdaToDtoLdaConverter implements Converter<Lda, DtoLda> {
                     .mapToInt(d -> d.getValue())
                     .sum();
                 List<DocumentProbability> documentProbabilities = documentCounts.stream()
-                    .map(documentCount -> DocumentProbability.builder()
-                        .title(documentCount.getKey())
-                        .probability((double) documentCount.getValue() / sumOfDocumentCounts)
-                        .build())
+                    .map(documentCount -> {
+                        String title = documentCount.getKey();
+                        return DocumentProbability.builder()
+                            .document(DtoDocument.builder()
+                                .title(title)
+                                .author(documentMap.get(title).getAuthor())
+                                .volume(documentMap.get(title).getVolume())
+                                .build())
+                            .probability((double) documentCount.getValue() / sumOfDocumentCounts)
+                            .build();
+                    })
                     .collect(Collectors.toList());
                 Collections.sort(documentProbabilities, Collections.reverseOrder());
 

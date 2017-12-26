@@ -6,10 +6,17 @@
     <link type="text/css" href="/css/style.css" th:href="@{/css/style.css}" rel="stylesheet"/>
 </head>
 <body>
-<h2>Document <span id="title" th:text="${document.title}">banana_cake.txt</span></h2>
+<h2>
+    Document
+    <span id="author" th:if="${document.author != null}" th:text="@{|${document.author}: |}">Hinz Kunz: </span>
+    <span id="title" th:text="${document.title}">banana_cake.txt</span>
+    <span id="volume" th:if="${document.volume != null}" th:text="@{| (${document.volume})|}">(Chapter 1)</span>
+</h2>
 <span class="parameter" id="corpusName" th:text="${document.corpusName}"/>
 <span class="parameter" id="numberOfTopics" th:text="${document.numberOfTopics}">25</span>
 <span class="parameter" id="timestamp" th:text="${document.timestamp}">2017-12-16</span>
+
+<!--<span th:if="${document.volume != null}" th:text="${document.volume}"></span>-->
 
 <div id="documentTopics">
     <h3>Topics</h3>

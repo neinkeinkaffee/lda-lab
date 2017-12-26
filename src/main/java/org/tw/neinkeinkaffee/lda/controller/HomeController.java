@@ -41,23 +41,20 @@ public class HomeController {
 
     @RequestMapping("/createAllCorpora")
     String createAllCorpora() {
-        String nanoCorpusString = FileToStringReader.readFileToString("/Users/gstupper/repos/lda-lab/src/test/resources/corpora/hcjswb_nano.txt");
-        String smallCorpusString = FileToStringReader.readFileToString("/Users/gstupper/repos/lda-lab/src/test/resources/corpora/hcjswb_small.txt");
-        String first100CorpusString = FileToStringReader.readFileToString("/Users/gstupper/repos/lda-lab/src/test/resources/corpora/hcjswb_first100.txt");
-        String first500CorpusString = FileToStringReader.readFileToString("/Users/gstupper/repos/lda-lab/src/test/resources/corpora/hcjswb_first500.txt");
-        String fullCorpusString = FileToStringReader.readFileToString("/Users/gstupper/repos/lda-lab/src/test/resources/corpora/hcjswb.txt");
+        String smallCorpusString = FileToStringReader.readFileToString("/Users/gstupper/repos/lda-lab/src/test/resources/corpora/hcjswb_he_1827_small.txt");
+        String first100CorpusString = FileToStringReader.readFileToString("/Users/gstupper/repos/lda-lab/src/test/resources/corpora/hcjswb_he_1827_first100.txt");
+        String first500CorpusString = FileToStringReader.readFileToString("/Users/gstupper/repos/lda-lab/src/test/resources/corpora/hcjswb_he_1827_first500.txt");
+        String fullCorpusString = FileToStringReader.readFileToString("/Users/gstupper/repos/lda-lab/src/test/resources/corpora/hcjswb_he_1827.txt");
         String stopwordString = FileToStringReader.readFileToString("/Users/gstupper/repos/lda-lab/src/test/resources/corpora/hcjswb_stop.txt");
-        corpusService.clearAll();
-        Corpus nanoCorpus = Corpus.fromString("hcjswb_nano", nanoCorpusString, stopwordString);
-        Corpus smallCorpus = Corpus.fromString("hcjswb_small", smallCorpusString, stopwordString);
-        Corpus first100Corpus = Corpus.fromString("hcjswb_first100", first100CorpusString, stopwordString);
-        Corpus first500Corpus = Corpus.fromString("hcjswb_first500", first500CorpusString, stopwordString);
-        Corpus fullCorpus = Corpus.fromString("hcjswb", fullCorpusString, stopwordString);
-        corpusService.save(nanoCorpus);
+//        corpusService.clearAll();
+        Corpus smallCorpus = Corpus.fromString("hcjswb_with_volumes_small", smallCorpusString, stopwordString);
+        Corpus first100Corpus = Corpus.fromString("hcjswb_with_volumes_first100", first100CorpusString, stopwordString);
+        Corpus first500Corpus = Corpus.fromString("hcjswb_with_volumes_first500", first500CorpusString, stopwordString);
+//        Corpus fullCorpus = Corpus.fromString("hcjswb_with_volumes", fullCorpusString, stopwordString);
         corpusService.save(smallCorpus);
         corpusService.save(first100Corpus);
         corpusService.save(first500Corpus);
-        corpusService.save(fullCorpus);
+//        corpusService.save(fullCorpus);
         return "redirect:/";
     }
 

@@ -20,6 +20,10 @@ public class DtoDocument {
 	String corpusName;
 	@Getter @Setter
 	int numberOfTopics;
+	@Getter
+	private String author;
+	@Getter
+	String volume;
 	@Getter @Setter
 	Instant timestamp;
 	@Getter

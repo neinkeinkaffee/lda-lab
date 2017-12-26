@@ -14,6 +14,7 @@ public class CorpusDocumentToLdaDocumentConverter implements Converter<CorpusDoc
 	public LdaDocument convert(CorpusDocument corpusDocument) {
 		String title = corpusDocument.getTitle();
 		String author = corpusDocument.getAuthor();
+		String volume = corpusDocument.getVolume();
 		List<LdaToken> tokens = corpusDocument.getWords().stream()
 			.map(word -> LdaToken.builder()
 							.lemma(word.getLemma())
@@ -24,6 +25,7 @@ public class CorpusDocumentToLdaDocumentConverter implements Converter<CorpusDoc
 		return LdaDocument.builder()
 			.title(title)
 			.author(author)
+			.volume(volume)
 			.tokens(tokens)
 			.build();
 	}

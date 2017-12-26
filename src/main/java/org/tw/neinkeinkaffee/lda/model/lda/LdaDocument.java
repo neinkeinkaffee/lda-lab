@@ -13,6 +13,8 @@ public class LdaDocument {
 	private String title;
 	@Getter
 	private String author;
+	@Getter
+	private String volume;
 	@Singular @Getter
 	private List<LdaToken> tokens;
 	@Setter

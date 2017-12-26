@@ -7,7 +7,17 @@ d3.request(topic_url)
         return JSON.parse(xhr.responseText);
     })
     .get(function (data) {
+        var documentProbabilities = data.documentProbabilities.map(
+            function(row) {
+                var document = row.document;
+                var documentProbability = {};
+                documentProbability["title"] = document.title;
+                documentProbability["meta"] = document.author + " (" + document.volume + ")";
+                documentProbability["probability"] = row.probability;
+                return documentProbability;
+            }
+        )
         util.buildTable(data.wordProbabilities, "topicWords", "word", "lemma", null);
         util.buildTable(data.multiWordProbabilities, "topicMultiWords", null, null, "lemma");
-        util.buildTable(data.documentProbabilities, "topicDocuments", "document", "title", null);
+        util.buildTable(documentProbabilities, "topicDocuments", "document", "title", "meta");
     });
