@@ -57,7 +57,7 @@ d3.request(decodeURI(documentUrl))
                 var topicId = this.id;
                 d3.select(this)
                     .on("click", function () {
-                        markTopic(".topicWords", topicId);
+                        markTopic(".topWords", topicId);
                         markTopic(".contentToken", topicId);
                     });
                 return colorRamp(topicId);
