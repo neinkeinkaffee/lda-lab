@@ -41,20 +41,23 @@ public class HomeController {
 
     @RequestMapping("/createAllCorpora")
     String createAllCorpora() {
-        String smallCorpusString = FileToStringReader.readFileToString("/Users/gstupper/repos/lda-lab/src/test/resources/corpora/hcjswb_he_1827_small.txt");
-        String first100CorpusString = FileToStringReader.readFileToString("/Users/gstupper/repos/lda-lab/src/test/resources/corpora/hcjswb_he_1827_first100.txt");
-        String first500CorpusString = FileToStringReader.readFileToString("/Users/gstupper/repos/lda-lab/src/test/resources/corpora/hcjswb_he_1827_first500.txt");
-        String fullCorpusString = FileToStringReader.readFileToString("/Users/gstupper/repos/lda-lab/src/test/resources/corpora/hcjswb_he_1827.txt");
+        String heCorpusString = FileToStringReader.readFileToString("/Users/gstupper/repos/lda-lab/src/test/resources/corpora/hcjswb_he_1827.txt");
+        String raoCorpusString = FileToStringReader.readFileToString("/Users/gstupper/repos/lda-lab/src/test/resources/corpora/hcjswxb_rao_1881.txt");
+        String shengCorpusString = FileToStringReader.readFileToString("/Users/gstupper/repos/lda-lab/src/test/resources/corpora/hcjswxb_sheng_1897.txt");
         String stopwordString = FileToStringReader.readFileToString("/Users/gstupper/repos/lda-lab/src/test/resources/corpora/hcjswb_stop.txt");
-//        corpusService.clearAll();
-        Corpus smallCorpus = Corpus.fromString("hcjswb_with_volumes_small", smallCorpusString, stopwordString);
-        Corpus first100Corpus = Corpus.fromString("hcjswb_with_volumes_first100", first100CorpusString, stopwordString);
-        Corpus first500Corpus = Corpus.fromString("hcjswb_with_volumes_first500", first500CorpusString, stopwordString);
-//        Corpus fullCorpus = Corpus.fromString("hcjswb_with_volumes", fullCorpusString, stopwordString);
-        corpusService.save(smallCorpus);
-        corpusService.save(first100Corpus);
-        corpusService.save(first500Corpus);
-//        corpusService.save(fullCorpus);
+//        String stopwordStringNoNumbers = FileToStringReader.readFileToString("/Users/gstupper/repos/lda-lab/src/test/resources/corpora/hcjswb_stop_no_numbers.txt");
+//        Corpus heCorpus = Corpus.fromString("hcjswb_he_1827", heCorpusString, stopwordString);
+//        Corpus heCorpusNoNumbers = Corpus.fromString("hcjswb_he_1827", heCorpusString, stopwordStringNoNumbers);
+//        Corpus raoCorpus = Corpus.fromString("hcjswxb_rao_1881", raoCorpusString, stopwordString);
+//        Corpus raoCorpusNoNumbers = Corpus.fromString("hcjswxb_rao_1881", raoCorpusString, stopwordStringNoNumbers);
+        Corpus shengCorpus = Corpus.fromString("hcjswxb_sheng_1897", shengCorpusString, stopwordString);
+//        Corpus shengCorpusNoNumbers = Corpus.fromString("hcjswxb_sheng_1897", shengCorpusString, stopwordStringNoNumbers);
+//        corpusService.save(heCorpus);
+//        corpusService.save(heCorpusNoNumbers);
+//        corpusService.save(raoCorpus);
+//        corpusService.save(raoCorpusNoNumbers);
+        corpusService.save(shengCorpus);
+//        corpusService.save(shengCorpusNoNumbers);
         return "redirect:/";
     }
 
