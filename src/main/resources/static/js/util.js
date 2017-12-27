@@ -72,6 +72,7 @@ var util = {
                 .attr("href", function (row) {
                     return ldaUrl + "/" + key + "/" + row[value];
                 })
+                .attr("class", value)
                 .text(function (row) {
                     return row[value];
                 });
@@ -79,6 +80,7 @@ var util = {
 
         function appendText(rows, value) {
             rows.append("td")
+                .attr("class", value)
                 .text(function (row) {
                     return row[value];
                 });
