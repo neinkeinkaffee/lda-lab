@@ -33,13 +33,14 @@ var util = {
         }
 
         function appendButtons(table, tableName, tbody, data, max, linkKey, linkValue, plaintext) {
-            table.append("button")
+            var tableParent = d3.select(table.node().parentNode);
+            tableParent.append("button")
                 .attr("id", tableName + "More")
                 .text("+")
                 .on("click", function () {
                     showMore(tbody, data, max, 5, linkKey, linkValue, plaintext);
                 });
-            table.append("button")
+            tableParent.append("button")
                 .attr("id", tableName + "Less")
                 .text("-")
                 .on("click", function () {
@@ -62,7 +63,7 @@ var util = {
 
             rows.append("td")
                 .text(function (row) {
-                    return row['probability'];
+                    return d3.format(".2%")(row['probability']);
                 });
         }
 

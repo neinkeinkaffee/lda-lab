@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<head>
+    <title>Sidebar</title>
+</head>
+<body>
+
+<div layout:fragment="sidebar">
+    <h2>Lda Lab</h2>
+    <p>You can explore one of the following topic models or create a new model with one of the available corpora.</p>
+
+    <h3>Available Models</h3>
+    <ul th:each="model: ${availableModels}">
+        <li>
+            <a th:text="@{|Model with ${model.numberOfTopics} topics estimated from corpus ${model.corpusName} (${model.timestamp})|}"
+               th:href="@{|/corpus/${model.corpusName}/numberOfTopics/${model.numberOfTopics}/timestamp/${model.timestamp}/topic|}">
+                Model with 10 topics estimated from corpus toy
+            </a>
+            <a th:text="[delete]"
+               th:href="@{|/corpus/${model.corpusName}/numberOfTopics/${model.numberOfTopics}/timestamp/${model.timestamp}/delete|}">
+                [delete]
+            </a>
+        </li>
+    </ul>
+    <h3>Available Corpora</h3>
+    <form action="#" th:action="@{/createLda}" th:object="${ldaParameterCombination}" method="post">
+        <p>Corpus:
+            <select th:field="*{corpusName}">
+                <option th:each="corpus : ${availableCorpora}"
+                        th:value="${corpus.name}"
+                        th:text="${corpus.name}">
+                    toy
+                </option>
+            </select>
+        </p>
+        <p>Number of topics <input type="text" th:field="*{numberOfTopics}"/></p>
+        <p><input type="submit" value="Submit"/> <input type="reset" value="Reset"/></p>
+    </form>
+</div>
+
+</body>
+</html>
