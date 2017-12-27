@@ -86,19 +86,19 @@ public class LdaToDtoLdaConverter implements Converter<Lda, DtoLda> {
                 Collections.sort(multiWordProbabilities, Collections.reverseOrder());
 
                 SimpleCounter<String> documentCounts = topicDocumentCounts.getCount(topicId);
-                int sumOfDocumentCounts = documentCounts.stream()
-                    .mapToInt(d -> d.getValue())
-                    .sum();
                 List<DocumentProbability> documentProbabilities = documentCounts.stream()
                     .map(documentCount -> {
                         String title = documentCount.getKey();
+                        int sumOfTopicCounts = documentTopicCounts.getCount(title).stream()
+                            .mapToInt(d -> d.getValue())
+                            .sum();
                         return DocumentProbability.builder()
                             .document(DtoDocument.builder()
                                 .title(title)
                                 .author(documentMap.get(title).getAuthor())
                                 .volume(documentMap.get(title).getVolume())
                                 .build())
-                            .probability((double) documentCount.getValue() / sumOfDocumentCounts)
+                            .probability((double) documentCount.getValue() / sumOfTopicCounts)
                             .build();
                     })
                     .collect(Collectors.toList());

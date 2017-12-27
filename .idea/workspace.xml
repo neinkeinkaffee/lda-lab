@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6a51af1c-45ba-4e74-84b6-a44b9d5a1b13" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/static/js/document.js" afterPath="$PROJECT_DIR$/src/main/resources/static/js/document.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/static/js/util.js" afterPath="$PROJECT_DIR$/src/main/resources/static/js/util.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/templates/document.html" afterPath="$PROJECT_DIR$/src/main/resources/templates/document.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/tw/neinkeinkaffee/lda/model/converter/LdaToDtoLdaConverter.java" afterPath="$PROJECT_DIR$/src/main/java/org/tw/neinkeinkaffee/lda/model/converter/LdaToDtoLdaConverter.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -29,31 +26,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="document.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/document.js">
+      <file leaf-file-name="LdaToDtoLdaConverter.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/org/tw/neinkeinkaffee/lda/model/converter/LdaToDtoLdaConverter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="128">
-              <caret line="47" column="39" lean-forward="false" selection-start-line="47" selection-start-column="39" selection-end-line="47" selection-end-column="39" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="document.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/document.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="86">
-              <caret line="23" column="26" lean-forward="true" selection-start-line="23" selection-start-column="26" selection-end-line="23" selection-end-column="26" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="util.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/util.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="343">
-              <caret line="82" column="31" lean-forward="false" selection-start-line="82" selection-start-column="31" selection-end-line="82" selection-end-column="31" />
+            <state relative-caret-position="1275">
+              <caret line="104" column="78" lean-forward="true" selection-start-line="104" selection-start-column="78" selection-end-line="104" selection-end-column="78" />
               <folding />
             </state>
           </provider>
@@ -528,11 +505,11 @@
         <option value="$PROJECT_DIR$/src/test/resources/corpora/hcjswb_he_1827.txt" />
         <option value="$PROJECT_DIR$/src/main/java/org/tw/neinkeinkaffee/lda/controller/HomeController.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/tw/neinkeinkaffee/lda/model/dto/probability/DocumentProbability.java" />
-        <option value="$PROJECT_DIR$/src/main/java/org/tw/neinkeinkaffee/lda/model/converter/LdaToDtoLdaConverter.java" />
         <option value="$PROJECT_DIR$/src/main/resources/static/js/topic.js" />
         <option value="$PROJECT_DIR$/src/main/resources/static/js/util.js" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/document.html" />
         <option value="$PROJECT_DIR$/src/main/resources/static/js/document.js" />
+        <option value="$PROJECT_DIR$/src/main/java/org/tw/neinkeinkaffee/lda/model/converter/LdaToDtoLdaConverter.java" />
       </list>
     </option>
   </component>
@@ -1073,7 +1050,7 @@
       <updated>1513671842611</updated>
       <workItem from="1513671850321" duration="678000" />
       <workItem from="1513948367285" duration="19886000" />
-      <workItem from="1514064870285" duration="75187000" />
+      <workItem from="1514064870285" duration="76263000" />
     </task>
     <servers />
   </component>
@@ -1110,7 +1087,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="124669000" />
+    <option name="totallyTimeSpent" value="125745000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="877" extended-state="6" />
@@ -1535,14 +1512,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/tw/neinkeinkaffee/lda/model/converter/LdaToDtoLdaConverter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="251">
-          <caret line="93" column="62" lean-forward="false" selection-start-line="93" selection-start-column="62" selection-end-line="93" selection-end-column="62" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/tw/neinkeinkaffee/lda/controller/TopicController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="557">
@@ -1583,10 +1552,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/util.js">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/document.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="343">
-          <caret line="82" column="31" lean-forward="false" selection-start-line="82" selection-start-column="31" selection-end-line="82" selection-end-column="31" />
+        <state relative-caret-position="128">
+          <caret line="47" column="39" lean-forward="false" selection-start-line="47" selection-start-column="39" selection-end-line="47" selection-end-column="39" />
           <folding />
         </state>
       </provider>
@@ -1599,10 +1568,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/document.js">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/util.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="128">
-          <caret line="47" column="39" lean-forward="false" selection-start-line="47" selection-start-column="39" selection-end-line="47" selection-end-column="39" />
+        <state relative-caret-position="343">
+          <caret line="82" column="31" lean-forward="false" selection-start-line="82" selection-start-column="31" selection-end-line="82" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/tw/neinkeinkaffee/lda/model/converter/LdaToDtoLdaConverter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1275">
+          <caret line="104" column="78" lean-forward="true" selection-start-line="104" selection-start-column="78" selection-end-line="104" selection-end-column="78" />
           <folding />
         </state>
       </provider>
