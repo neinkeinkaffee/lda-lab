@@ -6,6 +6,11 @@
     <link type="text/css" href="/css/style.css" th:href="@{/css/style.css}" rel="stylesheet"/>
 </head>
 <body>
+<a href="/">Home</a>
+<a th:href="@{|/corpus/${word.corpusName}/numberOfTopics/${word.numberOfTopics}/timestamp/${word.timestamp}/topic/|}">
+    Back to List of Topics
+</a>
+
 <h2>Word <span id="lemma" th:text="${word.lemma}">banana</span></h2>
 <span class="parameter" id="corpusName" th:text="${word.corpusName}" />
 <span class="parameter" id="numberOfTopics" th:text="${word.numberOfTopics}">25</span>

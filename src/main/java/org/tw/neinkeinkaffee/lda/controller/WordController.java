@@ -31,9 +31,6 @@ public class WordController {
                      final @PathVariable("word_lemma") String wordLemma,
                      Model model) {
         ContentWord word = wordService.fetchBy(corpusName, numberOfTopics, timestamp, wordLemma);
-//        model.addAttribute("corpusName", corpusName);
-//        model.addAttribute("numberOfTopics", numberOfTopics);
-//        model.addAttribute("timestamp", timestamp);
         model.addAttribute("word", word);
         return "word";
     }
@@ -46,7 +43,6 @@ public class WordController {
                         final @PathVariable("word_lemma") String word_lemma,
                         Model model) {
         ContentWord word = wordService.fetchBy(corpusName, numberOfTopics, timestamp, word_lemma);
-
         return word;
     }
 }

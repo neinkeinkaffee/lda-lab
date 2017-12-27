@@ -44,9 +44,6 @@ public class TopicController {
                      final @PathVariable("topic_id") int topicId,
                      Model model) {
         Topic topic = topicService.fetchBy(corpusName, numberOfTopics, timestamp, topicId);
-        model.addAttribute("corpusName", corpusName);
-        model.addAttribute("numberOfTopics", numberOfTopics);
-        model.addAttribute("timestamp", timestamp);
         model.addAttribute("topic", topic);
         return "topic";
     }
@@ -59,7 +56,6 @@ public class TopicController {
                   final @PathVariable("topic_id") int topicId,
                   Model model) {
         Topic topic = topicService.fetchBy(corpusName, numberOfTopics, timestamp, topicId);
-
         return topic;
     }
 }

@@ -30,9 +30,6 @@ public class DocumentController {
                      final @PathVariable("document_name") String documentName,
                      Model model) {
         DtoDocument document = documentService.fetchBy(corpusName, numberOfTopics, timestamp, documentName);
-        model.addAttribute("corpusName", corpusName);
-        model.addAttribute("numberOfTopics", numberOfTopics);
-        model.addAttribute("timestamp", timestamp);
         model.addAttribute("document", document);
         return "document";
     }
@@ -45,9 +42,6 @@ public class DocumentController {
                      final @PathVariable("document_name") String documentName,
                      Model model) {
         DtoDocument document = documentService.fetchBy(corpusName, numberOfTopics, timestamp, documentName);
-//        model.addAttribute("corpusName", corpusName);
-//        model.addAttribute("numberOfTopics", numberOfTopics);
-//        model.addAttribute("timestamp", timestamp);
         model.addAttribute("document", document);
         return document;
     }

@@ -6,6 +6,11 @@
     <link type="text/css" href="/css/style.css" th:href="@{/css/style.css}" rel="stylesheet"/>
 </head>
 <body>
+<a href="/">Home</a>
+<a th:href="@{|/corpus/${document.corpusName}/numberOfTopics/${document.numberOfTopics}/timestamp/${document.timestamp}/topic/|}">
+    Back to List of Topics
+</a>
+
 <h2>
     Document
     <span id="author" th:if="${document.author != null}" th:text="@{|${document.author}: |}">Hinz Kunz: </span>
