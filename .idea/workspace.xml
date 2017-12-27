@@ -2,7 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6a51af1c-45ba-4e74-84b6-a44b9d5a1b13" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/tw/neinkeinkaffee/lda/model/converter/LdaToDtoLdaConverter.java" afterPath="$PROJECT_DIR$/src/main/java/org/tw/neinkeinkaffee/lda/model/converter/LdaToDtoLdaConverter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.5-rc-2/fileContent/fileContent.lock" afterPath="$PROJECT_DIR$/.gradle/3.5-rc-2/fileContent/fileContent.lock" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.5-rc-2/taskHistory/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/3.5-rc-2/taskHistory/fileHashes.bin" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.5-rc-2/taskHistory/fileSnapshots.bin" afterPath="$PROJECT_DIR$/.gradle/3.5-rc-2/taskHistory/fileSnapshots.bin" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.5-rc-2/taskHistory/taskHistory.bin" afterPath="$PROJECT_DIR$/.gradle/3.5-rc-2/taskHistory/taskHistory.bin" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.5-rc-2/taskHistory/taskHistory.lock" afterPath="$PROJECT_DIR$/.gradle/3.5-rc-2/taskHistory/taskHistory.lock" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/static/js/document.js" afterPath="$PROJECT_DIR$/src/main/resources/static/js/document.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/templates/document.html" afterPath="$PROJECT_DIR$/src/main/resources/templates/document.html" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -26,11 +33,41 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="LdaToDtoLdaConverter.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="LdaToDtoLdaConverter.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/org/tw/neinkeinkaffee/lda/model/converter/LdaToDtoLdaConverter.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1275">
               <caret line="104" column="78" lean-forward="true" selection-start-line="104" selection-start-column="78" selection-end-line="104" selection-end-column="78" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="document.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/document.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="165">
+              <caret line="40" column="22" lean-forward="false" selection-start-line="40" selection-start-column="22" selection-end-line="40" selection-end-column="22" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="util.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/util.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="105">
+              <caret line="7" column="57" lean-forward="false" selection-start-line="7" selection-start-column="57" selection-end-line="7" selection-end-column="57" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="document.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/document.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="389">
+              <caret line="35" column="16" lean-forward="false" selection-start-line="35" selection-start-column="16" selection-end-line="35" selection-end-column="16" />
               <folding />
             </state>
           </provider>
@@ -506,10 +543,10 @@
         <option value="$PROJECT_DIR$/src/main/java/org/tw/neinkeinkaffee/lda/controller/HomeController.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/tw/neinkeinkaffee/lda/model/dto/probability/DocumentProbability.java" />
         <option value="$PROJECT_DIR$/src/main/resources/static/js/topic.js" />
-        <option value="$PROJECT_DIR$/src/main/resources/static/js/util.js" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/document.html" />
-        <option value="$PROJECT_DIR$/src/main/resources/static/js/document.js" />
         <option value="$PROJECT_DIR$/src/main/java/org/tw/neinkeinkaffee/lda/model/converter/LdaToDtoLdaConverter.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/document.html" />
+        <option value="$PROJECT_DIR$/src/main/resources/static/js/util.js" />
+        <option value="$PROJECT_DIR$/src/main/resources/static/js/document.js" />
       </list>
     </option>
   </component>
@@ -1050,7 +1087,7 @@
       <updated>1513671842611</updated>
       <workItem from="1513671850321" duration="678000" />
       <workItem from="1513948367285" duration="19886000" />
-      <workItem from="1514064870285" duration="76263000" />
+      <workItem from="1514064870285" duration="77140000" />
     </task>
     <servers />
   </component>
@@ -1087,7 +1124,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="125745000" />
+    <option name="totallyTimeSpent" value="126622000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="877" extended-state="6" />
@@ -1160,6 +1197,32 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="RECENTLY_FILTERED_USER_GROUPS">
+                <collection />
+              </option>
+              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+                <collection />
+              </option>
+              <option name="COLUMN_ORDER">
+                <list>
+                  <option value="0" />
+                  <option value="1" />
+                  <option value="2" />
+                  <option value="3" />
+                </list>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
@@ -1552,34 +1615,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/document.js">
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/tw/neinkeinkaffee/lda/model/converter/LdaToDtoLdaConverter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="128">
-          <caret line="47" column="39" lean-forward="false" selection-start-line="47" selection-start-column="39" selection-end-line="47" selection-end-column="39" />
+        <state relative-caret-position="1275">
+          <caret line="104" column="78" lean-forward="true" selection-start-line="104" selection-start-column="78" selection-end-line="104" selection-end-column="78" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/templates/document.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="86">
-          <caret line="23" column="26" lean-forward="true" selection-start-line="23" selection-start-column="26" selection-end-line="23" selection-end-column="26" />
+        <state relative-caret-position="389">
+          <caret line="35" column="16" lean-forward="false" selection-start-line="35" selection-start-column="16" selection-end-line="35" selection-end-column="16" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/util.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="343">
-          <caret line="82" column="31" lean-forward="false" selection-start-line="82" selection-start-column="31" selection-end-line="82" selection-end-column="31" />
+        <state relative-caret-position="105">
+          <caret line="7" column="57" lean-forward="false" selection-start-line="7" selection-start-column="57" selection-end-line="7" selection-end-column="57" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/tw/neinkeinkaffee/lda/model/converter/LdaToDtoLdaConverter.java">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/document.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1275">
-          <caret line="104" column="78" lean-forward="true" selection-start-line="104" selection-start-column="78" selection-end-line="104" selection-end-column="78" />
+        <state relative-caret-position="165">
+          <caret line="40" column="22" lean-forward="false" selection-start-line="40" selection-start-column="22" selection-end-line="40" selection-end-column="22" />
           <folding />
         </state>
       </provider>

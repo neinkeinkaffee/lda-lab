@@ -18,7 +18,23 @@
 
 <div id="documentTopics">
     <h3>Topics</h3>
-    <table id="documentTopicsTable"></table>
+    <table id="documentTopicsTable">
+        <tbody>
+        <tr th:each="topicProbability : ${document.topTopicProbabilities}">
+            <td>
+                <a th:text="${topicProbability.topic.topicId}"
+                   th:href="@{|/corpus/${corpusName}/numberOfTopics/${numberOfTopics}/timestamp/${timestamp}/topic/${topicProbability.topic.topicId}|}">
+                    0
+                </a>
+                <span th:id="${topicProbability.topic.topicId}"
+                      th:text="${topicProbability.topic.topWords}">
+                banana kiwi plum apple fruit
+            </span>
+            </td>
+            <td th:text="${topicProbability.probability}">0.15</td>
+        </tr>
+        </tbody>
+    </table>
 </div>
 
 <div id="documentContent">
@@ -37,8 +53,8 @@
     </div>
 </div>
 
-<script src="https://d3js.org/d3.v4.min.js" type="text/javascript" charset="utf-8" />
-<script src="/js/util.js" th:href="@{/js/util.js}" type="text/javascript" charset="utf-8" />
-<script src="/js/document.js" th:href="@{/js/document.js}" type="text/javascript" charset="utf-8" />
+<script src="https://d3js.org/d3.v4.min.js" type="text/javascript" charset="utf-8"/>
+<script src="/js/util.js" th:href="@{/js/util.js}" type="text/javascript" charset="utf-8"/>
+<script src="/js/document.js" th:href="@{/js/document.js}" type="text/javascript" charset="utf-8"/>
 </body>
 </html>

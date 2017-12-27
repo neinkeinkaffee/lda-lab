@@ -37,6 +37,8 @@ d3.request(decodeURI(documentUrl))
                 return topicProbability
             }
         )
+        d3.select("tbody")
+            .remove();
         util.buildTable(topicProbabilities, "documentTopics", "topic", "topicId", "topWords");
         d3.selectAll(".topWords")
             .style("color", function () {
