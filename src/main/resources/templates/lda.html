@@ -1,0 +1,51 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Topics</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link type="text/css" href="/css/style.css" th:href="@{/css/style.css}" rel="stylesheet"/>
+</head>
+<body>
+<a href="/">Home</a>
+<div id="topics">
+    <h2>Topics</h2>
+    <table>
+        <tr th:each="topic : ${topics}">
+            <td>
+                <a th:text="${topic.topicId}"
+                   th:href="@{|/corpus/${corpusName}/numberOfTopics/${numberOfTopics}/timestamp/${timestamp}/topic/${topic.topicId}|}">
+                    0
+                </a>
+            </td>
+            <td th:text="${topic.topWordsSignature}">banana apple pie cake boost</td>
+        </tr>
+    </table>
+</div>
+<div id="documents">
+    <h2>Documents</h2>
+    <div class="section" th:each="section : ${sections}">
+        <h3 class="sectionTitle" th:text="${section.title}">Section 1</h3>
+        <div class="volumes" th:each="volume : ${section.volumes}">
+            <h4 class="volumeTitle" th:text="${volume.title}">Volume 1</h4>
+            <span class="expandButton" th:id="@{|expandButton_${volume.title}|}"> &gt;&gt; </span>
+            <span class="collapseButton" th:id="@{|collapseButton_${volume.title}|}"> &lt;&lt; </span>
+            <div class="volume" th:id="@{|volume_${volume.title}|}">
+                <table>
+                    <tr class="document" th:each="document : ${volume.documents}">
+                        <td>
+                            <a th:text="${document.title}"
+                               th:href="@{|/corpus/${corpusName}/numberOfTopics/${numberOfTopics}/timestamp/${timestamp}/document/${document.title}|}">
+                                Document 1
+                            </a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://d3js.org/d3.v4.min.js" type="text/javascript" charset="utf-8"/>
+<script src="/js/lda.js" th:href="@{/js/lda.js}" type="text/javascript" charset="utf-8"/>
+</body>
+</html>

@@ -14,8 +14,6 @@ import org.tw.neinkeinkaffee.lda.model.dto.LdaParameterCombination;
 import org.tw.neinkeinkaffee.lda.service.CorpusService;
 import org.tw.neinkeinkaffee.lda.service.LdaService;
 
-import java.sql.Timestamp;
-import java.time.Instant;
 import java.util.List;
 
 @Controller
@@ -65,7 +63,7 @@ public class HomeController {
     @RequestMapping("/corpus/{corpus_name}/numberOfTopics/{number_of_topics}/timestamp/{timestamp}/delete")
     String deleteLda(final @PathVariable("corpus_name") String corpusName,
                      final @PathVariable("number_of_topics") int numberOfTopics,
-                     final @PathVariable("timestamp") Instant timestamp,
+                     final @PathVariable("timestamp") String timestamp,
                      Model model) {
         ldaService.clearBy(corpusName, numberOfTopics, timestamp);
         return "redirect:/";

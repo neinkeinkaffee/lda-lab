@@ -6,7 +6,6 @@ import org.springframework.data.annotation.Id;
 import org.tw.neinkeinkaffee.lda.model.dto.probability.DocumentProbability;
 import org.tw.neinkeinkaffee.lda.model.dto.probability.WordProbability;
 
-import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,7 +23,7 @@ public class Topic {
     @Getter @Setter
     private int numberOfTopics;
     @Getter @Setter
-    private Instant timestamp;
+    private String timestamp;
     @Getter
     private int topicId;
 

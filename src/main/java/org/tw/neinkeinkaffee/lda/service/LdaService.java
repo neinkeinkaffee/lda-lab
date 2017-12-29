@@ -14,8 +14,6 @@ import org.tw.neinkeinkaffee.lda.repository.DocumentRepository;
 import org.tw.neinkeinkaffee.lda.repository.LdaParameterCombinationRepository;
 import org.tw.neinkeinkaffee.lda.repository.TopicRepository;
 
-import java.sql.Timestamp;
-import java.time.Instant;
 import java.util.List;
 
 @Service
@@ -40,7 +38,7 @@ public class LdaService {
         this.ldaParameterCombinationRepository = ldaParameterCombinationRepository;
     }
 
-    public DtoLda fetchBy(String corpusName, int numberOfTopics, Instant timestamp) {
+    public DtoLda fetchBy(String corpusName, int numberOfTopics, String timestamp) {
 //        if (corpusName.equals("toyCorpus")) return toyDataProvider.produceToyLda("toyCorpus");
         // TODO: check in parametercombinationsrepository whether model exists
         List<Topic> topics = topicRepository.findAllByCorpusNameAndNumberOfTopicsAndTimestamp(corpusName, numberOfTopics, timestamp);
@@ -60,7 +58,7 @@ public class LdaService {
         // TODO: Maybe a composite key will remove the need for storing corpusName and numberOfTopics in each document for retrieval
         final String corpusName = dtoLda.getCorpusName();
         final int numberOfTopics = dtoLda.getNumberOfTopics();
-        final Instant timestamp = dtoLda.getTimestamp();
+        final String timestamp = dtoLda.getTimestamp();
         LdaParameterCombination ldaParameterCombination = LdaParameterCombination.builder()
             .corpusName(corpusName)
             .numberOfTopics(numberOfTopics)
@@ -91,7 +89,7 @@ public class LdaService {
         save(lda.getDtoLda());
     }
 
-    public void clearBy(String corpusName, int numberOfTopics, Instant timestamp) {
+    public void clearBy(String corpusName, int numberOfTopics, String timestamp) {
         topicRepository.deleteByCorpusNameAndNumberOfTopicsAndTimestamp(corpusName, numberOfTopics, timestamp);
         contentWordRepository.deleteByCorpusNameAndNumberOfTopicsAndTimestamp(corpusName, numberOfTopics, timestamp);
         documentRepository.deleteByCorpusNameAndNumberOfTopicsAndTimestamp(corpusName, numberOfTopics, timestamp);

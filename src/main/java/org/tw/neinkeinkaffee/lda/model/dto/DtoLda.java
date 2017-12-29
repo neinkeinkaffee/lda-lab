@@ -15,7 +15,7 @@ public class DtoLda {
 	@Getter
 	private int numberOfTopics;
 	@Getter
-	private Instant timestamp;
+	private String timestamp;
 
     @Getter
     private List<Topic> topics;

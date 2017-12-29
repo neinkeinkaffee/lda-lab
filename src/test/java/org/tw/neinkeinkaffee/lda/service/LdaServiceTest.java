@@ -15,6 +15,8 @@ import org.tw.neinkeinkaffee.lda.repository.LdaRepository;
 import org.tw.neinkeinkaffee.lda.repository.TopicRepository;
 
 import java.time.Instant;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -43,7 +45,10 @@ public class LdaServiceTest {
     @Test
     public void shouldFetchDtoLda() {
         // given
-        Instant instant = Instant.now();
+        DateTimeFormatter formatter = DateTimeFormatter
+            .ofPattern("MMM-d-yyyy-hh:mm-a")
+            .withZone(ZoneId.systemDefault());
+        String instant = formatter.format(Instant.now());
         DtoLda expectedDtoLda = DtoLda.builder()
             .corpusName("someCorpus")
             .numberOfTopics(3)

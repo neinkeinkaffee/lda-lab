@@ -1,3 +1,9 @@
+span.collapseButton {
+    display: none;
+}
+div.volume {
+    display: none;
+}
 div.token {
     float: left;
     padding-right: 0.25em;

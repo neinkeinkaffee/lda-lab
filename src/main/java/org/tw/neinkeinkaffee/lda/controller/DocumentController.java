@@ -7,12 +7,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.tw.neinkeinkaffee.lda.model.dto.DtoDocument;
-import org.tw.neinkeinkaffee.lda.model.dto.DtoLda;
 import org.tw.neinkeinkaffee.lda.service.DocumentService;
-import org.tw.neinkeinkaffee.lda.service.LdaService;
-
-import java.sql.Timestamp;
-import java.time.Instant;
 
 @Controller
 public class DocumentController {
@@ -26,7 +21,7 @@ public class DocumentController {
     @RequestMapping("/corpus/{corpus_name}/numberOfTopics/{number_of_topics}/timestamp/{timestamp}/document/{document_name}")
     String listDocument(final @PathVariable("corpus_name") String corpusName,
                      final @PathVariable("number_of_topics") int numberOfTopics,
-                     final @PathVariable("timestamp") Instant timestamp,
+                     final @PathVariable("timestamp") String timestamp,
                      final @PathVariable("document_name") String documentName,
                      Model model) {
         DtoDocument document = documentService.fetchBy(corpusName, numberOfTopics, timestamp, documentName);
@@ -38,7 +33,7 @@ public class DocumentController {
     @ResponseBody
     DtoDocument listDocumentJson(final @PathVariable("corpus_name") String corpusName,
                      final @PathVariable("number_of_topics") int numberOfTopics,
-                     final @PathVariable("timestamp") Instant timestamp,
+                     final @PathVariable("timestamp") String timestamp,
                      final @PathVariable("document_name") String documentName,
                      Model model) {
         DtoDocument document = documentService.fetchBy(corpusName, numberOfTopics, timestamp, documentName);

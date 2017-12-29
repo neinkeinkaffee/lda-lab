@@ -16,12 +16,18 @@ import org.tw.neinkeinkaffee.lda.model.lda.PairCounter;
 import org.tw.neinkeinkaffee.lda.model.lda.SimpleCounter;
 
 import java.time.Instant;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class LdaToDtoLdaConverter implements Converter<Lda, DtoLda> {
+    private static final DateTimeFormatter formatter = DateTimeFormatter
+        .ofPattern("MMM-d-yyyy-hh:mm-a")
+        .withZone(ZoneId.systemDefault());
+
     @Override
     public DtoLda convert(Lda lda) {
         PairCounter<Integer, String> topicWordCounts = lda.getTopicWordCounts();
@@ -167,7 +173,7 @@ public class LdaToDtoLdaConverter implements Converter<Lda, DtoLda> {
         return DtoLda.builder()
             .corpusName(lda.getCorpusName())
             .numberOfTopics(lda.getNumberOfTopics())
-            .timestamp(Instant.now())
+            .timestamp(formatter.format(Instant.now()))
             .topics(topics)
             .words(words)
             .documents(documents)

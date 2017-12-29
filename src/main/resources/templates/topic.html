@@ -7,8 +7,8 @@
 </head>
 <body>
 <a href="/">Home</a>
-<a th:href="@{|/corpus/${topic.corpusName}/numberOfTopics/${topic.numberOfTopics}/timestamp/${topic.timestamp}/topic/|}">
-    Back to List of Topics
+<a th:href="@{|/corpus/${topic.corpusName}/numberOfTopics/${topic.numberOfTopics}/timestamp/${topic.timestamp}|}">
+    Back to Overview
 </a>
 
 <h2>Topic <span id="topicId" th:text="${topic.topicId}">0</span></h2>
