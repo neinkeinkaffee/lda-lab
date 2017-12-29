@@ -5,22 +5,6 @@ var colorRamp = d3.scaleLinear()
     .domain([0, numberOfTopics * .25, numberOfTopics * .5, numberOfTopics * .75, numberOfTopics])
     .range(["red", "blue", "green", "cyan", "magenta"]);
 
-function markTopic(selector, topicId) {
-    d3.selectAll(selector)
-        .style("background-color", function () {
-            if (this.id == topicId)
-                return colorRamp(this.id);
-            else
-                return "white";
-        })
-        .style("color", function () {
-            if (this.id == topicId)
-                return "white";
-            else
-                return colorRamp(this.id);
-        });
-}
-
 d3.request(decodeURI(documentUrl))
     .mimeType("application/json")
     .response(function (xhr) {
@@ -35,8 +19,7 @@ d3.request(decodeURI(documentUrl))
                 topicProbability["topWords"] = topic.topWords;
                 topicProbability["probability"] = row.probability;
                 return topicProbability
-            }
-        )
+            });
         d3.select("tbody")
             .remove();
         util.buildTable(topicProbabilities, "documentTopics", "topic", "topicId", "topWords");
@@ -63,6 +46,22 @@ d3.request(decodeURI(documentUrl))
                 return colorRamp(topicId);
             });
     });
+
+function markTopic(selector, topicId) {
+    d3.selectAll(selector)
+        .style("background-color", function () {
+            if (this.id == topicId)
+                return colorRamp(this.id);
+            else
+                return "white";
+        })
+        .style("color", function () {
+            if (this.id == topicId)
+                return "white";
+            else
+                return colorRamp(this.id);
+        });
+}
 
 d3.selectAll(".contentToken")
     .style("color", function () {

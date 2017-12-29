@@ -1,12 +1,22 @@
+div.token {
+    float: left;
+    padding-right: 0.25em;
+}
+td.weight div.proportion {
+    background-color: rgb(51,153,255);
+    text-align: right;
+}
+td.weight div.proportion span.proportion {
+    color: rgba(0,0,0,0);
+}
+
+
+
 a.documentLink {
     margin-left: 1em;
 }
 div.volume {
     display: none;
-}
-div.token {
-    float: left;
-    padding-right: 0.25em;
 }
 span.collapseVolumeTitle {
     display: none;
@@ -22,10 +32,7 @@ span.parameter {
 span.sectionTitle {
     font-weight: bold;
 }
-td.weight div.proportion {
-    background-color: rgb(51,153,255);
-    text-align: right;
-}
-td.weight div.proportion span.proportion {
-    color: rgba(0,0,0,0);
+table.documentTopics {
+    margin-left: 1em;
+    font-size: small;
 }
