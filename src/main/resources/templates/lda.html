@@ -24,16 +24,15 @@
 <div id="documents">
     <h2>Documents</h2>
     <div class="section" th:each="section : ${sections}">
-        <h3 class="sectionTitle" th:text="${section.title}">Section 1</h3>
+        <span class="sectionTitle" th:text="${section.title}">Section 1</span>
         <div class="volumes" th:each="volume : ${section.volumes}">
-            <h4 class="volumeTitle" th:text="${volume.title}">Volume 1</h4>
-            <span class="expandButton" th:id="@{|expandButton_${volume.title}|}"> &gt;&gt; </span>
-            <span class="collapseButton" th:id="@{|collapseButton_${volume.title}|}"> &lt;&lt; </span>
+            <span class="expandVolumeTitle" th:id="@{|expandVolumeTitle_${volume.title}|}" th:text="${volume.title}">Volume 1</span>
+            <span class="collapseVolumeTitle" th:id="@{|collapseVolumeTitle_${volume.title}|}" th:text="${volume.title}">Volume 1</span>
             <div class="volume" th:id="@{|volume_${volume.title}|}">
                 <table>
                     <tr class="document" th:each="document : ${volume.documents}">
                         <td>
-                            <a th:text="${document.title}"
+                            <a class="documentLink" th:text="${document.title}"
                                th:href="@{|/corpus/${corpusName}/numberOfTopics/${numberOfTopics}/timestamp/${timestamp}/document/${document.title}|}">
                                 Document 1
                             </a>

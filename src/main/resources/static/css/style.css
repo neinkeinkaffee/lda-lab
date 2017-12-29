@@ -1,5 +1,5 @@
-span.collapseButton {
-    display: none;
+a.documentLink {
+    margin-left: 1em;
 }
 div.volume {
     display: none;
@@ -8,9 +8,19 @@ div.token {
     float: left;
     padding-right: 0.25em;
 }
+span.collapseVolumeTitle {
+    display: none;
+    margin-left: 1em;
+}
+span.expandVolumeTitle {
+    margin-left: 1em;
+}
 span.parameter {
     display: none;
     visibility: hidden;
+}
+span.sectionTitle {
+    font-weight: bold;
 }
 td.weight div.proportion {
     background-color: rgb(51,153,255);
