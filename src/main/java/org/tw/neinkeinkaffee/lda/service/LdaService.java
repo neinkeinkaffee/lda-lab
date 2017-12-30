@@ -3,18 +3,16 @@ package org.tw.neinkeinkaffee.lda.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.tw.neinkeinkaffee.lda.model.corpus.Corpus;
-import org.tw.neinkeinkaffee.lda.model.dto.DtoDocument;
-import org.tw.neinkeinkaffee.lda.model.dto.DtoLda;
-import org.tw.neinkeinkaffee.lda.model.dto.LdaParameterCombination;
-import org.tw.neinkeinkaffee.lda.model.dto.Topic;
+import org.tw.neinkeinkaffee.lda.model.dto.*;
 import org.tw.neinkeinkaffee.lda.model.dto.word.ContentWord;
 import org.tw.neinkeinkaffee.lda.model.lda.Lda;
-import org.tw.neinkeinkaffee.lda.repository.ContentWordRepository;
-import org.tw.neinkeinkaffee.lda.repository.DocumentRepository;
-import org.tw.neinkeinkaffee.lda.repository.LdaParameterCombinationRepository;
-import org.tw.neinkeinkaffee.lda.repository.TopicRepository;
+import org.tw.neinkeinkaffee.lda.repository.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.stream.Collectors;
+
+import static java.util.stream.Collectors.groupingBy;
 
 @Service
 public class LdaService {
@@ -24,22 +22,24 @@ public class LdaService {
     private DocumentRepository documentRepository;
     private CorpusService corpusService;
     private LdaParameterCombinationRepository ldaParameterCombinationRepository;
+    private SectionRepository sectionRepository;
 
     @Autowired
     public LdaService(final TopicRepository topicRepository,
                       final ContentWordRepository contentWordRepository,
                       final DocumentRepository documentRepository,
                       final CorpusService corpusService,
-                      final LdaParameterCombinationRepository ldaParameterCombinationRepository) {
+                      final LdaParameterCombinationRepository ldaParameterCombinationRepository,
+                      final SectionRepository sectionRepository) {
         this.topicRepository = topicRepository;
         this.contentWordRepository = contentWordRepository;
         this.documentRepository = documentRepository;
         this.corpusService = corpusService;
         this.ldaParameterCombinationRepository = ldaParameterCombinationRepository;
+        this.sectionRepository = sectionRepository;
     }
 
     public DtoLda fetchBy(String corpusName, int numberOfTopics, String timestamp) {
-//        if (corpusName.equals("toyCorpus")) return toyDataProvider.produceToyLda("toyCorpus");
         // TODO: check in parametercombinationsrepository whether model exists
         List<Topic> topics = topicRepository.findAllByCorpusNameAndNumberOfTopicsAndTimestamp(corpusName, numberOfTopics, timestamp);
         List<ContentWord> words = contentWordRepository.findAllByCorpusNameAndNumberOfTopicsAndTimestamp(corpusName, numberOfTopics, timestamp);
@@ -65,6 +65,13 @@ public class LdaService {
             .timestamp(timestamp)
             .build();
         ldaParameterCombinationRepository.save(ldaParameterCombination);
+        List<DtoSection> sections = groupBySectionAndVolume(dtoLda.getDocuments());
+        for (DtoSection section : sections) {
+            section.setCorpusName(corpusName);
+            section.setNumberOfTopics(numberOfTopics);
+            section.setTimestamp(timestamp);
+            sectionRepository.save(section);
+        }
         for (Topic topic : dtoLda.getTopics()) {
             topic.setCorpusName(corpusName);
             topic.setNumberOfTopics(numberOfTopics);
@@ -107,11 +114,34 @@ public class LdaService {
         return ldaParameterCombinationRepository.findAll();
     }
 
+    public List<DtoSection> fetchAllByAndGroupBySections(String corpusName, int numberOfTopics, String timestamp) {
+        return sectionRepository.findAllByCorpusNameAndNumberOfTopicsAndTimestamp(corpusName, numberOfTopics, timestamp);
+    }
+
     public void create(LdaParameterCombination ldaParameterCombination) {
         String corpusName = ldaParameterCombination.getCorpusName();
         int numberOfTopics = ldaParameterCombination.getNumberOfTopics();
         Corpus corpus = corpusService.fetchBy(corpusName);
         Lda lda = Lda.fromCorpus(corpus, numberOfTopics);
         save(lda);
+    }
+
+    List<DtoSection> groupBySectionAndVolume(List<DtoDocument> documents) {
+        HashMap<String, List<DtoDocument>> volumes = new HashMap<>(documents.stream()
+            .collect(groupingBy(DtoDocument::getVolume)));
+        HashMap<String, List<DtoVolume>> sections = new HashMap<>(volumes.entrySet().stream()
+            .map(entry -> DtoVolume.builder()
+                .title(entry.getKey())
+                .documentTitles(entry.getValue().stream()
+                    .map(DtoDocument::getTitle)
+                    .collect(Collectors.toList()))
+                .build())
+            .collect(groupingBy(volume -> volume.getSection())));
+        return sections.entrySet().stream()
+            .map(entry -> DtoSection.builder()
+                .title(entry.getKey())
+                .volumes(entry.getValue())
+                .build())
+            .collect(Collectors.toList());
     }
 }

@@ -1,6 +1,6 @@
 button {
     display: none;
 }
-span.collapseTopics {
+a.collapseTopics {
     display: none;
 }

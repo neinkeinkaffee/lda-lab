@@ -30,20 +30,20 @@
     <div class="section" th:each="section : ${sections}">
         <span class="sectionTitle" th:text="${section.title}">Section 1</span>
         <div class="volumes" th:each="volume : ${section.volumes}">
-            <span th:text="${volume.title}">Volume 1</span>
+            <span class="volumeTitle" th:text="${volume.title}">Volume 1</span>
             <a class="expandDocuments" th:id="@{|expandDocuments_${volume.title}|}" href="javascript:void(0)">&gt;&gt;</a>
             <a class="collapseDocuments" th:id="@{|collapseDocuments_${volume.title}|}" href="javascript:void(0)">&lt;&lt;</a>
             <div class="volume" th:id="@{|volume_${volume.title}|}">
                 <table>
-                    <tr class="document" th:each="document : ${volume.documents}">
+                    <tr class="document" th:each="documentTitle : ${volume.documentTitles}">
                         <td>
-                            <a class="documentLink" th:text="${document.title}"
-                               th:href="@{|/corpus/${corpusName}/numberOfTopics/${numberOfTopics}/timestamp/${timestamp}/document/${document.title}|}">
+                            <a class="documentLink" th:text="${documentTitle}"
+                               th:href="@{|/corpus/${corpusName}/numberOfTopics/${numberOfTopics}/timestamp/${timestamp}/document/${documentTitle}|}">
                                 Document 1
                             </a>
-                            <span class="expandTopics" th:id="@{|expandTopics_${document.title}|}">&gt;&gt;</span>
-                            <span class="collapseTopics" th:id="@{|collapseTopics_${document.title}|}">&lt;&lt;</span>
-                            <table class="documentTopics" th:id="@{|${document.title}Table|}"></table>
+                            <a class="expandTopics" th:id="@{|expandTopics_${documentTitle}|}" href="javascript:void(0)">&gt;&gt;</a>
+                            <a class="collapseTopics" th:id="@{|collapseTopics_${documentTitle}|}" href="javascript:void(0)">&lt;&lt;</a>
+                            <table class="documentTopics" th:id="@{|${documentTitle}Table|}"></table>
                         </td>
                     </tr>
                 </table>

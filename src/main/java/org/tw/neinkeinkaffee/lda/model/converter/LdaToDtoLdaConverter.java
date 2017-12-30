@@ -1,8 +1,6 @@
 package org.tw.neinkeinkaffee.lda.model.converter;
 
-import org.tw.neinkeinkaffee.lda.model.dto.DtoDocument;
-import org.tw.neinkeinkaffee.lda.model.dto.DtoLda;
-import org.tw.neinkeinkaffee.lda.model.dto.Topic;
+import org.tw.neinkeinkaffee.lda.model.dto.*;
 import org.tw.neinkeinkaffee.lda.model.dto.probability.DocumentProbability;
 import org.tw.neinkeinkaffee.lda.model.dto.probability.TopicProbability;
 import org.tw.neinkeinkaffee.lda.model.dto.probability.WordProbability;
@@ -22,6 +20,8 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
+
+import static java.util.stream.Collectors.groupingBy;
 
 public class LdaToDtoLdaConverter implements Converter<Lda, DtoLda> {
     private static final DateTimeFormatter formatter = DateTimeFormatter

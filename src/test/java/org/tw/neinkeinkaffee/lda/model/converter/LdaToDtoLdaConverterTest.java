@@ -93,7 +93,7 @@ public class LdaToDtoLdaConverterTest {
 //        HashMap<String, LdaDocument> ldaDocuments = new HashMap<>();
 //        ldaDocuments.put("oneDocument", document0);
 //        ldaDocuments.put("someOtherDocument", document1);
-//        when(lda.getDocuments()).thenReturn(ldaDocuments);
+//        when(lda.getDocumentTitles()).thenReturn(ldaDocuments);
 //
 //        // when
 //
@@ -114,7 +114,7 @@ public class LdaToDtoLdaConverterTest {
 //        assertThat(wordTopicProbability.getTopic().getTopicId(), is(0));
 //        assertThat(wordTopicProbability.getProbability(), is(closeTo(1.0, 0.01)));
 //
-//        HashMap<String, DtoDocument> documents = dtoLda.getDocuments();
+//        HashMap<String, DtoDocument> documents = dtoLda.getDocumentTitles();
 //        TopicProbability documentTopicProbability = documents.get("oneDocument").getTopicProbabilities().get(0);
 //        assertThat(documentTopicProbability.getProbability(), is(closeTo(1.0, 0.01)));
 //    }

@@ -35,12 +35,14 @@ var util = {
         function appendButtons(table, tableName, tbody, data, max, linkKey, linkValue, plaintext) {
             var tableParent = d3.select(table.node().parentNode);
             tableParent.append("button")
+                .attr("class", "more")
                 .attr("id", tableName + "More")
                 .text("+")
                 .on("click", function () {
                     showMore(tbody, data, max, 5, linkKey, linkValue, plaintext);
                 });
             tableParent.append("button")
+                .attr("class", "less")
                 .attr("id", tableName + "Less")
                 .text("-")
                 .on("click", function () {

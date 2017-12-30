@@ -26,7 +26,7 @@ d3.selectAll(".collapseDocuments")
 
 d3.selectAll(".expandTopics")
     .on("click", function () {
-        var documentTitle = this.id.split("_").slice(1).join("");
+        var documentTitle = this.id.split("_").slice(1).join("_");
         var topicsTable = "#" + documentTitle + "Table";
         d3.select(this)
             .style("display", "none");
