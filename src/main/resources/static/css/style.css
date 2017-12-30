@@ -10,19 +10,17 @@ td.weight div.proportion span.proportion {
     color: rgba(0,0,0,0);
 }
 
-
-
 a.documentLink {
     margin-left: 1em;
 }
 div.volume {
     display: none;
 }
-span.collapseVolumeTitle {
+a.collapseDocuments {
     display: none;
     margin-left: 1em;
 }
-span.expandVolumeTitle {
+a.expandDocuments {
     margin-left: 1em;
 }
 span.parameter {

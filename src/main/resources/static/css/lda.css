@@ -1,3 +1,6 @@
 button {
     display: none;
 }
+span.collapseTopics {
+    display: none;
+}

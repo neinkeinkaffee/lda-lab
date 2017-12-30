@@ -30,8 +30,9 @@
     <div class="section" th:each="section : ${sections}">
         <span class="sectionTitle" th:text="${section.title}">Section 1</span>
         <div class="volumes" th:each="volume : ${section.volumes}">
-            <span class="expandVolumeTitle" th:id="@{|expandVolumeTitle_${volume.title}|}" th:text="${volume.title}">Volume 1</span>
-            <span class="collapseVolumeTitle" th:id="@{|collapseVolumeTitle_${volume.title}|}" th:text="${volume.title}">Volume 1</span>
+            <span th:text="${volume.title}">Volume 1</span>
+            <a class="expandDocuments" th:id="@{|expandDocuments_${volume.title}|}" href="javascript:void(0)">&gt;&gt;</a>
+            <a class="collapseDocuments" th:id="@{|collapseDocuments_${volume.title}|}" href="javascript:void(0)">&lt;&lt;</a>
             <div class="volume" th:id="@{|volume_${volume.title}|}">
                 <table>
                     <tr class="document" th:each="document : ${volume.documents}">
@@ -40,7 +41,8 @@
                                th:href="@{|/corpus/${corpusName}/numberOfTopics/${numberOfTopics}/timestamp/${timestamp}/document/${document.title}|}">
                                 Document 1
                             </a>
-                            <span class="topicsButton" th:id="@{|topicsButton_${document.title}|}">+</span>
+                            <span class="expandTopics" th:id="@{|expandTopics_${document.title}|}">&gt;&gt;</span>
+                            <span class="collapseTopics" th:id="@{|collapseTopics_${document.title}|}">&lt;&lt;</span>
                             <table class="documentTopics" th:id="@{|${document.title}Table|}"></table>
                         </td>
                     </tr>

@@ -52,7 +52,7 @@ public class DocumentService {
     }
 
     private String extractSectionTitleFromVolumeTitle(String volumeTitle) {
-        Pattern sectionTitlePattern = Pattern.compile("卷[一二三四五六七八九十百]+(.*政|學術|治體)[一二三四五六七八九十百]+", Pattern.UNICODE_CHARACTER_CLASS);
+        Pattern sectionTitlePattern = Pattern.compile("卷[零一二三四五六七八九十百]+(.政|學術|治體)[一二三四五六七八九十百]+", Pattern.UNICODE_CHARACTER_CLASS);
         Matcher sectionTitleMatcher = sectionTitlePattern.matcher(volumeTitle);
         String sectionTitle = sectionTitleMatcher.find() ? sectionTitleMatcher.group(1) : "FRONTMATTER";
         return sectionTitle;
