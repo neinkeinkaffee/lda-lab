@@ -14,6 +14,7 @@ import org.tw.neinkeinkaffee.lda.model.dto.LdaParameterCombination;
 import org.tw.neinkeinkaffee.lda.service.CorpusService;
 import org.tw.neinkeinkaffee.lda.service.LdaService;
 
+import java.util.Arrays;
 import java.util.List;
 
 @Controller
@@ -40,14 +41,17 @@ public class HomeController {
     @RequestMapping("/createAllCorpora")
     String createAllCorpora() {
         String heCorpusString = FileToStringReader.readFileToString("/Users/gstupper/repos/lda-lab/src/test/resources/corpora/hcjswb_he_1827.txt");
+        String heCorpusStringSmall = String.join("\n", Arrays.asList(heCorpusString.split("\n")).subList(0, 100));
         String raoCorpusString = FileToStringReader.readFileToString("/Users/gstupper/repos/lda-lab/src/test/resources/corpora/hcjswxb_rao_1881.txt");
         String shengCorpusString = FileToStringReader.readFileToString("/Users/gstupper/repos/lda-lab/src/test/resources/corpora/hcjswxb_sheng_1897.txt");
         String stopwordString = FileToStringReader.readFileToString("/Users/gstupper/repos/lda-lab/src/test/resources/corpora/hcjswb_stop.txt");
         corpusService.clearAll();
         Corpus heCorpus = Corpus.fromString("hcjswb_he_1827", heCorpusString, stopwordString);
+        Corpus heCorpusSmall = Corpus.fromString("hcjswb_he_1827_small", heCorpusStringSmall, stopwordString);
         Corpus raoCorpus = Corpus.fromString("hcjswxb_rao_1881", raoCorpusString, stopwordString);
         Corpus shengCorpus = Corpus.fromString("hcjswxb_sheng_1897", shengCorpusString, stopwordString);
         corpusService.save(heCorpus);
+        corpusService.save(heCorpusSmall);
         corpusService.save(raoCorpus);
         corpusService.save(shengCorpus);
         return "redirect:/";
