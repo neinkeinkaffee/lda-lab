@@ -35,7 +35,7 @@ public class CorpusDocument {
         String text = null;
         String volume = null;
         if (document_data.length == 5) {
-            volume = document_data[3];
+            volume = document_data[2] + "·" + document_data[3];
             text = document_data[4];
         }
         else {
