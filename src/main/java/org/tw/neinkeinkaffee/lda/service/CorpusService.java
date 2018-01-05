@@ -29,20 +29,20 @@ public class CorpusService {
 		.build();
 	}
 
-	public void save(Corpus corpus) {
-		if (corpusDocumentRepository.findAllByCorpusName(corpus.getName()).isEmpty()) {
-			for (CorpusDocument document : corpus.getDocuments()) {
-				document.setCorpusName(corpus.getName());
-				corpusDocumentRepository.save(document);
-			}
-			corpusNameRepository.save(CorpusName.builder().name(corpus.getName()).build());
-		}
-	}
+    public void save(Corpus corpus) {
+	    if (corpusNameRepository.findByName(corpus.getName()) == null) {
+		    for (CorpusDocument document : corpus.getDocuments()) {
+			    document.setCorpusName(corpus.getName());
+			    corpusDocumentRepository.save(document);
+		    }
+		    corpusNameRepository.save(CorpusName.builder().name(corpus.getName()).build());
+	    }
+    }
 
 	// TODO: Could get rid of this and ldaParameterCombinations with lite objects (https://stackoverflow.com/questions/25589113/how-to-select-a-single-field-in-mongodb)?
-	public List<CorpusName> fetchAll() {
-		return corpusNameRepository.findAll();
-	}
+    public List<CorpusName> fetchAll() {
+	    return corpusNameRepository.findAll();
+    }
 
 	public void clearAll() {
 		corpusDocumentRepository.deleteAll();

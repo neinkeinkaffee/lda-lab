@@ -44,19 +44,12 @@ public class HomeController {
         String shengCorpusString = FileToStringReader.readFileToString("/Users/gstupper/repos/lda-lab/src/test/resources/corpora/hcjswxb_sheng_1897.txt");
         String stopwordString = FileToStringReader.readFileToString("/Users/gstupper/repos/lda-lab/src/test/resources/corpora/hcjswb_stop.txt");
         corpusService.clearAll();
-//        String stopwordStringNoNumbers = FileToStringReader.readFileToString("/Users/gstupper/repos/lda-lab/src/test/resources/corpora/hcjswb_stop_no_numbers.txt");
         Corpus heCorpus = Corpus.fromString("hcjswb_he_1827", heCorpusString, stopwordString);
-//        Corpus heCorpusNoNumbers = Corpus.fromString("hcjswb_he_1827", heCorpusString, stopwordStringNoNumbers);
         Corpus raoCorpus = Corpus.fromString("hcjswxb_rao_1881", raoCorpusString, stopwordString);
-//        Corpus raoCorpusNoNumbers = Corpus.fromString("hcjswxb_rao_1881", raoCorpusString, stopwordStringNoNumbers);
         Corpus shengCorpus = Corpus.fromString("hcjswxb_sheng_1897", shengCorpusString, stopwordString);
-//        Corpus shengCorpusNoNumbers = Corpus.fromString("hcjswxb_sheng_1897", shengCorpusString, stopwordStringNoNumbers);
         corpusService.save(heCorpus);
-//        corpusService.save(heCorpusNoNumbers);
         corpusService.save(raoCorpus);
-//        corpusService.save(raoCorpusNoNumbers);
         corpusService.save(shengCorpus);
-//        corpusService.save(shengCorpusNoNumbers);
         return "redirect:/";
     }
 

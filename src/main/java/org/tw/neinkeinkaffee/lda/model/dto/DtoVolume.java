@@ -10,7 +10,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 @Builder
-public class DtoVolume {
+public class DtoVolume implements Comparable<DtoVolume> {
     @Getter
     private String title;
     @Singular @Getter
@@ -23,5 +23,10 @@ public class DtoVolume {
         Matcher sectionTitleMatcher = sectionTitlePattern.matcher(title);
         String sectionTitle = sectionTitleMatcher.find() ? sectionTitleMatcher.group(1) : "FRONTMATTER";
         return sectionTitle;
+    }
+
+    @Override
+    public int compareTo(DtoVolume other) {
+        return this.title.compareTo(other.title);
     }
 }

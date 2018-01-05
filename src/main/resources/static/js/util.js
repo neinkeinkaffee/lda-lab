@@ -8,8 +8,9 @@ var util = {
         var table = d3.select("#" + tableName + "Table");
         var tbody = table.append("tbody");
         var max = data[0]["probability"];
-        showMore(tbody, data, max, 10, key, value, noLinks);
-        appendButtons(table, tableName, tbody, data, max, key, value, noLinks);
+        var filteredData = data.filter(function(row) { return row["probability"] >= 0.01; });
+        showMore(tbody, filteredData, max, 10, key, value, noLinks);
+        appendButtons(table, tableName, tbody, filteredData, max, key, value, noLinks);
 
         function showMore(tbody, data, max, n, linkKey, linkValue, plaintext) {
             var currentLength = tbody.selectAll("tr").size();

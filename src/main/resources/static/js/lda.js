@@ -2,6 +2,28 @@ var colorRamp = d3.scaleLinear()
     .domain([0, numberOfTopics * .25, numberOfTopics * .5, numberOfTopics * .75, numberOfTopics])
     .range(["red", "blue", "green", "cyan", "magenta"]);
 
+d3.selectAll(".expandVolumes")
+    .on("click", function () {
+        var section = this.id.split("_")[1];
+        d3.select("#section_" + section)
+            .style("display", "block");
+        d3.select("#collapseVolumes_" + section)
+            .style("display", "inline");
+        d3.select(this)
+            .style("display", "none");
+    });
+
+d3.selectAll(".collapseVolumes")
+    .on("click", function () {
+        var section = this.id.split("_")[1];
+        d3.select("#section_" + section)
+            .style("display", "none");
+        d3.select("#expandVolumes_" + section)
+            .style("display", "inline");
+        d3.select(this)
+            .style("display", "none");
+    });
+
 d3.selectAll(".expandDocuments")
     .on("click", function () {
         var volume = this.id.split("_")[1];

@@ -8,10 +8,12 @@ import org.tw.neinkeinkaffee.lda.model.dto.word.ContentWord;
 import org.tw.neinkeinkaffee.lda.model.lda.Lda;
 import org.tw.neinkeinkaffee.lda.repository.*;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static java.util.Collections.sort;
 import static java.util.stream.Collectors.groupingBy;
 
 @Service
@@ -137,11 +139,17 @@ public class LdaService {
                     .collect(Collectors.toList()))
                 .build())
             .collect(groupingBy(volume -> volume.getSection())));
-        return sections.entrySet().stream()
-            .map(entry -> DtoSection.builder()
-                .title(entry.getKey())
-                .volumes(entry.getValue())
-                .build())
+        List<DtoSection> sectionsList = sections.entrySet().stream()
+            .map(entry -> {
+                List<DtoVolume> volumesList = entry.getValue();
+                Collections.sort(volumesList);
+                return DtoSection.builder()
+                    .title(entry.getKey())
+                    .volumes(volumesList)
+                    .build();
+            })
             .collect(Collectors.toList());
+        sort(sectionsList);
+        return sectionsList;
     }
 }
