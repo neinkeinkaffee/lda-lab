@@ -3,7 +3,9 @@ package org.tw.neinkeinkaffee.lda.model.dto;
 import lombok.*;
 import org.springframework.data.annotation.Id;
 
+import java.text.Collator;
 import java.util.List;
+import java.util.Locale;
 
 
 @Builder
@@ -30,6 +32,7 @@ public class DtoSection implements Comparable<DtoSection> {
 
     @Override
     public int compareTo(DtoSection other) {
-        return this.title.compareTo(other.title);
+        Collator collator = Collator.getInstance(Locale.TRADITIONAL_CHINESE);
+        return collator.compare(this.title, other.title);
     }
 }

@@ -15,7 +15,7 @@
     Document
     <span id="author" th:if="${document.author != null}" th:text="@{|${document.author}: |}">Hinz Kunz: </span>
     <span id="title" th:text="${document.title}">banana_cake.txt</span>
-    <span id="volume" th:if="${document.volume != null}" th:text="@{| (${document.volume})|}">(Chapter 1)</span>
+    <!--<span id="volume" th:if="${document.volume != null}" th:text="@{| (${document.volume})|}">(Chapter 1)</span>-->
 </h2>
 <span class="parameter" id="corpusName" th:text="${document.corpusName}"/>
 <span class="parameter" id="numberOfTopics" th:text="${document.numberOfTopics}">25</span>

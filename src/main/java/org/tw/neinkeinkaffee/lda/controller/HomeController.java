@@ -45,15 +45,24 @@ public class HomeController {
         String raoCorpusString = FileToStringReader.readFileToString("/Users/gstupper/repos/lda-lab/src/test/resources/corpora/hcjswxb_rao_1881.txt");
         String shengCorpusString = FileToStringReader.readFileToString("/Users/gstupper/repos/lda-lab/src/test/resources/corpora/hcjswxb_sheng_1897.txt");
         String stopwordString = FileToStringReader.readFileToString("/Users/gstupper/repos/lda-lab/src/test/resources/corpora/hcjswb_stop.txt");
+        String combinedCorpusString = heCorpusString + raoCorpusString + shengCorpusString;
         corpusService.clearAll();
         Corpus heCorpus = Corpus.fromString("hcjswb_he_1827", heCorpusString, stopwordString);
         Corpus heCorpusSmall = Corpus.fromString("hcjswb_he_1827_small", heCorpusStringSmall, stopwordString);
         Corpus raoCorpus = Corpus.fromString("hcjswxb_rao_1881", raoCorpusString, stopwordString);
         Corpus shengCorpus = Corpus.fromString("hcjswxb_sheng_1897", shengCorpusString, stopwordString);
+        Corpus combinedCorpus = Corpus.fromString("hcjsw_combined", combinedCorpusString, stopwordString);
         corpusService.save(heCorpus);
         corpusService.save(heCorpusSmall);
         corpusService.save(raoCorpus);
         corpusService.save(shengCorpus);
+        corpusService.save(combinedCorpus);
+        return "redirect:/";
+    }
+
+    @RequestMapping("/deleteAllCorpora")
+    String deleteAllCorpora() {
+        corpusService.clearAll();
         return "redirect:/";
     }
 

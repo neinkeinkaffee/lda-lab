@@ -30,12 +30,12 @@ public class CorpusService {
 	}
 
     public void save(Corpus corpus) {
-	    if (corpusNameRepository.findByName(corpus.getName()) == null) {
+	    if (!corpusNameRepository.existsByName(corpus.getName())) {
+		    corpusNameRepository.save(CorpusName.builder().name(corpus.getName()).build());
 		    for (CorpusDocument document : corpus.getDocuments()) {
 			    document.setCorpusName(corpus.getName());
 			    corpusDocumentRepository.save(document);
 		    }
-		    corpusNameRepository.save(CorpusName.builder().name(corpus.getName()).build());
 	    }
     }
 

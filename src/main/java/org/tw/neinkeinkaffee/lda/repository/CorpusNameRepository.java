@@ -6,5 +6,5 @@ import org.tw.neinkeinkaffee.lda.model.CorpusName;
 
 @Repository
 public interface CorpusNameRepository extends MongoRepository<CorpusName, String> {
-    public CorpusName findByName(String name);
+    public boolean existsByName(String name);
 }

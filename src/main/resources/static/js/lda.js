@@ -79,6 +79,7 @@ function fetchDocumentDataAndBuildTopicsTable(documentUrl, documentTitle) {
     d3.request(decodeURI(documentUrl))
         .mimeType("application/json")
         .response(function (xhr) {
+            console.log(xhr.responseText);
             return JSON.parse(xhr.responseText);
         })
         .get(function (data) {

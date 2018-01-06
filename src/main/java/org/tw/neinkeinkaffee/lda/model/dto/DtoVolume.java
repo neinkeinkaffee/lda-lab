@@ -5,7 +5,9 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Singular;
 
+import java.text.Collator;
 import java.util.List;
+import java.util.Locale;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -27,6 +29,7 @@ public class DtoVolume implements Comparable<DtoVolume> {
 
     @Override
     public int compareTo(DtoVolume other) {
-        return this.title.compareTo(other.title);
+        Collator collator = Collator.getInstance(Locale.TRADITIONAL_CHINESE);
+        return collator.compare(this.title, other.title);
     }
 }

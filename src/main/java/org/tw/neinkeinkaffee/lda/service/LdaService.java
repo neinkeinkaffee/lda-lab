@@ -13,7 +13,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static java.util.Collections.sort;
 import static java.util.stream.Collectors.groupingBy;
 
 @Service
@@ -149,7 +148,7 @@ public class LdaService {
                     .build();
             })
             .collect(Collectors.toList());
-        sort(sectionsList);
+        Collections.sort(sectionsList);
         return sectionsList;
     }
 }
