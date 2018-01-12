@@ -1,5 +1,5 @@
 var lemma = d3.select("#lemma").text();
-var lemma_url = "http://localhost:8080/api/corpus/" + corpusName + "/numberOfTopics/" + numberOfTopics + "/timestamp/" + timestamp + "/word/" + lemma;
+var lemma_url = util.baseUrl() + "/api/corpus/" + corpusName + "/numberOfTopics/" + numberOfTopics + "/timestamp/" + timestamp + "/word/" + lemma;
 
 d3.request(decodeURI(lemma_url))
     .mimeType("application/json")

@@ -1,9 +1,15 @@
 var corpusName = d3.select("#corpusName").text();
 var numberOfTopics = d3.select("#numberOfTopics").text();
 var timestamp = d3.select("#timestamp").text();
-var ldaUrl = env.BASE_URL + "/corpus/" + corpusName + "/numberOfTopics/" + numberOfTopics + "/timestamp/" + timestamp;
+var ldaPath =  "/corpus/" + corpusName + "/numberOfTopics/" + numberOfTopics + "/timestamp/" + timestamp;
 
 var util = {
+    baseUrl: function() {
+        var getUrl = window.location;
+        var baseUrl = getUrl.protocol + "//" + getUrl.host;
+        console.log(baseUrl);
+        return baseUrl;
+    },
     buildTable: function (data, tableName, key, value, noLinks) {
         var table = d3.select("#" + tableName + "Table");
         var tbody = table.append("tbody");
@@ -74,7 +80,7 @@ var util = {
             rows.append("td")
                 .append("a")
                 .attr("href", function (row) {
-                    return ldaUrl + "/" + key + "/" + row[value];
+                    return util.baseUrl() + ldaPath + "/" + key + "/" + row[value];
                 })
                 .attr("class", value)
                 .text(function (row) {

@@ -1,5 +1,5 @@
 var title = d3.select("#title").text();
-var documentUrl = "http://localhost:8080/api/corpus/" + corpusName + "/numberOfTopics/" + numberOfTopics + "/timestamp/" + timestamp + "/document/" + title;
+var documentUrl = util.baseUrl() + "/api/corpus/" + corpusName + "/numberOfTopics/" + numberOfTopics + "/timestamp/" + timestamp + "/document/" + title;
 
 var colorRamp = d3.scaleLinear()
     .domain([0, numberOfTopics * .25, numberOfTopics * .5, numberOfTopics * .75, numberOfTopics])

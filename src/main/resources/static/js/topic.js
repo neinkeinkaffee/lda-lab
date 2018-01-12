@@ -1,5 +1,5 @@
 var topicId = d3.select("#topicId").text();
-var topic_url = "http://localhost:8080/api/corpus/" + corpusName + "/numberOfTopics/" + numberOfTopics + "/timestamp/" + timestamp + "/topic/" + topicId;
+var topic_url = util.baseUrl() + "/api/corpus/" + corpusName + "/numberOfTopics/" + numberOfTopics + "/timestamp/" + timestamp + "/topic/" + topicId;
 
 d3.request(topic_url)
     .mimeType("application/json")

@@ -54,7 +54,7 @@ d3.selectAll(".expandTopics")
             .style("display", "none");
         d3.select("#collapseTopics_" + documentTitle)
             .style("display", "inline");
-        var documentUrl = "http://localhost:8080/api/corpus/" + corpusName + "/numberOfTopics/" + numberOfTopics + "/timestamp/" + timestamp + "/document/" + documentTitle;
+        var documentUrl = util.baseUrl() + "/api/corpus/" + corpusName + "/numberOfTopics/" + numberOfTopics + "/timestamp/" + timestamp + "/document/" + documentTitle;
         if (d3.select(topicsTable).selectAll("tbody").empty()) {
             fetchDocumentDataAndBuildTopicsTable(documentUrl, documentTitle);
         }
