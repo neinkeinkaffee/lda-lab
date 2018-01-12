@@ -1,4 +1,4 @@
 // Will be overwritten on heroku
-env = {
+var env = {
     BASE_URL: "http://localhost:8080"
 }

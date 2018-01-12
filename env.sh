@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 
-echo "env = {"
+echo "var env = {"
 echo "  BASE_URL: '$BASE_URL'"
 echo "}"
