@@ -1,7 +1,7 @@
 var corpusName = d3.select("#corpusName").text();
 var numberOfTopics = d3.select("#numberOfTopics").text();
 var timestamp = d3.select("#timestamp").text();
-var ldaUrl = "http://localhost:8080/corpus/" + corpusName + "/numberOfTopics/" + numberOfTopics + "/timestamp/" + timestamp;
+var ldaUrl = env.BASE_URL + "/corpus/" + corpusName + "/numberOfTopics/" + numberOfTopics + "/timestamp/" + timestamp;
 
 var util = {
     buildTable: function (data, tableName, key, value, noLinks) {
