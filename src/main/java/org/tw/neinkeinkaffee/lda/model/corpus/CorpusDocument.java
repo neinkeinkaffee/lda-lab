@@ -29,7 +29,6 @@ public class CorpusDocument {
     private List<Word> words;
 
     public static CorpusDocument fromString(String documentString, List<String> stopwords) {
-//        documentString = documentString.replaceAll("\\?", "？");
         String[] document_data = splitTitleAuthorText(documentString);
         String author = document_data[1];
         String title = null;

@@ -32,7 +32,7 @@ public class DtoDocument {
 	@Getter @Setter
 	private List<TopicProbability> topicProbabilities;
 	@JsonIgnore @Getter(lazy = true)
-	private final List<TopicProbability> topTopicProbabilities = getTopNTopicProbabilities(5);
+	private final List<TopicProbability> topTopicProbabilities = getTopNTopicProbabilities(10);
 
 	private List<TopicProbability> getTopNTopicProbabilities(int N) {
 		int endIndex = (N > topicProbabilities.size()) ? topicProbabilities.size() : N;

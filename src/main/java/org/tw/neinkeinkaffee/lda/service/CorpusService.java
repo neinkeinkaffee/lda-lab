@@ -44,6 +44,11 @@ public class CorpusService {
 	    return corpusNameRepository.findAll();
     }
 
+    public void clearByName(String name) {
+		corpusNameRepository.deleteByName(name);
+		corpusDocumentRepository.deleteAllByCorpusName(name);
+    }
+
 	public void clearAll() {
 		corpusDocumentRepository.deleteAll();
 		corpusNameRepository.deleteAll();

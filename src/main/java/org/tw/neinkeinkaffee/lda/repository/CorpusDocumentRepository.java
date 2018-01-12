@@ -9,4 +9,5 @@ import java.util.List;
 @Repository
 public interface CorpusDocumentRepository extends MongoRepository<CorpusDocument, String> {
     public List<CorpusDocument> findAllByCorpusName(String corpusName);
+    void deleteAllByCorpusName(String corpusName);
 }

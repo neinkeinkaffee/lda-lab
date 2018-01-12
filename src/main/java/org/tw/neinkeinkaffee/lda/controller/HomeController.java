@@ -1,6 +1,7 @@
 package org.tw.neinkeinkaffee.lda.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -45,18 +46,34 @@ public class HomeController {
         String raoCorpusString = FileToStringReader.readFileToString("/Users/gstupper/repos/lda-lab/src/test/resources/corpora/hcjswxb_rao_1881.txt");
         String shengCorpusString = FileToStringReader.readFileToString("/Users/gstupper/repos/lda-lab/src/test/resources/corpora/hcjswxb_sheng_1897.txt");
         String stopwordString = FileToStringReader.readFileToString("/Users/gstupper/repos/lda-lab/src/test/resources/corpora/hcjswb_stop.txt");
+        String rareCharactersString = FileToStringReader.readFileToString("/Users/gstupper/repos/lda-lab/src/test/resources/corpora/hcjswb_rare_characters.txt");
         String combinedCorpusString = heCorpusString + raoCorpusString + shengCorpusString;
-        corpusService.clearAll();
-        Corpus heCorpus = Corpus.fromString("hcjswb_he_1827", heCorpusString, stopwordString);
-        Corpus heCorpusSmall = Corpus.fromString("hcjswb_he_1827_small", heCorpusStringSmall, stopwordString);
-        Corpus raoCorpus = Corpus.fromString("hcjswxb_rao_1881", raoCorpusString, stopwordString);
-        Corpus shengCorpus = Corpus.fromString("hcjswxb_sheng_1897", shengCorpusString, stopwordString);
-        Corpus combinedCorpus = Corpus.fromString("hcjsw_combined", combinedCorpusString, stopwordString);
-        corpusService.save(heCorpus);
-        corpusService.save(heCorpusSmall);
-        corpusService.save(raoCorpus);
-        corpusService.save(shengCorpus);
-        corpusService.save(combinedCorpus);
+        String stopwordAndRareCharacterString = stopwordString + rareCharactersString;
+
+//        corpusService.clearAll();
+//        Corpus heCorpus = Corpus.fromString("hcjswb_he_1827", heCorpusString, stopwordString);
+//        Corpus heCorpusSmall = Corpus.fromString("hcjswb_he_1827_small", heCorpusStringSmall, stopwordString);
+//        Corpus raoCorpus = Corpus.fromString("hcjswxb_rao_1881", raoCorpusString, stopwordString);
+//        Corpus shengCorpus = Corpus.fromString("hcjswxb_sheng_1897", shengCorpusString, stopwordString);
+//        Corpus combinedCorpus = Corpus.fromString("hcjsw_combined", combinedCorpusString, stopwordString);
+
+        Corpus heCorpusFiltered = Corpus.fromString("hcjswb_he_1827_filtered", heCorpusString, stopwordAndRareCharacterString);
+        Corpus heCorpusSmallFiltered = Corpus.fromString("hcjswb_he_1827_small_filtered", heCorpusStringSmall, stopwordAndRareCharacterString);
+//        Corpus raoCorpusFiltered = Corpus.fromString("hcjswxb_rao_1881_filtered", raoCorpusString, stopwordAndRareCharacterString);
+//        Corpus shengCorpusFiltered = Corpus.fromString("hcjswxb_sheng_1897_filtered", shengCorpusString, stopwordAndRareCharacterString);
+//        Corpus combinedCorpusFiltered = Corpus.fromString("hcjsw_combined_filtered", combinedCorpusString, stopwordAndRareCharacterString);
+
+//        corpusService.save(heCorpus);
+//        corpusService.save(heCorpusSmall);
+//        corpusService.save(raoCorpus);
+//        corpusService.save(shengCorpus);
+//        corpusService.save(combinedCorpus);
+
+        corpusService.save(heCorpusFiltered);
+        corpusService.save(heCorpusSmallFiltered);
+//        corpusService.save(raoCorpusFiltered);
+//        corpusService.save(shengCorpusFiltered);
+//        corpusService.save(combinedCorpusFiltered);
         return "redirect:/";
     }
 

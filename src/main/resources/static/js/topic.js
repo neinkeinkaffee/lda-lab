@@ -12,7 +12,7 @@ d3.request(topic_url)
                 var document = row.document;
                 var documentProbability = {};
                 documentProbability["title"] = document.title;
-                documentProbability["meta"] = document.author + " (" + document.volume + ")";
+                documentProbability["meta"] = document.author;
                 documentProbability["probability"] = row.probability;
                 return documentProbability;
             }
