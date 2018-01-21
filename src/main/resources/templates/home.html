@@ -11,9 +11,9 @@
 <h3>Available Models</h3>
 <ul th:each="model: ${availableModels}">
     <li>
-        <a th:text="@{|Model with ${model.numberOfTopics} topics estimated from corpus ${model.corpusName} (${model.timestamp})|}"
+        <a th:text="@{|Model with ${model.numberOfTopics} topics inferred from corpus ${model.corpusName} (${model.timestamp})|}"
            th:href="@{|/corpus/${model.corpusName}/numberOfTopics/${model.numberOfTopics}/timestamp/${model.timestamp}|}">
-            Model with 10 topics estimated from corpus toy
+            Model with 10 topics inferred from corpus toy
         </a>
         <a th:text="[delete]"
            th:href="@{|/corpus/${model.corpusName}/numberOfTopics/${model.numberOfTopics}/timestamp/${model.timestamp}/delete|}">
