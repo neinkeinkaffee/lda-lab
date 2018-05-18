@@ -31,6 +31,7 @@ public class DtoDocument {
 	String timestamp;
 	@Getter
 	private String title;
+
 	@Singular @Getter
 	private List<Token> tokens;
 	@Getter @Setter
