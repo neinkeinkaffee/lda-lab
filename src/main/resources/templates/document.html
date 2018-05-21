@@ -48,11 +48,11 @@
         <div class="token" th:each="token : ${document.tokens}">
             <span th:if="${token.stopToken}"
                   th:class="stopToken"
-                  th:text="@{|${token.word.lemma}|}">that</span>
+                  th:text="@{|${token.lemma}|}">that</span>
             <span th:if="${!token.stopToken}"
                   th:class="contentToken"
-                  th:id="${token.topic.topicId}"
-                  th:text="@{|${token.word.lemma}|}">banana</span>
+                  th:id="${token.topicId}"
+                  th:text="@{|${token.lemma}|}">banana</span>
         </div>
     </div>
 </div>

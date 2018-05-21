@@ -1,6 +1,7 @@
 package org.tw.neinkeinkaffee.lda.model.dto;
 
 import org.junit.Test;
+import org.tw.neinkeinkaffee.lda.dto.document.DtoDocument;
 
 import static junit.framework.TestCase.assertTrue;
 import static org.hamcrest.Matchers.is;
@@ -9,16 +10,16 @@ import static org.junit.Assert.*;
 public class DtoVolumeTest {
     @Test
     public void shouldGetSection() throws Exception {
-        DtoVolume volume1 = DtoVolume.builder()
+        DtoDocument.DtoVolume volume1 = DtoDocument.DtoVolume.builder()
             .title("卷十二治體六治法下")
             .build();
-        DtoVolume volume2 = DtoVolume.builder()
+        DtoDocument.DtoVolume volume2 = DtoDocument.DtoVolume.builder()
             .title("卷三十七戶政十二農政中")
             .build();
-        DtoVolume volume3 = DtoVolume.builder()
+        DtoDocument.DtoVolume volume3 = DtoDocument.DtoVolume.builder()
             .title("FRONTMATTER")
             .build();
-        DtoVolume volume4 = DtoVolume.builder()
+        DtoDocument.DtoVolume volume4 = DtoDocument.DtoVolume.builder()
             .title("卷一學術一原學")
             .build();
 

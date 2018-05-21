@@ -1,7 +1,8 @@
 package org.tw.neinkeinkaffee.lda.model.corpus;
 
 import org.junit.Test;
-import org.tw.neinkeinkaffee.lda.model.dto.word.StopWord;
+import org.tw.neinkeinkaffee.lda.corpus.CorpusDocument;
+import org.tw.neinkeinkaffee.lda.corpus.Word;
 
 import java.util.Arrays;
 import java.util.List;

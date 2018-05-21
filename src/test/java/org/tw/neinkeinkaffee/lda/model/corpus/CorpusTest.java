@@ -1,6 +1,7 @@
 package org.tw.neinkeinkaffee.lda.model.corpus;
 
 import org.junit.Test;
+import org.tw.neinkeinkaffee.lda.corpus.Corpus;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
